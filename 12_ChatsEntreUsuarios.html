@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArquiFi Chat</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#00FFFF",
+            "background-light": "#f5f7f8",
+            "background-dark": "#121012",
+          },
+          fontFamily: {
+            "display": ["Space Grotesk", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background-dark font-display">
+<div class="relative flex h-screen w-full flex-col bg-background-dark group/design-root overflow-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="flex flex-1 justify-center">
+<div class="layout-content-container flex flex-col w-full max-w-[960px] flex-1">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-gray-800 px-6 py-4">
+<div class="flex items-center gap-4 text-white">
+<button class="flex items-center justify-center text-white">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 h-10" data-alt="John Doe's profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDFWhoKBXmMcdanILwGTv5F4yPTiEBJqOm3VgGf1OiuIgAO2ml29O2bq8ddEQia95Uu8gREVwzFP97PRq8-Qr_u1uWG1E9mV35o3m2HXb--IKTmD3QDgkTTrMMUfo3slU1a4V3t05g_TSS7Gm6qg-s6GVEtkkjVewyEEHQA8fI9jLW3ksbfSvTyplvB5TNg1eCqT1lMIqgpRfspRds-ep0tlDSQmn3jHhdmY6rkwzb-u9NanY2Hv9H8P8EM78wDauaoriRFXQUI5Hc");'></div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">John Doe</h2>
+</div>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-transparent text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+<span class="material-symbols-outlined text-white">more_vert</span>
+</button>
+</header>
+<div class="flex-1 overflow-y-auto p-6 space-y-6">
+<div class="flex items-end gap-3 p-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 shrink-0" data-alt="John Doe's profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAfiaKEYuSV3e80-zxy_rTadRMOxQKffTyhBjK3kjzuFoYk3nQDjtZH73s-HK9XnwEUPvniWOE1xvAbINwFAQHczOW7a4_sZuTHyuST6EQXt0G5ubwxITc0M4D7-NhdkXyW6XJ1VlhrIy0U-16cdx2FHGSezmmpw11BAhmyjb88J6Fhtm2j2kNWeTtFsEdy8tOZXhq2LCiZiwh6AENGYZejQC80HyxUDN-HSU5QlfW3m_CyDrwcrNAaDAEtAoV3caJfkdxcsEbIlmw");'></div>
+<div class="flex flex-1 flex-col gap-1 items-start">
+<p class="text-gray-400 text-sm font-normal leading-normal max-w-[360px]">John Doe</p>
+<p class="text-base font-normal leading-normal flex max-w-[360px] rounded-lg px-4 py-3 bg-white text-background-dark">Hey, how's it going?</p>
+</div>
+</div>
+<div class="flex items-end gap-3 p-4 justify-end">
+<div class="flex flex-1 flex-col gap-1 items-end">
+<p class="text-gray-400 text-sm font-normal leading-normal max-w-[360px] text-right">You</p>
+<p class="text-base font-normal leading-normal flex max-w-[360px] rounded-lg px-4 py-3 bg-primary text-background-dark">
+                  Pretty good! I'm just working on this new DeFi project. It's called ArquiFi.
+                </p>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 shrink-0" data-alt="Your profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDa9Ndmrrl1IuhxLuQTnTkCcZ2gkk7B41BwaAgG_EWLq2YLY3EHpoo9Q1jTc7_aG9H8QyHl1RxDsxVOctlOhuL7K_-xn7eEpOT8M2-L95wPCkMj1T8IxBEeVQDaQJk_C4omeVSCfAkQiSg22fVnz4USoHj2xLihFi2Prs-iH_JKMe9GZUstz8u8_0fmjsiBVofnz7IGNQTOONI1LPTcMQXrqwUUweuAVzTCPPL7XdO7DtnSpjH6P3j1nYP_DxRN7VGf-BmX6Q1vNYI");'></div>
+</div>
+<div class="flex items-end gap-3 p-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 shrink-0" data-alt="John Doe's profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCpemTUVlqwZ-KZjCOhECF0xBEe29d7mJ7BX6o8sQ_ctCO_yPjE09V7z1wDlMYvRKt61GjqNiGNVeLucDUuKmxn3N6a3u0dhrCnbAASesfg8WKdv5wyXySPPC3NKkxyHbe6XwE9QprJXcbZ7QLcm84Xvs17waFp2x_CITYRn0fqOZabd13PZT1IRUYN_IAQWnJ7z0-C6jaXA5DLfZzJ4TISZb3RGnsRWznHIzI7HiuTfQW77kiTDV9ywdH9ypnHXh3wtkf4N_8Z1C8");'></div>
+<div class="flex flex-1 flex-col gap-1 items-start">
+<p class="text-gray-400 text-sm font-normal leading-normal max-w-[360px]">John Doe</p>
+<p class="text-base font-normal leading-normal flex max-w-[360px] rounded-lg px-4 py-3 bg-white text-background-dark">Oh, cool! What's it about?</p>
+</div>
+</div>
+<div class="flex items-end gap-3 p-4 justify-end">
+<div class="flex flex-1 flex-col gap-1 items-end">
+<p class="text-gray-400 text-sm font-normal leading-normal max-w-[360px] text-right">You</p>
+<p class="text-base font-normal leading-normal flex max-w-[360px] rounded-lg px-4 py-3 bg-primary text-background-dark">
+                  It's a social app that teaches people about decentralized finance in a really accessible way.
+                </p>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 shrink-0" data-alt="Your profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCsWB9xmkaADKIycekbtTgg2zC7f8JqUGmp9m9zJXchoHWWYQaMFMbipLmb3MDbXWu-LBbL7l5tD064E3n_t0sOiov-j1TkGKwKXvL-1qLb5LWgFfqsCcH1aag6RGpEOqbiobNG9OfNqxAbR_k0JsfvI0gnSzsm3n6EWnY800nXTc9RNO0ZUepQ2CSk2KX4c-f_m7zdFP4VlYYrdqGZ4S5ru8Rl_7tP-HWRNWV7DEXE2qWPS3ErjCVurM1VGUGCGXsKwdcVrFNDv1s");'></div>
+</div>
+</div>
+<div class="flex items-center gap-4 border-t border-solid border-t-gray-800 p-4">
+<button class="text-white">
+<span class="material-symbols-outlined">sentiment_satisfied</span>
+</button>
+<button class="text-white">
+<span class="material-symbols-outlined">attach_file</span>
+</button>
+<input class="flex-1 bg-gray-800 text-white border-none rounded-lg px-4 py-2 focus:ring-primary focus:ring-2" placeholder="Type a message..." type="text"/>
+<button class="bg-primary text-background-dark rounded-lg px-6 py-2 font-bold">Send</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+//podemos implementar un p2p en este chat para que los usuarios puedan hablar entre ellos sin necesidad de un servidor intermedio.
+//tambien podramos hacer que hagan que el p2p sea un intercambio de divisas entre usuarios.
+</body></html>

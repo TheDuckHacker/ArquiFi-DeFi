@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArquiFi - P2P Token Exchange Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0099FF",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#121012",
+                        "card-dark": "#413E40",
+                        "positive": "#00FF7F",
+                        "neutral": "#FFD700",
+                        "negative": "#FF4500",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-dark font-display text-white">
+<div class="relative flex min-h-screen w-full flex-col">
+<div class="layout-container flex h-full grow flex-col">
+<div class="flex flex-1 justify-center py-5">
+<div class="layout-content-container flex w-full max-w-7xl flex-col gap-8 px-4">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-card-dark/50 px-4 py-3 sm:px-6">
+<div class="flex items-center gap-4">
+<div class="h-8 w-8 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em]">ArquiFi</h2>
+</div>
+<div class="flex flex-1 items-center justify-end gap-4">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] transition-colors hover:bg-primary/90">
+<span class="truncate">Connect Wallet</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBmQkVI7gt0lx_wHKDLMtSLKvJF_K1meYnLwUYzhktZO1zvHbpy8Y4fSFP-kWyHrg1HYsKVfBCesj74rWJ_k7XLjMKBQO58HOzEMvD__ju7cAuKRzVyWqsI5MDq9iGvdzyXJPT41mnFXRexrUcfDlochLP1gdEweFNG6ANxP2DT8jAfzaTWB_fV2ANaXc6vx7iVmypBI_05PuJTgIJ893ILjv_g-4J4DRacKTN9_fnLtjw_2Dgel6R96sBRpqMWENdthPesCMefPds");'></div>
+</div>
+</header>
+<main class="flex flex-col gap-8 lg:flex-row">
+<div class="flex w-full flex-col gap-6 lg:w-1/3">
+<div class="rounded-xl bg-card-dark p-6">
+<h2 class="mb-4 text-2xl font-bold tracking-[-0.015em]">Crear Nueva Oferta</h2>
+<form class="flex flex-col gap-4">
+<div>
+<label class="mb-2 block text-sm font-medium text-white/70">Tipo de operación</label>
+<div class="flex h-10 w-full items-center justify-center rounded-lg bg-background-dark p-1">
+<label class="flex h-full flex-1 cursor-pointer items-center justify-center rounded-md px-2 text-sm font-medium text-white/70 has-[:checked]:bg-primary has-[:checked]:text-white">
+<input checked="" class="sr-only" name="operation_type" type="radio" value="buy"/>
+<span>Comprar</span>
+</label>
+<label class="flex h-full flex-1 cursor-pointer items-center justify-center rounded-md px-2 text-sm font-medium text-white/70 has-[:checked]:bg-primary has-[:checked]:text-white">
+<input class="sr-only" name="operation_type" type="radio" value="sell"/>
+<span>Vender</span>
+</label>
+</div>
+</div>
+<div>
+<label class="mb-2 block text-sm font-medium text-white/70" for="token">Seleccionar Token</label>
+<select class="w-full rounded-lg border-none bg-background-dark p-3 text-sm text-white focus:ring-2 focus:ring-primary" id="token">
+<option>ETH</option>
+<option>BTC</option>
+<option>USDT</option>
+</select>
+</div>
+<div>
+<label class="mb-2 block text-sm font-medium text-white/70" for="quantity">Cantidad</label>
+<input class="w-full rounded-lg border-none bg-background-dark p-3 text-sm text-white focus:ring-2 focus:ring-primary" id="quantity" placeholder="0.00" type="number"/>
+</div>
+<div>
+<label class="mb-2 block text-sm font-medium text-white/70" for="price">Precio por Unidad (USD)</label>
+<input class="w-full rounded-lg border-none bg-background-dark p-3 text-sm text-white focus:ring-2 focus:ring-primary" id="price" placeholder="2500.00" type="number"/>
+</div>
+<div>
+<label class="mb-2 block text-sm font-medium text-white/70" for="expiration">Tiempo de Expiración (horas)</label>
+<input class="w-full h-2 bg-background-dark rounded-lg appearance-none cursor-pointer accent-primary" id="expiration" max="72" min="1" type="range" value="24"/>
+<div class="text-center text-sm text-white/70 mt-1">24 horas</div>
+</div>
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-wide transition-colors hover:bg-primary/90">
+<span class="truncate">Publicar Oferta</span>
+</button>
+</form>
+</div>
+<div class="rounded-xl bg-card-dark p-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">security</span>
+<p class="text-sm text-white/80">Tus fondos están protegidos por nuestro contrato de escrow hasta que la transacción sea confirmada por ambas partes.</p>
+</div>
+</div>
+</div>
+<div class="flex w-full flex-col gap-6 lg:w-2/3">
+<div>
+<h1 class="text-4xl font-black tracking-[-0.033em]">P2P Token Exchange Hub</h1>
+<div class="mt-4 flex h-10 w-full items-center justify-center rounded-lg bg-card-dark p-1">
+<label class="flex h-full flex-1 cursor-pointer items-center justify-center rounded-md px-2 text-sm font-medium text-white/70 has-[:checked]:bg-primary has-[:checked]:text-white">
+<input checked="" class="sr-only" name="main_view" type="radio" value="browse"/>
+<span class="truncate">Listado de Ofertas Activas</span>
+</label>
+<label class="flex h-full flex-1 cursor-pointer items-center justify-center rounded-md px-2 text-sm font-medium text-white/70 has-[:checked]:bg-primary has-[:checked]:text-white">
+<input class="sr-only" name="main_view" type="radio" value="history"/>
+<span class="truncate">Historial de Intercambios</span>
+</label>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+<div class="flex flex-col gap-4 rounded-xl bg-card-dark p-4 shadow-lg">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-lg font-bold">ETH</p>
+<p class="text-sm text-white/60">Venta</p>
+</div>
+<div class="flex items-center gap-2 rounded-full bg-positive/20 px-3 py-1 text-xs font-medium text-positive">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+                                                 Comerciante Confiable
+                                            </div>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="text-sm text-white/60">Cantidad: 10</p>
+<p class="text-sm text-white/60">Precio: $2,500</p>
+</div>
+<p class="text-sm text-white/60">Vendedor: @user123</p>
+</div>
+<div class="mt-2 flex items-center justify-between border-t border-white/10 pt-3">
+<div class="text-sm text-neutral">
+<span class="material-symbols-outlined text-base align-bottom">timer</span>
+                                                Expira en: 23h 45m
+                                            </div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary text-white text-sm font-bold transition-colors hover:bg-primary/90">
+<span class="truncate">Aceptar Oferta</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-xl bg-card-dark p-4 shadow-lg">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-lg font-bold">BTC</p>
+<p class="text-sm text-white/60">Compra</p>
+</div>
+<div class="flex items-center gap-2 rounded-full bg-neutral/20 px-3 py-1 text-xs font-medium text-neutral">
+<span class="material-symbols-outlined text-sm">shield</span>
+                                                95 Intercambios
+                                            </div>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="text-sm text-white/60">Cantidad: 0.5</p>
+<p class="text-sm text-white/60">Precio: $65,000</p>
+</div>
+<p class="text-sm text-white/60">Comprador: @trader_pro</p>
+</div>
+<div class="mt-2 flex items-center justify-between border-t border-white/10 pt-3">
+<div class="text-sm text-neutral">
+<span class="material-symbols-outlined text-base align-bottom">timer</span>
+                                                Expira en: 12h 10m
+                                            </div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary text-white text-sm font-bold transition-colors hover:bg-primary/90">
+<span class="truncate">Aceptar Oferta</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-xl bg-card-dark p-4 shadow-lg">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-lg font-bold">USDT</p>
+<p class="text-sm text-white/60">Venta</p>
+</div>
+<div class="flex items-center gap-2 rounded-full bg-negative/20 px-3 py-1 text-xs font-medium text-negative">
+<span class="material-symbols-outlined text-sm">warning</span>
+                                                Nuevo Comerciante
+                                            </div>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="text-sm text-white/60">Cantidad: 5000</p>
+<p class="text-sm text-white/60">Precio: $1.01</p>
+</div>
+<p class="text-sm text-white/60">Vendedor: @newbie</p>
+</div>
+<div class="mt-2 flex items-center justify-between border-t border-white/10 pt-3">
+<div class="text-sm text-neutral">
+<span class="material-symbols-outlined text-base align-bottom">timer</span>
+                                                Expira en: 48h 00m
+                                            </div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary text-white text-sm font-bold transition-colors hover:bg-primary/90">
+<span class="truncate">Aceptar Oferta</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-xl bg-card-dark p-4 shadow-lg">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-lg font-bold">ETH</p>
+<p class="text-sm text-white/60">Compra</p>
+</div>
+<div class="flex items-center gap-2 rounded-full bg-positive/20 px-3 py-1 text-xs font-medium text-positive">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+                                                 Comerciante Confiable
+                                            </div>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="text-sm text-white/60">Cantidad: 2</p>
+<p class="text-sm text-white/60">Precio: $2,495</p>
+</div>
+<p class="text-sm text-white/60">Comprador: @crypto_king</p>
+</div>
+<div class="mt-2 flex items-center justify-between border-t border-white/10 pt-3">
+<div class="text-sm text-neutral">
+<span class="material-symbols-outlined text-base align-bottom">timer</span>
+                                                Expira en: 5h 30m
+                                            </div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary text-white text-sm font-bold transition-colors hover:bg-primary/90">
+<span class="truncate">Aceptar Oferta</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</div>
+</div>
+</body></html>

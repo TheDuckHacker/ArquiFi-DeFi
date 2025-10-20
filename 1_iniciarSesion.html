@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArquiFi - Login/Register</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0099ff",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#121012",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+</head>
+<body class="bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col items-center justify-center bg-background-dark group/design-root overflow-x-hidden p-4">
+<div class="layout-container flex h-full grow flex-col">
+<div class="flex flex-1 items-center justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[480px] w-full flex-1">
+<div class="flex flex-col items-center justify-center mb-8">
+<svg class="h-10 text-white" fill="none" viewBox="0 0 134 32" xmlns="http://www.w3.org/2000/svg">
+<path d="M19.3474 31.1053L0.421018 19.3474V12.7579L19.3474 1V31.1053Z" stroke="currentColor" stroke-width="2"></path>
+<path d="M19.3474 1L38.2737 12.7579V19.3474L19.3474 31.1053" stroke="#0099FF" stroke-width="2"></path>
+</svg>
+<h1 class="text-white text-3xl font-bold mt-4">ArquiFi</h1>
+</div>
+<div class="flex flex-wrap justify-between gap-3 p-4 text-center">
+<div class="flex flex-col gap-3 w-full">
+<p class="text-white text-4xl font-black leading-tight tracking-[-0.033em]">Unlock the Future of Finance</p>
+<p class="text-[#9aaebc] text-base font-normal leading-normal">Connect your wallet to get started</p>
+</div>
+</div>
+<div class="flex flex-col gap-4 p-4">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-5 flex-1 bg-primary text-white text-lg font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined mr-2">account_balance_wallet</span>
+<span class="truncate">Connect Wallet</span>
+</button>
+</div>
+<div class="text-center mt-4 px-4 py-3">
+<p class="text-[#9aaebc] text-xs">By connecting your wallet, you agree to ArquiFi's <a class="text-white hover:underline" href="#">Terms of Service</a> and <a class="text-white hover:underline" href="#">Privacy Policy</a>. New users will be prompted to create a profile after connecting.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

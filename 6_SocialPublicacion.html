@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArquiFi Social Feed</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0099ff",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#121012",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col">
+<div class="layout-container flex h-full grow flex-col">
+<div class="flex flex-1 justify-center">
+<div class="layout-content-container flex flex-col w-full max-w-[960px] flex-1">
+<header class="sticky top-0 z-10 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#413E40] bg-background-dark px-6 py-4 md:px-10">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-white">
+<div class="size-6 text-primary">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">ArquiFi</h2>
+</div>
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-[#9aaebc] flex border-none bg-[#413E40]/50 items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border-none bg-[#413E40]/50 focus:border-none h-full placeholder:text-[#9aaebc] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search ArquiFi" value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-2 md:gap-4">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-transparent text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5 hover:bg-[#413E40]/50 transition-colors">
+<span class="material-symbols-outlined text-white">notifications</span>
+</button>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-transparent text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5 hover:bg-[#413E40]/50 transition-colors">
+<span class="material-symbols-outlined text-white">settings</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDaacNTZjU12_InGn92tmk-51erL-Kjbz76NEWRCP-hDMR0srd317dG1uj6V79gHqx-x5Bxt0FHD16G1GtsBx4WOLy7BYng4WNmNS2SR73fwRxZ-ekyzAoLVj1OsxTZCjF-goZaSHeEdr-rlilQpPiXCe6EKKgMP6fEBRvQQHPENWiKjQtBDyIAQjAUaWVqDK2rLcuSvxaoj6eo_vhPFRinr7llypdG6TpT82e0PTXwBOIogVh-6308l2MwtwCfCmajFdYtNmvbYRc");'></div>
+</div>
+</header>
+<main class="flex-1 px-4 py-6 md:px-8">
+<div class="flex gap-3 pb-6 border-b border-[#413E40]">
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#413E40] px-4 hover:bg-primary transition-colors">
+<p class="text-white text-sm font-medium leading-normal">Latest</p>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#413E40] px-4 hover:bg-primary transition-colors">
+<p class="text-white text-sm font-medium leading-normal">Trending</p>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#413E40] px-4 hover:bg-primary transition-colors">
+<p class="text-white text-sm font-medium leading-normal">Following</p>
+</button>
+</div>
+<div class="space-y-6 mt-6">
+<!-- Post 1 -->
+<div class="bg-[#413E40] rounded-xl overflow-hidden">
+<div class="p-5 @container">
+<div class="flex items-center gap-3 mb-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="johndoe.eth avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBCZ39rTs9jCq-ze8bYy57GFiLiPT244HlVqiWWcBZBJGmCiRol_w_MQJIWiyydnhzwTPhITiRXWLslbExP4PiJ5umElMzTJiOgOI9Tpdg7ZgMFh83-ZCyJdQbjgmD_dXBAS_XvquPZzVilX6sj-Wu56UpXjlYEQimry5i4U8TYaxKJoDLxEXkRsyZ2mamXefY_Q1A6Cn8fcQdRhO1m4LMweWMLTXLN1SmnL1i5Mu1UFHXodbKGeuijGhZ-yI37XDvp9ACz9y-s71c");'></div>
+<div>
+<p class="text-white text-base font-bold leading-tight tracking-[-0.015em]">johndoe.eth</p>
+<p class="text-[#9aaebc] text-sm font-normal leading-normal">2 hours ago</p>
+</div>
+</div>
+<div class="flex flex-col items-stretch justify-start">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg mb-4" data-alt="Abstract DeFi graphic" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAL3a_9ZwxNGAef6UTxpbvzLxTBoYIZ8jhjb8b7G8jdIODNxnJ1eOOVQYR0eyuqQhBTCiVLLU1VimSLS461kTX0bUHQCGwrU9kKvmzKAcHHNx4PhRxJ-Brc-nN3sNXfRv94aSlss8qYKARhyRJp_DzZBdHJbW2XfdmHi18thi5KI90BVEkMNhuE6RW17zzkCoYigpuVgW3KHk-eYDOBig1gkFTwJDLvdNsZxSWkTuldocMmyMxInG6i77ccX-efYv6rRuKn9o3oh4c");'></div>
+<div class="flex w-full flex-col items-stretch justify-center gap-2">
+<p class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">DeFi in a Nutshell</p>
+<p class="text-[#cccccc] text-base font-normal leading-normal">
+                                                A beginner's guide to understanding decentralized finance. This post breaks down the core concepts and explains why it's revolutionizing the financial world.
+                                            </p>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap gap-4 px-5 py-3 border-t border-[#121012]">
+<div class="flex items-center justify-center gap-2 px-3 py-2 cursor-pointer hover:bg-[#121012]/50 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-primary">favorite</span>
+<p class="text-white text-[13px] font-bold leading-normal tracking-[0.015em]">1.2k</p>
+</div>
+<div class="flex items-center justify-center gap-2 px-3 py-2 cursor-pointer hover:bg-[#121012]/50 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-primary">chat_bubble</span>
+<p class="text-white text-[13px] font-bold leading-normal tracking-[0.015em]">345</p>
+</div>
+<div class="flex items-center justify-center gap-2 px-3 py-2 cursor-pointer hover:bg-[#121012]/50 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-primary">share</span>
+<p class="text-white text-[13px] font-bold leading-normal tracking-[0.015em]">120</p>
+</div>
+</div>
+</div>
+<!-- Post 2 -->
+<div class="bg-[#413E40] rounded-xl overflow-hidden">
+<div class="p-5 @container">
+<div class="flex items-center gap-3 mb-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="cryptoguru avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBm1ShdTwkOYdgh3Q3SatBv3Q1xabpuuFlsj-LVEa4d6eRxp4NoUG9oteZhZVo5MZVtLJ0KH6F-xvI_Zg1wBaQoWITJT_rFg6KT8zNAoH0Y6ZiWo9yIbfeYyaFpAKvABP7Vx90ulSQMItLHyBG_9qDkq0PibSiB4bandYMHcKfjgaUpH37u4ka5s8-tSb6cB560r8jyVT9CtEcyT23GlsQ9bt04qzUA9xuYKsexPKXZk_0ARkHPMlK6xu7yeAgDtNjNzZc-p3iVoXY");'></div>
+<div>
+<p class="text-white text-base font-bold leading-tight tracking-[-0.015em]">cryptoguru</p>
+<p class="text-[#9aaebc] text-sm font-normal leading-normal">5 hours ago</p>
+</div>
+</div>
+<div class="flex flex-col items-stretch justify-start">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg mb-4" data-alt="Abstract yield farming graphic" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDEWUjJxbQM5tiSeyF11uK5h8QrzaosF7ZNGDj5X6otR4dAmGjbt0EMnJrmIOzN6ZrBwu3Z--_8t1Bz4zfPHBZ8i75wyYfjgRtYYFHoKLzAtdwFmYEdQn-1y2OrY1uCxcPafBrvTyTGWpyeCPbSJ9KqB02X53LxKgp6AGZlhgdNc-N5MjLZXFXFfji7LkHbTf5nDfplwL1Xgsnu7VSy4-mOSLEcZ_Bm3xui-uR3Y3tXgciS0ZmbCpuLsvUAw-qVP-kp7wzplNtcULc");'></div>
+<div class="flex w-full flex-col items-stretch justify-center gap-2">
+<p class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">The Rise of Yield Farming</p>
+<p class="text-[#cccccc] text-base font-normal leading-normal">
+                                                Exploring the high-reward (and high-risk) world of yield farming. Learn how to maximize your returns and what to watch out for.
+                                            </p>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap gap-4 px-5 py-3 border-t border-[#121012]">
+<div class="flex items-center justify-center gap-2 px-3 py-2 cursor-pointer hover:bg-[#121012]/50 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-primary">favorite</span>
+<p class="text-white text-[13px] font-bold leading-normal tracking-[0.015em]">2.8k</p>
+</div>
+<div class="flex items-center justify-center gap-2 px-3 py-2 cursor-pointer hover:bg-[#121012]/50 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-primary">chat_bubble</span>
+<p class="text-white text-[13px] font-bold leading-normal tracking-[0.015em]">789</p>
+</div>
+<div class="flex items-center justify-center gap-2 px-3 py-2 cursor-pointer hover:bg-[#121012]/50 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-primary">share</span>
+<p class="text-white text-[13px] font-bold leading-normal tracking-[0.015em]">451</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</div>
+//aparte tendria que poder mostrar un boton para crear un publicacion
+//tendria que tener acceso o boton para hablar con el chatbot de arquifi
+<button class="fixed bottom-8 right-8 flex h-16 w-16 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-primary text-white shadow-lg hover:bg-primary/80 transition-colors">
+<span class="material-symbols-outlined text-4xl">add</span>
+</button>
+</div>
+</body></html>

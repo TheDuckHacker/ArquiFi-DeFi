@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArquiFi - User Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0099ff",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#121012",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+<!-- Profile Header -->
+<div class="flex p-4 @container">
+<div class="flex w-full flex-col gap-4 @[520px]:flex-row @[520px]:justify-between @[520px]:items-center">
+<div class="flex gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-32 w-32" data-alt="User avatar with a futuristic, abstract background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC6aCU2S6kEpfbvTQWiSmBwW-7zeaH_aBmkd6travrShoPi1lEN83phNv276mZUE-YAwBWIdIDvc0Rlw-u19PyPA0XgXIbPy5LRBcsuMiHqJn2muqLjwlI3qml4OdsQUjfHzMMfcbg_jaQkE5KySmpmt4_3F65NBRq7jJEb-MKHm2kADE_JjRMaJpK6DSDrKtlGAAxC2neInAWmPQUnSFBq4hW8THLnoi-gifDEcuHSLqcpSw9oKKu9qZHAsQFzOztgIlKB8s6O9Mc");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em]">SatoshiN</p>
+<p class="text-[#9aaebc] text-base font-normal leading-normal">@satoshi</p>
+<p class="text-[#9aaebc] text-base font-normal leading-normal">Reputation: Visionario</p>
+<p class="text-green-400 text-sm font-normal leading-normal">Status: Online</p>
+</div>
+</div>
+<div class="flex w-full max-w-[480px] gap-3 @[480px]:w-auto">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#27323a] text-white text-sm font-bold leading-normal tracking-[0.015em] flex-1 @[480px]:flex-auto">
+<span class="truncate">Follow</span>
+</button>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] flex-1 @[480px]:flex-auto">
+<span class="truncate">Message</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Reputation Progress Bar -->
+<div class="flex flex-col gap-3 p-4">
+<div class="flex gap-6 justify-between">
+<p class="text-white text-base font-medium leading-normal">Reputation Progression</p>
+<p class="text-white text-sm font-normal leading-normal">80%</p>
+</div>
+<div class="rounded-lg bg-[#413E40] h-4">
+<div class="h-4 rounded-lg bg-primary" style="width: 80%;"></div>
+</div>
+<div class="flex justify-between text-xs text-[#9aaebc]">
+<span>Novato</span>
+<span>Explorador</span>
+<span>Arquitecto</span>
+<span class="font-bold text-white">Visionario</span>
+</div>
+</div>
+<!-- Stats -->
+<div class="flex flex-wrap gap-4 p-4">
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-6 bg-[#413E40]">
+<p class="text-white text-base font-medium leading-normal">Social</p>
+<p class="text-white tracking-light text-2xl font-bold leading-tight">1,200 XP</p>
+<p class="text-green-400 text-base font-medium leading-normal">+10%</p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-6 bg-[#413E40]">
+<p class="text-white text-base font-medium leading-normal">DeFi</p>
+<p class="text-white tracking-light text-2xl font-bold leading-tight">5,000 XP</p>
+<p class="text-green-400 text-base font-medium leading-normal">+25%</p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-6 bg-[#413E40]">
+<p class="text-white text-base font-medium leading-normal">Gobernanza</p>
+<p class="text-white tracking-light text-2xl font-bold leading-tight">800 XP</p>
+<p class="text-green-400 text-base font-medium leading-normal">+5%</p>
+</div>
+</div>
+<!-- Badges -->
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Badges</h2>
+<div class="grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] gap-3 p-4">
+<div class="flex flex-col gap-3 text-center group" data-alt="Pioneer Badge: First 100 users">
+<div class="p-2 border-2 border-primary rounded-full aspect-square flex items-center justify-center transition-all duration-300 group-hover:shadow-[0_0_15px_5px] group-hover:shadow-primary/50">
+<span class="material-symbols-outlined text-4xl">rocket_launch</span>
+</div>
+</div>
+<div class="flex flex-col gap-3 text-center group" data-alt="Governance Guru Badge: 10+ proposals submitted">
+<div class="p-2 border-2 border-primary rounded-full aspect-square flex items-center justify-center transition-all duration-300 group-hover:shadow-[0_0_15px_5px] group-hover:shadow-primary/50">
+<span class="material-symbols-outlined text-4xl">gavel</span>
+</div>
+</div>
+<div class="flex flex-col gap-3 text-center group" data-alt="Social Butterfly Badge: 100+ connections">
+<div class="p-2 border-2 border-primary rounded-full aspect-square flex items-center justify-center transition-all duration-300 group-hover:shadow-[0_0_15px_5px] group-hover:shadow-primary/50">
+<span class="material-symbols-outlined text-4xl">groups</span>
+</div>
+</div>
+<div class="flex flex-col gap-3 text-center group" data-alt="DeFi Degen Badge: 100+ transactions">
+<div class="p-2 border-2 border-primary rounded-full aspect-square flex items-center justify-center transition-all duration-300 group-hover:shadow-[0_0_15px_5px] group-hover:shadow-primary/50">
+<span class="material-symbols-outlined text-4xl">monitoring</span>
+</div>
+</div>
+<div class="flex flex-col gap-3 text-center group" data-alt="Quest Master Badge: 50 quests completed">
+<div class="p-2 border-2 border-primary rounded-full aspect-square flex items-center justify-center transition-all duration-300 group-hover:shadow-[0_0_15px_5px] group-hover:shadow-primary/50">
+<span class="material-symbols-outlined text-4xl">flag</span>
+</div>
+</div>
+<div class="flex flex-col gap-3 text-center group" data-alt="Top Earner Badge: Top 1% in XP">
+<div class="p-2 border-2 border-primary rounded-full aspect-square flex items-center justify-center transition-all duration-300 group-hover:shadow-[0_0_15px_5px] group-hover:shadow-primary/50">
+<span class="material-symbols-outlined text-4xl">military_tech</span>
+</div>
+</div>
+</div>
+<!-- Ranking Section -->
+<div class="flex gap-4 p-4">
+<div class="flex-1 rounded-lg p-6 bg-[#413E40] text-center">
+<p class="text-[#9aaebc] text-base">Global Rank</p>
+<p class="text-white text-3xl font-bold">#1,337</p>
+</div>
+<div class="flex-1 rounded-lg p-6 bg-[#413E40] text-center">
+<p class="text-[#9aaebc] text-base">Local Rank</p>
+<p class="text-white text-3xl font-bold">#42</p>
+</div>
+</div>
+<!-- Activity Feed -->
+<div class="p-4">
+<div class="flex border-b border-gray-700">
+<button class="px-4 py-2 text-white border-b-2 border-primary">Social</button>
+<button class="px-4 py-2 text-[#9aaebc] hover:text-white">DeFi</button>
+<button class="px-4 py-2 text-[#9aaebc] hover:text-white">Gobernanza</button>
+<button class="px-4 py-2 text-[#9aaebc] hover:text-white">Gamificación</button>
+</div>
+<div class="mt-4 space-y-4">
+<div class="rounded-lg p-4 bg-[#413E40]">
+<p class="text-white">Posted a new proposal: <span class="text-primary">"Increase liquidity pool rewards"</span></p>
+<p class="text-xs text-[#9aaebc]">2 hours ago</p>
+</div>
+<div class="rounded-lg p-4 bg-[#413E40]">
+<p class="text-white">Interacted with <span class="text-primary">@vitalik</span>'s post.</p>
+<p class="text-xs text-[#9aaebc]">5 hours ago</p>
+</div>
+</div>
+</div>
+<!-- Connections Section -->
+<div class="p-4">
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] pb-3">Conexiones</h2>
+<div class="flex border-b border-gray-700">
+<button class="px-4 py-2 text-white border-b-2 border-primary">Followers (1.2K)</button>
+<button class="px-4 py-2 text-[#9aaebc] hover:text-white">Following (150)</button>
+<button class="px-4 py-2 text-[#9aaebc] hover:text-white">DAOs (5)</button>
+</div>
+<div class="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+<div class="flex flex-col items-center gap-2 p-4 rounded-lg bg-[#413E40]">
+<div class="w-16 h-16 bg-center bg-no-repeat bg-cover rounded-full" data-alt="User avatar with a teal background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCTPfEOumQ66VHi7wFLFh_2gvlL4sXh7FHbW99JTi0vnReqihhJ_UFzZrbTzhJAB2QhLRSfWUqyFnnm8dbDrGGpqEeNKmVKyoocndJ-5yZKmcunP661uHDLMxTMrAFijh4YkeZzggxXbr1olrJ-a8zFQg5qhyjF80sriHHWf9Q8wUoYz2J308dq1C6LwrOT_E7YsZVAMxb_jKpNlVw8EFGwBT2stG2LchizO0X4JJmutZV3zC-eo2_Ur8HyWM0cFEIoKWNkh052QQE");'></div>
+<p class="text-white font-bold">UserA</p>
+<p class="text-xs text-[#9aaebc]">@usera</p>
+</div>
+<div class="flex flex-col items-center gap-2 p-4 rounded-lg bg-[#413E40]">
+<div class="w-16 h-16 bg-center bg-no-repeat bg-cover rounded-full" data-alt="User avatar with a purple background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB0VHlTnnX79WHTacyl8N5Pu3K-oAAQuHsm_Pl_IeVJbOYkWVriMNaAd7AFLEqzLndhgSR_FPBvRuTIZbcZQui0NpTwafrDFpNcvdQ4QfSBq4C0oKLJbYZXUPoolQO7rVQDOsViG2yWPkqr4HZ2JLGFy-7XZmnQ69cDzoFWASzvxGbUkUr4mHR9ORxryvhwd04UeEDpXB9vr1RQ8t8oOZn_aswR6WzpAmVd1c3LQR6NY_-W50DgASbDJSOKtDSbP-dVY1azHeJRaz0");'></div>
+<p class="text-white font-bold">UserB</p>
+<p class="text-xs text-[#9aaebc]">@userb</p>
+</div>
+<div class="flex flex-col items-center gap-2 p-4 rounded-lg bg-[#413E40]">
+<div class="w-16 h-16 bg-center bg-no-repeat bg-cover rounded-full" data-alt="User avatar with a green background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCfG59pVQG9A3i8E0bF-MKqRfCequ4uP_FZ2W2aPlju0BljnEYv00bHqNMEcdlLhkq1ac4eono0f8arA-zCzGw5jkQhuCz8oBrhBZ2JAN5Gghxk5Icm2I7W7mL3DyLsyQPGf28hrErrTfnAHKapYdVhCr4TM7KSygwmuDw6NJRCj3G2ir6lUECUH35vXO9fHm8TnSiFelu4uhlX5-0GUe_OhctKntn8Cp8IeafuwnCVtzo8Kz0w2-ipWcrMgTiD0BOASKObpv1q_uo");'></div>
+<p class="text-white font-bold">UserC</p>
+<p class="text-xs text-[#9aaebc]">@userc</p>
+</div>
+<div class="flex flex-col items-center gap-2 p-4 rounded-lg bg-[#413E40]">
+<div class="w-16 h-16 bg-center bg-no-repeat bg-cover rounded-full" data-alt="User avatar with an orange background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBc7r71mhSL8Kmpb77Iz4P4smqbFdGpT_32c1DK3Buw6Jg1A5jimJiQeY6YO1sj440xuOBDw4VsQr6AmhXg1r-UMwJeD3fEKsSLjJFcai3gjYFXlxlZqaoLu12bPe63I162DmrqIDZoDzQ1s0kdP8ThhGfcvor9WA4B-9CT42Z1L3jJq7ynaWMMayiNj-ohhDQkLjNcEPQW88xtWSosgQI-Dfgptslgrga3XRoKpUeuMlqNSTX0N9y-nMyJ3oHRxPWRzncRRJjH8cY");'></div>
+<p class="text-white font-bold">UserD</p>
+<p class="text-xs text-[#9aaebc]">@userd</p>
+</div>
+</div>
+</div>
+<!-- Reputation Timeline -->
+<div class="p-4">
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] pb-3">Línea de tiempo con hitos reputacionales</h2>
+<div class="relative pl-8">
+<div class="absolute left-0 top-0 h-full border-l-2 border-gray-700 ml-4"></div>
+<div class="mb-8 relative">
+<div class="absolute -left-5 top-1.5 w-6 h-6 rounded-full bg-primary ring-8 ring-background-dark"></div>
+<p class="font-bold">Reached Visionario Level</p>
+<p class="text-sm text-[#9aaebc]">January 1, 2024</p>
+<p class="text-sm">Earned for sustained contribution and expertise.</p>
+</div>
+<div class="mb-8 relative">
+<div class="absolute -left-5 top-1.5 w-6 h-6 rounded-full bg-primary ring-8 ring-background-dark"></div>
+<p class="font-bold">Earned 'Governance Guru' Badge</p>
+<p class="text-sm text-[#9aaebc]">December 15, 2023</p>
+<p class="text-sm">Submitted 10 successful governance proposals.</p>
+</div>
+<div class="relative">
+<div class="absolute -left-5 top-1.5 w-6 h-6 rounded-full bg-primary ring-8 ring-background-dark"></div>
+<p class="font-bold">Joined ArquiFi</p>
+<p class="text-sm text-[#9aaebc]">June 1, 2023</p>
+<p class="text-sm">Started the journey as a 'Novato'.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArquiFi - Wallet</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#0099ff",
+            "background-light": "#f5f7f8",
+            "background-dark": "#121012",
+          },
+          fontFamily: {
+            "display": ["Space Grotesk", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+  </style>
+</head>
+<body class="bg-background-dark font-display text-white">
+<div class="relative flex h-auto min-h-screen w-full flex-col">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-6xl flex-1">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#27323a] px-4 sm:px-10 py-3">
+<div class="flex items-center gap-4 text-white">
+<div class="size-6">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">ArquiFi</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-center items-center gap-9">
+<a class="text-white text-sm font-medium leading-normal" href="#">Dashboard</a>
+<a class="text-primary text-sm font-bold leading-normal" href="#">Wallet</a>
+<a class="text-white text-sm font-medium leading-normal" href="#">Learn</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Connect Wallet</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBMND0avi9YbhncYy9nBEoeHyobTQb2jEobLKynZwsUWqbqQYE5prlwBIQNucEYpX-oqUdg0Ga2cYoxhWOe9ZqVkfXd6fqeoBLATTdbWeBmd3n1Sixl6KEJhSpI6N0HEM_D2gW68e9AiW7V8kSDnlCpAILWNAQBc_tI31CDCoTfJRnL3Qr8N-ZscrB2o469paR8NItTPswN751c7NYSkljKLSbRZgv_0J3tqAOZOD63CGzTUt-71x-u4tg8-WIrd8SVbvvuneaWqSU");'></div>
+</div>
+</header>
+<main class="flex flex-col gap-6 p-4 sm:p-6 lg:p-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2 p-6 bg-[#1a1a1a] rounded-xl flex flex-col items-stretch justify-start">
+<p class="text-[#A9A9A9] text-base font-normal leading-normal">Total Portfolio Value</p>
+<p class="text-white text-4xl font-bold leading-tight tracking-[-0.015em] mt-1">$12,345.67</p>
+</div>
+<div class="p-6 bg-[#1a1a1a] rounded-xl flex flex-col items-stretch justify-start">
+<div class="flex items-center gap-2">
+<p class="text-[#A9A9A9] text-base font-normal leading-normal">Current APY</p>
+<span class="material-symbols-outlined text-[#A9A9A9] text-sm cursor-pointer" data-icon="info" title="Annual Percentage Yield (APY) is the real rate of return earned on an investment, taking into account the effect of compounding interest.">info</span>
+</div>
+<p class="text-primary text-4xl font-bold leading-tight tracking-[-0.015em] mt-1">12.5%</p>
+</div>
+</div>
+<div class="p-6 bg-[#1a1a1a] rounded-xl">
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
+<div>
+<p class="text-white text-lg font-medium leading-normal">Portfolio Performance</p>
+<div class="flex gap-1 items-center">
+<p class="text-[#0bda5b] text-base font-medium leading-normal">+5.8%</p>
+<p class="text-[#A9A9A9] text-sm font-normal leading-normal">in the last 7 days</p>
+</div>
+</div>
+<div class="flex gap-2 p-1 mt-4 sm:mt-0">
+<button class="h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#27323a] px-4 text-white text-sm font-medium leading-normal">1D</button>
+<button class="h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary px-4 text-white text-sm font-medium leading-normal">1W</button>
+<button class="h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#27323a] px-4 text-white text-sm font-medium leading-normal">1M</button>
+<button class="h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#27323a] px-4 text-white text-sm font-medium leading-normal">1Y</button>
+</div>
+</div>
+<div class="flex min-h-[250px] flex-1 flex-col gap-8 py-4">
+<svg fill="none" height="100%" preserveaspectratio="none" viewbox="0 0 478 150" width="100%" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25V149H326.769H0V109Z" fill="url(#paint0_linear_1131_5935_wallet)"></path>
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25" stroke="white" stroke-linecap="round" stroke-width="2"></path>
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="paint0_linear_1131_5935_wallet" x1="236" x2="236" y1="1" y2="149">
+<stop stop-color="#FFFFFF" stop-opacity="0.1"></stop>
+<stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="flex justify-around">
+<p class="text-[#A9A9A9] text-[13px] font-bold leading-normal tracking-[0.015em]">Mon</p>
+<p class="text-[#A9A9A9] text-[13px] font-bold leading-normal tracking-[0.015em]">Tue</p>
+<p class="text-[#A9A9A9] text-[13px] font-bold leading-normal tracking-[0.015em]">Wed</p>
+<p class="text-[#A9A9A9] text-[13px] font-bold leading-normal tracking-[0.015em]">Thu</p>
+<p class="text-[#A9A9A9] text-[13px] font-bold leading-normal tracking-[0.015em]">Fri</p>
+<p class="text-[#A9A9A9] text-[13px] font-bold leading-normal tracking-[0.015em]">Sat</p>
+<p class="text-[#A9A9A9] text-[13px] font-bold leading-normal tracking-[0.015em]">Sun</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row gap-4">
+<button class="flex-1 flex min-w-[84px] max-w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Deposit</span>
+</button>
+<button class="flex-1 flex min-w-[84px] max-w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-[#27323a] text-white text-base font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Withdraw</span>
+</button>
+<button class="flex-1 flex min-w-[84px] max-w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-[#27323a] text-white text-base font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Stake / Earn</span>
+</button>
+</div>
+<div class="p-6 bg-[#1a1a1a] rounded-xl overflow-x-auto">
+<h3 class="text-white text-lg font-medium leading-normal mb-4">Your Assets</h3>
+<table class="w-full text-left">
+<thead>
+<tr class="border-b border-[#27323a]">
+<th class="py-3 px-4 text-[#A9A9A9] font-medium text-sm">Asset</th>
+<th class="py-3 px-4 text-[#A9A9A9] font-medium text-sm text-right">Balance</th>
+<th class="py-3 px-4 text-[#A9A9A9] font-medium text-sm text-right">Price</th>
+<th class="py-3 px-4 text-[#A9A9A9] font-medium text-sm text-right">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-[#27323a]">
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<img alt="Bitcoin logo" class="w-8 h-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiJWRBypeOu1Ho4XPULcZWmO1xKaY_PtpvUYfENf2Nns9Aa7tKMXzXDvY3fFcAlgUY36PPgAQgSIG3TJ2xaa42u0urioIa9CkV8QCPeAQpGjMKNDO865f7Xa6tFQnYrptSsZdYSKcSP1H_ClIRgUCq-Fo4mme-XE94PjHdBtPnNuquZj-x87O1DNWtId1vb3VWOT3co_dxz_CUxw6o7hI0ELoz7kJ3bhvGfQOkRe4Cv0SCjlAlNKNlC_9xcGQ_ZlZCUYpBllGJEC8"/>
+<div>
+<p class="text-white font-medium">Bitcoin</p>
+<p class="text-[#A9A9A9] text-sm">BTC</p>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 text-right">
+<p class="text-white font-medium">0.5</p>
+<p class="text-[#A9A9A9] text-sm">$32,500.00</p>
+</td>
+<td class="py-4 px-4 text-right text-white font-medium">$65,000.00</td>
+<td class="py-4 px-4 text-right text-white font-medium">$32,500.00</td>
+</tr>
+<tr class="border-b border-[#27323a]">
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<img alt="Ethereum logo" class="w-8 h-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5osG2NncujkWwjSA5yFHpRrwJZg7AfW87Y5xbDDspMlIcvt251RZve_hWSDjDCPf_lf6vEjPXVc47-J2vnt59i7iVTD19nZquqCTvDscb-6IZqKYfuowILJ0eXc7VvufO5_BADK0kOnnh0ejVDRsly0fJD_cdYaUdd_44F5AzCXTWtLJRUPspnsL0jnxN8PyLTLeaJsZqxuScVKRkqOhMc1Jt8LR3a3CVm7AfpTBsswFSa0J3sVQ0vXLbRLyA60P-U5HZSGNe7Cc"/>
+<div>
+<p class="text-white font-medium">Ethereum</p>
+<p class="text-[#A9A9A9] text-sm">ETH</p>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 text-right">
+<p class="text-white font-medium">3.2</p>
+<p class="text-[#A9A9A9] text-sm">$12,800.00</p>
+</td>
+<td class="py-4 px-4 text-right text-white font-medium">$4,000.00</td>
+<td class="py-4 px-4 text-right text-white font-medium">$12,800.00</td>
+</tr>
+<tr>
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<img alt="Tether logo" class="w-8 h-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY9rtT2GYcjZh5sJHEIXZ07BYqLH2PlKPaLdI3VD2e9TEsV_1VbRVmYOJ1RU0BYhRBKkpBm348XUUa5-tI_yI6JrS2xxYgyLKlTjvxEED3tAUoqwDBcGXUWTIvxjM6P8IUpecvKo-k651AtLGhxKDOJmKsfNb0ZF4iOR3x_wgUPjs4TVJBTPh1_wyO4OoJpZHMTiKfanF_FN38K6MjZB31LEXeiOb9s8Y5lHVv5ExIioF6oZRj-4DHzWrn-h6xrKnuNTpuhE1BZ3A"/>
+<div>
+<p class="text-white font-medium">Tether</p>
+<p class="text-[#A9A9A9] text-sm">USDT</p>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 text-right">
+<p class="text-white font-medium">5,000</p>
+<p class="text-[#A9A9A9] text-sm">$5,000.00</p>
+</td>
+<td class="py-4 px-4 text-right text-white font-medium">$1.00</td>
+<td class="py-4 px-4 text-right text-white font-medium">$5,000.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<footer class="mt-8 py-6 border-t border-[#27323a] flex flex-col md:flex-row items-center justify-between text-sm text-[#A9A9A9]">
+<p>© 2024 ArquiFi. All rights reserved.</p>
+<div class="flex gap-4 mt-4 md:mt-0">
+<a class="hover:text-white" href="#">Support</a>
+<a class="hover:text-white" href="#">Terms of Service</a>
+<div class="flex gap-4">
+<a class="hover:text-white" data-alt="X social media link" href="#">
+<svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+</a>
+<a class="hover:text-white" data-alt="Discord social media link" href="#">
+<svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M20.297 3.333A1.44 1.44 0 0 0 19.04 3H4.96A1.44 1.44 0 0 0 3.704 4.333L3.7 4.333v12.278c0 .8.64 1.444 1.44 1.444h11.413l3.44 3.444V4.778a1.44 1.44 0 0 0-1.422-1.445zM8.41 12.444H6.53v-1.778h1.88v1.778zm3.76 0h-1.88v-1.778h1.88v1.778zm3.76 0h-1.88v-1.778h1.88v1.778z"></path></svg>
+</a>
+</div>
+</div>
+</footer>
+</main>
+</div>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArquiFi - Governance Panel</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0099FF",
+                        "background-dark": "#121012",
+                        "secondary-background": "#413E40",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-dark text-white">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#27313a] px-4 sm:px-10 py-3">
+<div class="flex items-center gap-4 text-white">
+<div class="size-6">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">ArquiFi</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end gap-8">
+<div class="flex items-center gap-9">
+<a class="text-white text-sm font-medium leading-normal" href="#">Home</a>
+<a class="text-white text-sm font-medium leading-normal" href="#">Proposals</a>
+<a class="text-white text-sm font-medium leading-normal" href="#">Education</a>
+<a class="text-white text-sm font-medium leading-normal" href="#">Profile</a>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90">
+<span class="truncate">Create Proposal</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuATJsEvXRLomeXgb3cOxt9hnBR8_QDIn3mJcd1AKwyQy9xmSSwsOwdY_4mjrxrkem-VGsFSXP3c9jCBMBTEyh1l2yUz16bCQ066Jw5vzFd06ToPq1q_BCbuZCkPnIsBQce5cx5u23gilWpci6GEGmhCGtWMwdU7YLqMngoNrPMbcWPo7M3rCqZ9Q1wAPqgT6aT09E0rMTMoLHpvea85T_2bEUPP6gBvNihKx8HFwrMawY-vBN7wl7qhH-g8mjewQztFpkK_TJ6wbLA");'></div>
+</div>
+<button class="md:hidden flex items-center justify-center rounded-lg h-10 w-10 text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<div class="flex flex-wrap justify-between gap-3 p-4 mt-8">
+<div class="flex min-w-72 flex-col gap-3">
+<p class="text-white text-4xl font-black leading-tight tracking-[-0.033em]">Governance Panel</p>
+<p class="text-[#9aadbc] text-base font-normal leading-normal">View and vote on DAO proposals.</p>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-3 p-3 overflow-x-auto">
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#27313a] pl-4 pr-4 text-white text-sm font-medium leading-normal">All</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#27313a] pl-4 pr-4 text-white text-sm font-medium leading-normal">Active</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#27313a] pl-4 pr-4 text-white text-sm font-medium leading-normal">Ended</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#27313a] pl-4 pr-4 text-white text-sm font-medium leading-normal">Upcoming</button>
+<div class="relative sm:ml-auto">
+<select class="appearance-none h-8 shrink-0 items-center justify-center rounded-lg bg-[#27313a] pl-4 pr-8 text-white text-sm font-medium leading-normal">
+<option>Newest</option>
+<option>Ending Soon</option>
+<option>Most Voted</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-6 p-4">
+<div class="p-6 bg-secondary-background rounded-xl @container">
+<div class="flex flex-col items-stretch justify-start gap-4">
+<div class="flex items-center justify-between">
+<p class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">Implement New Staking Rewards</p>
+<span class="px-3 py-1 rounded-full bg-green-500/20 text-green-400 text-xs font-medium">Active</span>
+</div>
+<p class="text-[#9aadbc] text-base font-normal leading-normal">Proposal to increase staking rewards by 5% to incentivize long-term holding.</p>
+<div class="flex flex-col gap-3">
+<div class="flex flex-col gap-2">
+<div class="flex gap-6 justify-between">
+<p class="text-white text-base font-medium leading-normal">Yes</p>
+<p class="text-white text-sm font-normal leading-normal">65%</p>
+</div>
+<div class="rounded-full bg-[#394956] h-2"><div class="h-2 rounded-full bg-primary" style="width: 65%;"></div></div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex gap-6 justify-between">
+<p class="text-white text-base font-medium leading-normal">No</p>
+<p class="text-white text-sm font-normal leading-normal">35%</p>
+</div>
+<div class="rounded-full bg-[#394956] h-2"><div class="h-2 rounded-full bg-red-500" style="width: 35%;"></div></div>
+</div>
+</div>
+<div class="flex items-center justify-between mt-4">
+<p class="text-[#9aadbc] text-sm">2,345 votes</p>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90">
+<span class="truncate">Vote</span>
+</button>
+</div>
+</div>
+</div>
+<div class="p-6 bg-secondary-background rounded-xl @container">
+<div class="flex flex-col items-stretch justify-start gap-4">
+<div class="flex items-center justify-between">
+<p class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">Launch Marketing Campaign</p>
+<span class="px-3 py-1 rounded-full bg-gray-500/20 text-gray-400 text-xs font-medium">Ended</span>
+</div>
+<p class="text-[#9aadbc] text-base font-normal leading-normal">Proposal to allocate budget for a new marketing campaign to increase platform visibility.</p>
+<div class="flex flex-col gap-3">
+<div class="flex flex-col gap-2">
+<div class="flex gap-6 justify-between">
+<p class="text-white text-base font-medium leading-normal">Yes</p>
+<p class="text-white text-sm font-normal leading-normal">82%</p>
+</div>
+<div class="rounded-full bg-[#394956] h-2"><div class="h-2 rounded-full bg-primary" style="width: 82%;"></div></div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex gap-6 justify-between">
+<p class="text-white text-base font-medium leading-normal">No</p>
+<p class="text-white text-sm font-normal leading-normal">18%</p>
+</div>
+<div class="rounded-full bg-[#394956] h-2"><div class="h-2 rounded-full bg-red-500" style="width: 18%;"></div></div>
+</div>
+</div>
+<div class="flex items-center justify-between mt-4">
+<p class="text-[#9aadbc] text-sm">5,123 votes</p>
+<button class="flex min-w-[84px] max-w-[480px] cursor-not-allowed items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-gray-600 text-gray-400 text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Voting Ended</span>
+</button>
+</div>
+</div>
+</div>
+<div class="p-6 bg-secondary-background rounded-xl @container">
+<div class="flex flex-col items-stretch justify-start gap-4">
+<div class="flex items-center justify-between">
+<p class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">Integrate with New Blockchain</p>
+<span class="px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-400 text-xs font-medium">Upcoming</span>
+</div>
+<p class="text-[#9aadbc] text-base font-normal leading-normal">Proposal to integrate with a new high-speed blockchain to reduce transaction fees.</p>
+<div class="flex items-center justify-center text-center text-[#9aadbc] py-8">
+<p>Voting has not started yet.</p>
+</div>
+<div class="flex items-center justify-between mt-4">
+<p class="text-[#9aadbc] text-sm">Starts in 3 days</p>
+<button class="flex min-w-[84px] max-w-[480px] cursor-not-allowed items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-gray-600 text-gray-400 text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Vote Soon</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

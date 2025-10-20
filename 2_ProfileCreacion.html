@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArquiFi - Create Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#0099ff",
+              "background-light": "#f5f7f8",
+              "background-dark": "#121012",
+            },
+            fontFamily: {
+              display: ["Space Grotesk", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+<style>
+      body {
+        font-family: "Space Grotesk", sans-serif;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+    </style>
+</head>
+<body class="bg-background-dark dark">
+<div class="group/design-root relative flex min-h-screen w-full flex-col items-center justify-center overflow-x-hidden bg-[#121012] p-4">
+<div class="layout-container flex h-full grow flex-col items-center justify-center">
+<div class="layout-content-container flex w-full max-w-[480px] flex-col gap-6">
+<div class="flex flex-col gap-3 text-center">
+<h1 class="text-4xl font-black leading-tight tracking-[-0.033em] text-white">Create Your ArquiFi Profile</h1>
+<p class="text-base font-normal leading-normal text-[#9aaebc]">Welcome to ArquiFi, let's get you set up.</p>
+</div>
+<div class="flex flex-col items-center gap-4">
+<p class="pb-2 text-base font-medium leading-normal text-white">Profile Picture</p>
+<div class="group relative">
+<div class="flex aspect-square size-32 cursor-pointer items-center justify-center rounded-full bg-[#413E40] bg-cover bg-center bg-no-repeat">
+<span class="material-symbols-outlined text-5xl text-white opacity-50 transition-opacity group-hover:opacity-100"> add_a_photo </span>
+</div>
+<input aria-label="Upload profile picture" class="absolute inset-0 cursor-pointer opacity-0" type="file"/>
+</div>
+</div>
+<div class="flex w-full flex-col gap-4">
+<label class="flex w-full flex-col">
+<p class="pb-2 text-base font-medium leading-normal text-white">Username</p>
+<input class="form-input flex h-14 min-w-0 flex-1 resize-none overflow-hidden rounded-lg border-none bg-[#413E40] p-4 text-base font-normal leading-normal text-white placeholder:text-[#9aaebc] focus:outline-0 focus:ring-2 focus:ring-primary" placeholder="e.g., satoshi_nakamoto" value=""/>
+</label>
+<label class="flex w-full flex-col">
+<p class="pb-2 text-base font-medium leading-normal text-white">Full Name</p>
+<input class="form-input flex h-14 min-w-0 flex-1 resize-none overflow-hidden rounded-lg border-none bg-[#413E40] p-4 text-base font-normal leading-normal text-white placeholder:text-[#9aaebc] focus:outline-0 focus:ring-2 focus:ring-primary" placeholder="e.g., Satoshi Nakamoto" value=""/>
+</label>
+<div class="grid grid-cols-2 gap-4">
+<label class="flex w-full flex-col">
+<p class="pb-2 text-base font-medium leading-normal text-white">Age</p>
+<input class="form-input flex h-14 min-w-0 flex-1 resize-none overflow-hidden rounded-lg border-none bg-[#413E40] p-4 text-base font-normal leading-normal text-white placeholder:text-[#9aaebc] focus:outline-0 focus:ring-2 focus:ring-primary" placeholder="e.g., 25" type="number"/>
+</label>
+<label class="flex w-full flex-col">
+<p class="pb-2 text-base font-medium leading-normal text-white">Birthdate</p>
+<input class="form-input flex h-14 min-w-0 flex-1 resize-none overflow-hidden rounded-lg border-none bg-[#413E40] p-4 text-base font-normal leading-normal text-white placeholder:text-[#9aaebc] focus:outline-0 focus:ring-2 focus:ring-primary" type="date"/>
+</label>
+</div>
+</div>
+<div class="flex w-full flex-col items-center gap-4">
+<button class="flex h-12 min-w-[84px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary px-5 text-base font-bold leading-normal tracking-[0.015em] text-white transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background-dark">
+<span class="truncate">Create Profile</span>
+</button>
+<a class="text-sm font-normal leading-normal text-[#9aaebc] underline transition-colors hover:text-white" href="#">Skip for now</a>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

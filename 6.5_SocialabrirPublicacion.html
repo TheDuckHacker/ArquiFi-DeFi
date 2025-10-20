@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArquiFi - Post Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#00FFFF",
+            "background-light": "#f5f7f8",
+            "background-dark": "#121212",
+            "card-dark": "#1E1E1E",
+            "text-secondary-dark": "#A9A9A9"
+          },
+          fontFamily: {
+            "display": ["Space Grotesk", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white">
+<div class="relative flex min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+<div class="flex justify-between gap-2 px-4 py-3">
+<div class="flex gap-2">
+<button class="p-2 text-white hover:text-primary">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+</div>
+</div>
+<div class="p-4 @container">
+<div class="flex flex-col items-stretch justify-start rounded-xl bg-card-dark shadow-lg">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-xl" data-alt="Abstract futuristic digital art" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCIZUuvGajJBjUiT6JK99etrhUxhOg-hxp2_2Q5uYdb9iVUeZeSKYLrEFDn67qgnq_yGlOrE98oqrmvIwNuoZ1jdJ9UlAXUhnMhVC_3gFThrU0ans9ImnK6tBDyZpTiV-l2FT-zc0u8VDl7ufqZRcZSLUgIKU9rxsumqMuvQfXkk9FGfpvyn48r3iCo93zhR1KuhM16wd3xlpY1hMRo2_uIOZyhh4KiHKK0ZxH7TEXx2GfukFAJ0zCKk4Ftwa8H9AFY6RASJP0pqw4");'></div>
+<div class="flex w-full flex-col items-stretch justify-center gap-2 py-4 @xl:px-6 px-4">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-12 h-12 shrink-0" data-alt="Author's avatar image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCOYXkGaW_oh5OnCtoZD650EzwuAw-HtHMrZ6BNqB-_0VDUyqRC_C-FrMs_0PrLXvHuq7kbQZZTh9Uh0ViWG-Rw8ktE3OJuNs-YUhabd_AyLSXP7HFRUU3keqKD4E7L_H-mmZASac3GGfYHxdqFAPBh6ZMJDAIWCXgfSOV9k070g2ACjQb4nehrP3HjVxkjJPXRMGl-dwPnvJWCVC9XfdFgeevEKJkI25RUuR18eIB4kq7NnGtdaPV3g8B7UtkLZMFcEhod10TwtPY");'></div>
+<div class="flex flex-col">
+<p class="text-white text-base font-bold leading-tight">John Doe</p>
+<p class="text-text-secondary-dark text-sm font-normal leading-normal">@johndoe</p>
+</div>
+<p class="text-text-secondary-dark text-sm font-normal leading-normal ml-auto">4 hours ago</p>
+</div>
+<p class="text-white text-xl font-bold leading-tight tracking-[-0.015em] py-4">
+                  Exploring the nuances of decentralized finance and its potential to reshape the global financial landscape.
+                </p>
+<div class="flex flex-col gap-2">
+<p class="text-text-secondary-dark text-base font-normal leading-normal">
+                    The future of finance is here, and it's decentralized. Dive deep into the world of DeFi with ArquiFi. We're breaking down complex concepts like liquidity pools, yield farming, and smart contracts to make them accessible for everyone. This post will serve as a primer for those new to the space and a point of discussion for the seasoned veterans.
+                  </p>
+<p class="text-text-secondary-dark text-base font-normal leading-normal">Let's discuss the implications and opportunities of this revolutionary technology. What are your thoughts on the biggest hurdles for mass adoption? Share your insights below.</p>
+</div>
+<div class="flex flex-wrap gap-4 py-4 border-t border-b border-white/10 mt-4">
+<div class="flex items-center justify-center gap-2 px-3 py-2 rounded-full bg-primary/20 cursor-pointer hover:bg-primary/40">
+<span class="material-symbols-outlined text-primary">thumb_up</span>
+<p class="text-primary text-[13px] font-bold leading-normal tracking-[0.015em]">1.2k</p>
+</div>
+<div class="flex items-center justify-center gap-2 px-3 py-2 rounded-full hover:bg-white/10 cursor-pointer">
+<span class="material-symbols-outlined text-text-secondary-dark">celebration</span>
+<p class="text-text-secondary-dark text-[13px] font-bold leading-normal tracking-[0.015em]">876</p>
+</div>
+<div class="flex items-center justify-center gap-2 px-3 py-2 rounded-full hover:bg-white/10 cursor-pointer">
+<span class="material-symbols-outlined text-text-secondary-dark">rocket_launch</span>
+<p class="text-text-secondary-dark text-[13px] font-bold leading-normal tracking-[0.015em]">432</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<h3 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] px-8 pb-2 pt-4">Comments</h3>
+<div class="flex flex-col divide-y divide-white/10 px-4">
+<div class="flex w-full flex-row items-start justify-start gap-3 p-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 shrink-0" data-alt="Commenter's avatar image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDwLSjj6t_PB1RRSq6STTZo9H6yKh6hSIi1qMh0TYRxlWqUOmFmLHXSzxL30a_XR-xPJ0Em7OSxzf-fve5Yct4kWBnYOZhsjKpocAaWT32CC0IYhE0A6cvUxKUPZG31CKTE_LP1iJkr_rMkHyL-9p72eCJU3MDB0QRsT0DumLuWtJcQR55A1y6aHdsSf0jgpdHW-K4Pm4BX8fce1LOTz_aC4RPJ4DvD1aSFCYo2Q2hjVbG-WuNryHM76oaZf0dJKXoiB6Thag6EUkg");'></div>
+<div class="flex h-full flex-1 flex-col items-start justify-start">
+<div class="flex w-full flex-row items-center justify-start gap-x-3">
+<p class="text-white text-sm font-bold leading-normal tracking-[0.015em]">Jane Smith</p>
+<p class="text-text-secondary-dark text-sm font-normal leading-normal">2 hours ago</p>
+</div>
+<p class="text-white text-sm font-normal leading-normal mt-1">
+                  Great post! I'm particularly interested in the scalability solutions for DeFi protocols. Any thoughts on Layer 2 solutions like Optimism or Arbitrum?
+                </p>
+<div class="flex w-full flex-row items-center justify-start gap-6 pt-2">
+<div class="flex items-center gap-2 cursor-pointer">
+<span class="material-symbols-outlined text-text-secondary-dark text-lg">thumb_up</span>
+<p class="text-text-secondary-dark text-sm font-normal leading-normal">42</p>
+</div>
+<div class="flex items-center gap-2 cursor-pointer">
+<span class="material-symbols-outlined text-text-secondary-dark text-lg">thumb_down</span>
+<p class="text-text-secondary-dark text-sm font-normal leading-normal">2</p>
+</div>
+<button class="text-text-secondary-dark text-sm font-bold hover:text-primary">Reply</button>
+</div>
+</div>
+</div>
+<div class="flex w-full flex-row items-start justify-start gap-3 p-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 shrink-0" data-alt="Commenter's avatar image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD9MVNfokrb_5mRVrX0Z1d2kTREiOLOPrZLmDyEzyu8Wl31icqszBhqdSTWab4-5pwGkDY3eined8BdZ2tMdDLvBI69MR0OhU3329RztpJPn_UAfa2EZ2deg2UmUnEz_ExP7HtGW5KMsbsfnWJOgtCC4aZkCiTQpChl0i3H2lQkW8aO9AKjSRXME75T9XZ8e3PDrjqZul0R9M-c7aWbg1ZgRW-ZOhrlsyK24zG53nmz4qD6kzOjzjx6qEQTpa4NGYbVWq2GgGw_-6U");'></div>
+<div class="flex h-full flex-1 flex-col items-start justify-start">
+<div class="flex w-full flex-row items-center justify-start gap-x-3">
+<p class="text-white text-sm font-bold leading-normal tracking-[0.015em]">Mike Chan</p>
+<p class="text-text-secondary-dark text-sm font-normal leading-normal">1 hour ago</p>
+</div>
+<p class="text-white text-sm font-normal leading-normal mt-1">
+                  Fantastic overview. The educational approach is much needed in this space. I'd love to see a follow-up on the security aspects of smart contracts.
+                </p>
+<div class="flex w-full flex-row items-center justify-start gap-6 pt-2">
+<div class="flex items-center gap-2 cursor-pointer">
+<span class="material-symbols-outlined text-text-secondary-dark text-lg">thumb_up</span>
+<p class="text-text-secondary-dark text-sm font-normal leading-normal">28</p>
+</div>
+<div class="flex items-center gap-2 cursor-pointer">
+<span class="material-symbols-outlined text-text-secondary-dark text-lg">thumb_down</span>
+</div>
+<button class="text-text-secondary-dark text-sm font-bold hover:text-primary">Reply</button>
+</div>
+</div>
+</div>
+</div>
+<div class="sticky bottom-0 bg-background-dark/80 backdrop-blur-sm p-4 mt-auto">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 h-10 shrink-0" data-alt="Current user's avatar image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCfeMSJq6hw7bqzuS4K5Us-QlG-sYSXwEyQPFM2n9Q28WYoKIr72gbB1kRkfZwpAVDSmeOFTnVrMsjRn_3nivn2q5ptDJ9sRtnsue6czbVW5X0LNIfiwIqolEYT3Geq-CBg0NEcKxK9z8sHER6HTcg3WSeUOLDlIUBExO5IeVaTqBv-VMXzH0di7_QGavn7uf2yomNP6mV6A8a5GgomCqqpmnbj0aogGz3zn-818ERuEe_CrkpMLKjgaxSVkWFOUAVizsKx1BHevTQ");'></div>
+<div class="relative flex-grow">
+<input class="w-full bg-card-dark border border-white/20 rounded-full py-2 px-4 text-white placeholder-text-secondary-dark focus:ring-primary focus:border-primary transition-all" placeholder="Add a comment..." type="text"/>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-primary text-background-dark hover:bg-primary/80">
+<span class="material-symbols-outlined">send</span>
+//Seria mostrar como funciona al momento de abrir alguna publicacion entonces eso solamente necesitamos integrar esto con el 6 eso
+//significa que el 6 y el 6.5 son la misma pagina pero el 6.5 es para cuando se abre una publicacion y el 6 es para cuando se crea una publicacion.
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

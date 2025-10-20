@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArquiFi - DeFi Lending &amp; History Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0099FF",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#121012",
+                        "component-dark": "#413E40",
+                        "success": "#00FF7F",
+                        "warning": "#FFD700",
+                        "danger": "#FF4136",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-dark font-display text-white">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-5xl flex-1 gap-8">
+<!-- Collateralized Lending System -->
+<div class="bg-component-dark/50 rounded-xl p-6">
+<div class="flex flex-wrap justify-between gap-4 items-center">
+<div class="flex min-w-72 flex-col gap-2">
+<p class="text-white text-3xl font-black leading-tight tracking-[-0.033em]">Sistema de Préstamos Colateralizados</p>
+<p class="text-gray-400 text-base font-normal leading-normal">Monto disponible según colateral: $10,000</p>
+</div>
+<div class="flex items-center gap-2 text-gray-400 text-sm cursor-pointer group">
+<span>Smart contracts info</span>
+<span class="material-symbols-outlined text-base group-hover:text-primary">info</span>
+</div>
+</div>
+<div class="mt-6 flex flex-col md:flex-row gap-4">
+<div class="flex flex-col flex-1">
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-white text-base font-medium leading-normal pb-2">Monto a Solicitar</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border-none bg-[#27313a] focus:border-primary h-14 placeholder:text-gray-500 p-4 text-base font-normal leading-normal" placeholder="$ 0.00" value=""/>
+</label>
+</div>
+<div class="flex flex-col md:flex-row gap-3 mt-auto">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-5 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/80 transition-colors">
+<span class="truncate">Solicitar Préstamo</span>
+</button>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-5 bg-[#27313a] text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-gray-700 transition-colors">
+<span class="truncate">Liquidar Préstamo</span>
+</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Loan Risk and Health Indicator -->
+<div class="lg:col-span-1 bg-component-dark/50 rounded-xl p-6 flex flex-col gap-4">
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em]">Indicador de Riesgo y Salud del Préstamo</h2>
+<div class="flex flex-col gap-3">
+<div class="flex gap-6 justify-between items-center">
+<p class="text-success text-base font-medium leading-normal">Saludable</p>
+<p class="text-white text-sm font-normal leading-normal">75%</p>
+</div>
+<div class="rounded-full bg-[#3a4955] h-2.5">
+<div class="h-2.5 rounded-full bg-success" style="width: 75%; box-shadow: 0 0 10px #00FF7F;"></div>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex gap-6 justify-between items-center">
+<p class="text-warning text-base font-medium leading-normal">En Riesgo</p>
+</div>
+<div class="rounded-full bg-[#3a4955] h-2.5">
+<div class="h-2.5 rounded-full bg-warning" style="width: 45%; box-shadow: 0 0 10px #FFD700;"></div>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex gap-6 justify-between items-center">
+<p class="text-danger text-base font-medium leading-normal">Crítico</p>
+</div>
+<div class="rounded-full bg-[#3a4955] h-2.5">
+<div class="h-2.5 rounded-full bg-danger" style="width: 15%; box-shadow: 0 0 10px #FF4136;"></div>
+</div>
+</div>
+</div>
+<!-- Visual Credit Reputation -->
+<div class="lg:col-span-2 bg-component-dark/50 rounded-xl p-6">
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] mb-4">Reputación Crediticia</h2>
+<div class="flex items-center gap-6">
+<div class="relative w-32 h-32">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<path class="text-gray-700" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3"></path>
+<path class="text-primary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831" fill="none" stroke-dasharray="85, 100" stroke-linecap="round" stroke-width="3" style="filter: drop-shadow(0 0 5px #0099FF);"></path>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="text-3xl font-bold">850</span>
+</div>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-success">verified</span>
+<span class="font-semibold text-lg">Excelente</span>
+</div>
+<p class="text-gray-400 mt-1">Tu reputación se basa en tu historial de pagos y la gestión de tus deudas.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Financial History -->
+<div class="bg-component-dark/50 rounded-xl p-6">
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] mb-4">Historial Financiero</h2>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="border-b border-gray-700">
+<tr class="text-gray-400 text-sm font-medium">
+<th class="py-3 px-4">Tipo</th>
+<th class="py-3 px-4">Fecha</th>
+<th class="py-3 px-4">Monto</th>
+<th class="py-3 px-4">Estado</th>
+<th class="py-3 px-4"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-gray-800 hover:bg-gray-800/50 transition-colors">
+<td class="py-4 px-4 font-medium">Préstamo Activo</td>
+<td class="py-4 px-4 text-gray-300">15/03/2024</td>
+<td class="py-4 px-4 text-gray-300">$5,000.00</td>
+<td class="py-4 px-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success/20 text-success">Activo</span></td>
+<td class="py-4 px-4 text-right"><button><span class="material-symbols-outlined text-gray-400 hover:text-white">expand_more</span></button></td>
+</tr>
+<tr class="border-b border-gray-800 hover:bg-gray-800/50 transition-colors">
+<td class="py-4 px-4 font-medium">Pago Realizado</td>
+<td class="py-4 px-4 text-gray-300">01/03/2024</td>
+<td class="py-4 px-4 text-gray-300">$500.00</td>
+<td class="py-4 px-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-500/20 text-blue-400">Completado</span></td>
+<td class="py-4 px-4 text-right"><button><span class="material-symbols-outlined text-gray-400 hover:text-white">expand_more</span></button></td>
+</tr>
+<tr class="border-b border-gray-800 hover:bg-gray-800/50 transition-colors">
+<td class="py-4 px-4 font-medium">Préstamo Anterior</td>
+<td class="py-4 px-4 text-gray-300">10/01/2024</td>
+<td class="py-4 px-4 text-gray-300">$2,000.00</td>
+<td class="py-4 px-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-500/20 text-gray-400">Liquidado</span></td>
+<td class="py-4 px-4 text-right"><button><span class="material-symbols-outlined text-gray-400 hover:text-white">expand_more</span></button></td>
+</tr>
+<tr class="hover:bg-gray-800/50 transition-colors">
+<td class="py-4 px-4 font-medium">Incumplimiento</td>
+<td class="py-4 px-4 text-gray-300">05/12/2023</td>
+<td class="py-4 px-4 text-gray-300">$1,500.00</td>
+<td class="py-4 px-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-danger/20 text-danger">Default</span></td>
+<td class="py-4 px-4 text-right"><button><span class="material-symbols-outlined text-gray-400 hover:text-white">expand_more</span></button></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

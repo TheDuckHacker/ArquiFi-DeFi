@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArquiFi - Centro de Aprendizaje</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0099FF",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#121012",
+                        "card-dark": "#413E40",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
+    </style>
+</head>
+<body class="bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col">
+<div class="flex-grow">
+<div class="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
+<div class="flex flex-col gap-8">
+<div class="flex items-center justify-between">
+<p class="text-white text-4xl font-black leading-tight tracking-[-0.033em]">Centro de aprendizaje</p>
+<div class="flex items-center gap-2 rounded-lg bg-card-dark px-4 py-2">
+<span class="material-symbols-outlined text-primary">school</span>
+<span class="text-white font-bold">150 KP</span>
+</div>
+</div>
+<p class="text-white/80 text-center text-lg">Your journey to financial wisdom starts here.</p>
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+<div class="flex flex-col gap-3 rounded-lg bg-card-dark p-6">
+<span class="material-symbols-outlined text-primary text-3xl">menu_book</span>
+<div class="flex flex-col gap-1">
+<h2 class="text-white text-lg font-bold">Tutorials</h2>
+<p class="text-white/60 text-sm">Links to step-by-step guides on using ArquiFi.</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-lg bg-card-dark p-6">
+<span class="material-symbols-outlined text-primary text-3xl">checklist</span>
+<div class="flex flex-col gap-1">
+<h2 class="text-white text-lg font-bold">Glossary</h2>
+<p class="text-white/60 text-sm">Definitions of key DeFi and financial terms.</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-lg bg-card-dark p-6">
+<span class="material-symbols-outlined text-primary text-3xl">explore</span>
+<div class="flex flex-col gap-1">
+<h2 class="text-white text-lg font-bold">Thematic Guides</h2>
+<p class="text-white/60 text-sm">In-depth articles on topics like 'Introduction to DeFi', 'Smart Contracts', etc.</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<h2 class="text-white text-2xl font-bold tracking-[-0.015em]">Misiones Educativas</h2>
+<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-3 rounded-lg bg-card-dark p-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="flex size-12 items-center justify-center rounded-lg bg-background-dark">
+<span class="material-symbols-outlined text-primary text-3xl">check_circle</span>
+</div>
+<div>
+<p class="text-white font-medium">Complete your first tutorial</p>
+<p class="text-white/60 text-sm">10 KP</p>
+</div>
+</div>
+<button class="h-10 min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary px-4 text-sm font-medium text-white">
+<span>Completar</span>
+</button>
+</div>
+<div class="rounded-full bg-background-dark h-2.5">
+<div class="bg-primary h-2.5 rounded-full" style="width: 100%"></div>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-lg bg-card-dark p-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="flex size-12 items-center justify-center rounded-lg bg-background-dark">
+<span class="material-symbols-outlined text-primary text-3xl">help</span>
+</div>
+<div>
+<p class="text-white font-medium">Define 5 terms in the glossary</p>
+<p class="text-white/60 text-sm">25 KP</p>
+</div>
+</div>
+<button class="h-10 min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary px-4 text-sm font-medium text-white">
+<span>Iniciar</span>
+</button>
+</div>
+<div class="rounded-full bg-background-dark h-2.5">
+<div class="bg-primary h-2.5 rounded-full" style="width: 40%"></div>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-lg bg-card-dark p-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="flex size-12 items-center justify-center rounded-lg bg-background-dark">
+<span class="material-symbols-outlined text-primary text-3xl">description</span>
+</div>
+<div>
+<p class="text-white font-medium">Read the guide on Smart Contracts</p>
+<p class="text-white/60 text-sm">50 KP</p>
+</div>
+</div>
+<button class="h-10 min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary/30 px-4 text-sm font-medium text-white">
+<span>Iniciar</span>
+</button>
+</div>
+<div class="rounded-full bg-background-dark h-2.5">
+<div class="bg-primary h-2.5 rounded-full" style="width: 0%"></div>
+</div>
+</div>
+</div>
+</div>
+<p class="text-white/80 text-center text-lg">Every lesson learned is a step towards financial freedom.</p>
+</div>
+</div>
+</div>
+<button class="fixed bottom-6 right-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white shadow-lg">
+<span class="material-symbols-outlined text-4xl">smart_toy</span>
+</button>
+</div>
+</body></html>

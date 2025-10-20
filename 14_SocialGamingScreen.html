@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArquiFi - Social Gaming Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0099FF",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#121012",
+                        "component-dark": "#413E40",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-dark font-display text-white">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-component-dark/50 px-4 sm:px-10 py-3">
+<div class="flex items-center gap-4 text-white">
+<div class="size-6">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">ArquiFi</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end gap-8">
+<div class="flex items-center gap-9">
+<a class="text-white text-sm font-medium leading-normal" href="#">Home</a>
+<a class="text-primary text-sm font-bold leading-normal" href="#">Social</a>
+<a class="text-white text-sm font-medium leading-normal" href="#">Gaming</a>
+<a class="text-white text-sm font-medium leading-normal" href="#">DeFi</a>
+</div>
+<div class="flex gap-2">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span class="truncate">Connect Wallet</span>
+</button>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-component-dark text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5 hover:bg-component-dark/80 transition-colors">
+<span class="material-symbols-outlined text-lg">
+                                        notifications
+                                    </span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBR19lS35l3usMd-iqKJr5a0C0IlnI_OOzD9bhMtQQCZYP_ybGk-BadZtNr8K5TWRmyeutNMInjCIJOkXqXBA6KXImQpsxdDGyrS0PXGBkNN-lSaUfm9WrU3S66IVSmMjHrOXFh87oIIaprufnUBB6qX3vJwMyA260dwOl041C-4zVmPTi5W3Jk8uq2G6i01pRIPeXkSyqTyueBYPyOqasTZwXHn7zmLU_qtnpgSnz6yYSusaBFYPZH9l56mc-e5xDLuXkids9RzME");'></div>
+</div>
+<button class="md:hidden flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-component-dark text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<main class="flex flex-col gap-6 py-8 px-4 sm:px-0">
+<h1 class="text-3xl font-bold tracking-tight">Social Gaming Hub</h1>
+<!-- Active Game Preview -->
+<div class="p-4 @container bg-component-dark rounded-xl shadow-lg">
+<div class="flex flex-col items-stretch justify-start @xl:flex-row @xl:items-start">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg" data-alt="A dynamic image of a trivia quiz interface" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCvI4IrTY6oKOG29UvrRBEYiqLjYAzvwnt8mUEd7Ic5PKP56RdhLwTwelH_3A7nSElSwziT7DEV8Q3QOiSPyVklSNIIav4OLXtf-W9aSyMbydHQa-b_ARt6QvvL9Y9KL9ZvjgpUFag4szrmyuLI6mT7brmb4dmvexXfOsavxigoggmTTNOrLUmkeHetfQT_N07thxrWte2CzBZa9FEkggzgbOdteWG1TjSGVHgwIZ44es4K_bnulhDbLbLqW0lqfvfKaIWXS-zbksk");'></div>
+<div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-2 py-4 @xl:px-4 px-0">
+<p class="text-white/70 text-sm font-normal leading-normal">Active Game</p>
+<p class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">Weekly Trivia Challenge</p>
+<div class="flex items-end gap-3 justify-between">
+<div class="flex flex-col gap-1">
+<p class="text-white/90 text-base font-normal leading-normal">
+                                                Test your knowledge and climb the ranks in our weekly trivia. Answer questions on a variety of topics to win REP and XP.
+                                            </p>
+<p class="text-white/70 text-base font-normal leading-normal">Ends in: 2d 15h 30m</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Participation -->
+<div class="flex flex-col sm:flex-row gap-4">
+<div class="flex-1 flex flex-col gap-2 p-4 bg-component-dark rounded-xl shadow-lg">
+<div class="flex justify-stretch w-full">
+<div class="flex flex-1 gap-3 flex-wrap justify-start">
+<button class="flex-1 flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-white/10 text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-white/20 transition-colors">
+<span class="truncate">Free Entry (in 03:45:12)</span>
+</button>
+<button class="flex-1 flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors shadow-[0_0_15px_rgba(0,153,255,0.5)]">
+<span class="truncate">VIP Entry</span>
+</button>
+</div>
+</div>
+<p class="text-primary text-base font-bold leading-normal pb-1 pt-2 px-1 tracking-wide">Projected Gain: +50 REP / +100 XP</p>
+</div>
+<div class="flex-1 flex flex-col justify-center p-4 bg-component-dark rounded-xl shadow-lg">
+<h3 class="font-bold text-lg">VIP Benefits</h3>
+<p class="text-white/80 text-sm">Double rewards, an exclusive chat badge, and priority access to future games. 
+                                <a class="text-primary underline" href="#">Learn more</a>.</p>
+</div>
+</div>
+<!-- Information Tabs -->
+<div class="bg-component-dark rounded-xl shadow-lg">
+<div class="pb-3">
+<div class="flex border-b border-white/20 px-4 gap-8">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-white pb-[13px] pt-4" href="#">
+<p class="text-white text-sm font-bold leading-normal tracking-[0.015em]">Participation History</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-white/70 pb-[13px] pt-4 hover:border-b-primary/50 hover:text-white transition-colors" href="#">
+<p class="font-bold leading-normal tracking-[0.015em]">Previous Results</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-white/70 pb-[13px] pt-4 hover:border-b-primary/50 hover:text-white transition-colors" href="#">
+<p class="font-bold leading-normal tracking-[0.015em]">Leaderboard</p>
+</a>
+</div>
+</div>
+<!-- Tab Content -->
+<div class="p-4">
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="text-white/70 border-b border-white/20">
+<th class="p-3 font-semibold">Game</th>
+<th class="p-3 font-semibold">Date</th>
+<th class="p-3 font-semibold text-right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-white/10">
+<td class="p-3">Weekly Trivia Challenge</td>
+<td class="p-3">2023-10-26</td>
+<td class="p-3 text-right">#145 Place</td>
+</tr>
+<tr class="border-b border-white/10">
+<td class="p-3">Daily Lottery Draw</td>
+<td class="p-3">2023-10-25</td>
+<td class="p-3 text-right">No Win</td>
+</tr>
+<tr>
+<td class="p-3">Weekly Trivia Challenge</td>
+<td class="p-3">2023-10-19</td>
+<td class="p-3 text-right">+25 REP</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+<footer class="mt-auto border-t border-solid border-t-component-dark/50 px-4 sm:px-10 py-6 text-center text-white/50 text-sm">
+<div class="flex flex-col sm:flex-row justify-center items-center gap-x-6 gap-y-2">
+<a class="hover:text-primary transition-colors" href="#">About</a>
+<a class="hover:text-primary transition-colors" href="#">Support</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+</div>
+<p class="mt-4">© 2023 ArquiFi. All rights reserved.</p>
+</footer>
+</div>
+</div>
+</div>
+</div>
+</body></html>

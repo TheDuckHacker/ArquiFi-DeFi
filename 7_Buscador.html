@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Wallet Explorer - ArquiFi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#067ff9",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#121012",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-dark group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+<div class="flex flex-wrap justify-between gap-3 p-4">
+<p class="text-white text-4xl font-black leading-tight tracking-[-0.033em] min-w-72">Wallet Explorer</p>
+</div>
+<div class="px-4 py-3">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-[#FFFFFF] flex border-none bg-[#413E40] items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border-none bg-[#413E40] focus:border-none h-full placeholder:text-[#FFFFFF]/60 px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search by username or wallet address" value=""/>
+</div>
+</label>
+</div>
+<div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-4 p-4">
+<div class="flex flex-col gap-3 text-center pb-3 border border-transparent rounded-xl hover:border-primary transition-colors duration-300 cursor-pointer">
+<div class="px-4 pt-4">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-full" data-alt="User avatar for @SatoshiN" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCVBzrFncmADue1__na1hIxv-zENd0gMHzRfd2if8W7dy_Xa-NzMteL-N0XetOB7cPQA3Iw_GHzza0MsxE5-uSw3ocD8AonY5-n65pXWW2bS32Ai4lInzHFliLsXG-LrvT02uOWc_nhYqhg1nQT1SufrXdOdrmNtTRgRJmk8S0nZbsrv-_pXyBEqytYIOIRtBKZDP-_-p5OTdGdSUzF6XYdu5btmQ5h8botHXnPQwxej-eRVY12P9kIlAqmF3DxhdT3pt9--le70rc");'></div>
+</div>
+<div>
+<p class="text-white text-base font-bold leading-normal">@SatoshiN</p>
+<p class="text-primary text-sm font-normal leading-normal">Reputation: 92</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 text-center pb-3 border border-transparent rounded-xl hover:border-primary transition-colors duration-300 cursor-pointer">
+<div class="px-4 pt-4">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-full" data-alt="User avatar for Vitalik.eth" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCda1yKTAQqu5V6JOw_x6mwo4AvdZQrXt17_X6H7BGOnYnuT6rdXg0d0rJKcYKt79xreViutxZY0VA2JBBPSqMeiLI5VDYA7jXg4Ulq8OYJ9tU66q1Dl6H8qXXo--qtc4wcPV3YRZYMOK9kF6P96MdUWsoNzeE0i3K5iIh4RQXtZ30_Fz9myvsuqhZGSoxre4e5zjGLuq5nITHtN7ZqSRwzwSHY274ltrN26zrxd6_fAOIfMpPZfLEVdfhGWzQfrmvjynDVSsJsrXo");'></div>
+</div>
+<div>
+<p class="text-white text-base font-bold leading-normal">Vitalik.eth</p>
+<p class="text-primary text-sm font-normal leading-normal">Reputation: 88</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 text-center pb-3 border border-transparent rounded-xl hover:border-primary transition-colors duration-300 cursor-pointer">
+<div class="px-4 pt-4">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-full" data-alt="User avatar for CryptoKing" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCzbqxm0dUa-X9MVssJ9zu5BHqCj7j__OXshEwmLJi_HwHnDXwlqw-9I669f3XRYt5WYYdZv2ZC8xxxL56uOPPJyQX4kOYnsG5Q857qxc4W3Kri0TTqiCvM2mDtAJfsdiISTOcQ4mmQ-OdypuUJ9GsPlrZDT4WWXsgFeKqEo-I-ZEWx0uxtAxrEjX4Z3oyOAQScK3tX4VUFf7agXOwQkRsEH3iap4bk6W2BXgyt6cbErGWITjXjvp9sKyX7hfSDM8oSz08pmtYYLG8");'></div>
+</div>
+<div>
+<p class="text-white text-base font-bold leading-normal">CryptoKing</p>
+<p class="text-primary text-sm font-normal leading-normal">Reputation: 85</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 text-center pb-3 border border-transparent rounded-xl hover:border-primary transition-colors duration-300 cursor-pointer">
+<div class="px-4 pt-4">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-full" data-alt="User avatar for DeFiQueen" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCRC6l3xCcTqtOBAvcbIjbRCcC1nDnDLEhkcegTzOOPv-yjykYhlnpNI0YzN-Q_QxL8_loTeDLe21L-lzkw3zGKPc8VzQKmIwdX62-uJTfZ5lMcGvL_n_Rz2MS9mFnyG0jgGacOE3vC0LryF985x6hcKQilkH524C43B6AR-VM1SkCvMjp4-PVeqMNHZnhQlUN10ZhHGtFJ7QBT2hz06C6w32U9Ikswcages6IUfgCB5kzhrsF8dVj5wyz9SbPfC754YXFCuyHydA4");'></div>
+</div>
+<div>
+<p class="text-white text-base font-bold leading-normal">DeFiQueen</p>
+<p class="text-primary text-sm font-normal leading-normal">Reputation: 82</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 text-center pb-3 border border-transparent rounded-xl hover:border-primary transition-colors duration-300 cursor-pointer">
+<div class="px-4 pt-4">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-full" data-alt="User avatar for NFTCollector" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDl894Q0GtP-uC7DJdWcqaIpSXjkx5yqFjkwLWgKJJE4DP5QeEH9EV5aLmbg4Q1Qbza609Fqe5hL_VzVzK5o-IVQxeRdDSRX166mdy4XT6ABw0qUu28KzwKwTdal-jpyQVL2ckB982MZ1xUNrBPkXC3p3uGLYYBuzreU4SckS3eLnDgxqae9InA-cCUM8uDhOro8p3iYbfWoNSMtu3lX5pzgudov9I1tgF2vGp_eJfoITkE7PxcSIlBqd7KgKAXhY3gTNQhD9d2a3g");'></div>
+</div>
+<div>
+<p class="text-white text-base font-bold leading-normal">NFTCollector</p>
+<p class="text-primary text-sm font-normal leading-normal">Reputation: 79</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 text-center pb-3 border border-transparent rounded-xl hover:border-primary transition-colors duration-300 cursor-pointer">
+<div class="px-4 pt-4">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-full" data-alt="User avatar for BlockchainBabe" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDqQQdOOPSIXv9bXgujX2MtBRn3LcqvE1Ypn4HU4Ho4no5wRzBhyfn_F2X-EXXqyM-ya4C8L8qxAEkgYpIIF8YYq7sxg_-xaASPq8kts1Xodm_ooXvoFGx3iyY9uSSgGvye1K1El2VGjRWpwXo6K1UV4clz4to2BKaYipypAem_2GYTfScfK0D7GMirclFs_TLYRPN2Ckq65Ve7NuRX-QQ8BurPHTcQ8WkWPDIiGI6SK2cFZGlvU6YWmp1SqoVxjQ5TwXkO1vwhzq8");'></div>
+</div>
+<div>
+<p class="text-white text-base font-bold leading-normal">BlockchainBabe</p>
+<p class="text-primary text-sm font-normal leading-normal">Reputation: 75</p>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-center p-4">
+<a class="flex size-10 items-center justify-center text-white/50 hover:text-white" href="#">
+<span class="material-symbols-outlined">chevron_left</span>
+</a>
+<a class="text-sm font-bold leading-normal tracking-[0.015em] flex size-10 items-center justify-center text-white rounded-full bg-primary" href="#">1</a>
+<a class="text-sm font-normal leading-normal flex size-10 items-center justify-center text-white/50 hover:text-white rounded-full hover:bg-white/10" href="#">2</a>
+<a class="text-sm font-normal leading-normal flex size-10 items-center justify-center text-white/50 hover:text-white rounded-full hover:bg-white/10" href="#">3</a>
+<span class="text-sm font-normal leading-normal flex size-10 items-center justify-center text-white/50 rounded-full">...</span>
+<a class="text-sm font-normal leading-normal flex size-10 items-center justify-center text-white/50 hover:text-white rounded-full hover:bg-white/10" href="#">10</a>
+<a class="flex size-10 items-center justify-center text-white/50 hover:text-white" href="#">
+<span class="material-symbols-outlined">chevron_right</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+//Funcionaria en conjunto con el 6.5 y el 6 debido a que el 7 es para buscar usuarios y publicaciones.
+//y el 6.5 es para cuando se abre una publicacion y el 6 es para cuando se crea una publicacion.
+//y el 7 es para cuando se busca un usuario o una publicacion.
+</body></html>

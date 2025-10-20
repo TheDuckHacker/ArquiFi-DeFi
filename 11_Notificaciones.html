@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArquiFi - Notifications</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0099FF",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#121012",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 300,
+            'GRAD' 0,
+            'opsz' 24;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body class="bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col w-full max-w-[960px] flex-1">
+<div class="flex flex-wrap justify-between gap-3 p-4">
+<p class="text-white text-4xl font-black leading-tight tracking-[-0.033em] min-w-72">Notifications</p>
+</div>
+<div class="flex flex-col gap-4 p-4">
+<div class="flex items-center gap-4 bg-[#413E40] p-4 rounded-lg hover:bg-opacity-80 transition-all duration-300 justify-between">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center rounded-lg shrink-0 size-12">
+<span class="material-symbols-outlined">workspace_premium</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-base font-bold leading-normal line-clamp-1">Reward Claimed!</p>
+<p class="text-gray-300 text-sm font-normal leading-normal line-clamp-2">You've successfully claimed your weekly rewards.</p>
+</div>
+</div>
+<div class="shrink-0 flex gap-2">
+<button class="text-primary text-sm font-bold leading-normal">View Transaction</button>
+<button class="text-gray-400 hover:text-white text-sm font-bold leading-normal">Dismiss</button>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-[#413E40] p-4 rounded-lg hover:bg-opacity-80 transition-all duration-300 justify-between">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center rounded-lg shrink-0 size-12">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-base font-bold leading-normal line-clamp-1">New Post from Vitalik Buterin</p>
+<p class="text-gray-300 text-sm font-normal leading-normal line-clamp-2">A new post is available in a topic you follow.</p>
+</div>
+</div>
+<div class="shrink-0 flex gap-2">
+<button class="text-primary text-sm font-bold leading-normal">View Post</button>
+<button class="text-gray-400 hover:text-white text-sm font-bold leading-normal">Dismiss</button>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-[#413E40] p-4 rounded-lg hover:bg-opacity-80 transition-all duration-300 justify-between">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center rounded-lg shrink-0 size-12">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-base font-bold leading-normal line-clamp-1">APY Update</p>
+<p class="text-gray-300 text-sm font-normal leading-normal line-clamp-2">The APY for ETH-Lido Pool has changed.</p>
+</div>
+</div>
+<div class="shrink-0 flex gap-2">
+<button class="text-primary text-sm font-bold leading-normal">View Pool</button>
+<button class="text-gray-400 hover:text-white text-sm font-bold leading-normal">Dismiss</button>
+</div>
+</div>
+<div class="flex flex-col px-4 py-16">
+<div class="flex flex-col items-center gap-6">
+<div class="w-24 h-24 text-gray-600">
+<svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex max-w-[480px] flex-col items-center gap-2">
+<p class="text-white text-lg font-bold leading-tight tracking-[-0.015em] max-w-[480px] text-center">No new notifications</p>
+<p class="text-gray-400 text-sm font-normal leading-normal max-w-[480px] text-center">You're all caught up! We'll let you know when there's something new.</p>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/80 transition-all duration-300">
+<span class="truncate">Refresh</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

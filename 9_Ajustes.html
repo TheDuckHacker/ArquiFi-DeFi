@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArquiFi Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#0698f9",
+            "background-light": "#f5f7f8",
+            "background-dark": "#121012",
+          },
+          fontFamily: {
+            "display": ["Space Grotesk", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-dark overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+<div class="flex flex-wrap justify-between gap-3 p-4">
+<p class="text-white text-4xl font-black leading-tight tracking-[-0.033em] min-w-72">Settings</p>
+</div>
+<div class="flex flex-col gap-8 mt-6">
+<!-- Account Section -->
+<div>
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Account</h2>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-4 bg-[#413E40] px-4 min-h-[72px] justify-between rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-white text-2xl">person</span>
+<div class="flex flex-col">
+<p class="text-white text-base font-normal leading-normal">Username</p>
+<p class="text-[#A0A0A0] text-sm">@johndoe</p>
+</div>
+</div>
+<div class="shrink-0"><button class="text-white/80 text-base font-medium leading-normal hover:text-white transition-colors">Edit</button></div>
+</div>
+<div class="flex items-center gap-4 bg-[#413E40] px-4 min-h-[72px] justify-between rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-white text-2xl">mail</span>
+<div class="flex flex-col">
+<p class="text-white text-base font-normal leading-normal">Email Address</p>
+<p class="text-[#A0A0A0] text-sm">johndoe@email.com</p>
+</div>
+</div>
+<div class="shrink-0"><button class="text-white/80 text-base font-medium leading-normal hover:text-white transition-colors">Edit</button></div>
+</div>
+<div class="flex items-center gap-4 bg-[#413E40] px-4 min-h-[72px] justify-between rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-white text-2xl">lock</span>
+<p class="text-white text-base font-normal leading-normal flex-1 truncate">Password</p>
+</div>
+<div class="shrink-0"><button class="text-white/80 text-base font-medium leading-normal hover:text-white transition-colors">Change</button></div>
+</div>
+</div>
+</div>
+<!-- Security Section -->
+<div>
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Security</h2>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-4 bg-[#413E40] px-4 min-h-[72px] justify-between rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-white text-2xl">verified_user</span>
+<div class="flex flex-col">
+<p class="text-white text-base font-normal leading-normal">Two-Factor Authentication</p>
+<p class="text-[#A0A0A0] text-sm">Enhance your account security.</p>
+</div>
+</div>
+<div class="shrink-0">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-600 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-[#413E40] px-4 min-h-[72px] justify-between rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-white text-2xl">devices</span>
+<p class="text-white text-base font-normal leading-normal flex-1 truncate">Manage Connected Devices</p>
+</div>
+<div class="shrink-0"><button class="text-white/80 text-base font-medium leading-normal hover:text-white transition-colors">View</button></div>
+</div>
+</div>
+</div>
+<!-- Notifications Section -->
+<div>
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Notifications</h2>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-4 bg-[#413E40] px-4 min-h-[72px] justify-between rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-white text-2xl">notifications</span>
+<div class="flex flex-col">
+<p class="text-white text-base font-normal leading-normal">Push Notifications</p>
+<p class="text-[#A0A0A0] text-sm">Receive alerts on your device.</p>
+</div>
+</div>
+<div class="shrink-0">
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-600 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-[#413E40] px-4 min-h-[72px] justify-between rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-white text-2xl">email</span>
+<div class="flex flex-col">
+<p class="text-white text-base font-normal leading-normal">Email Notifications</p>
+<p class="text-[#A0A0A0] text-sm">Get important updates via email.</p>
+</div>
+</div>
+<div class="shrink-0">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-600 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Appearance Section -->
+<div>
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Appearance</h2>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-4 bg-[#413E40] px-4 min-h-[72px] justify-between rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-white text-2xl">dark_mode</span>
+<p class="text-white text-base font-normal leading-normal flex-1 truncate">Dark Mode</p>
+</div>
+<div class="shrink-0">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-600 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- About Section -->
+<div>
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">About</h2>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-4 bg-[#413E40] px-4 min-h-[72px] justify-between rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-white text-2xl">info</span>
+<p class="text-white text-base font-normal leading-normal flex-1 truncate">Version</p>
+</div>
+<div class="shrink-0"><p class="text-[#A0A0A0] text-base font-medium leading-normal">1.0.0</p></div>
+</div>
+<div class="flex items-center gap-4 bg-[#413E40] px-4 min-h-[72px] justify-between rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-white text-2xl">gavel</span>
+<p class="text-white text-base font-normal leading-normal flex-1 truncate">Terms of Service</p>
+</div>
+<div class="shrink-0"><button class="text-white/80 text-base font-medium leading-normal hover:text-white transition-colors">View</button></div>
+</div>
+<div class="flex items-center gap-4 bg-[#413E40] px-4 min-h-[72px] justify-between rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-white text-2xl">privacy_tip</span>
+<p class="text-white text-base font-normal leading-normal flex-1 truncate">Privacy Policy</p>
+</div>
+<div class="shrink-0"><button class="text-white/80 text-base font-medium leading-normal hover:text-white transition-colors">View</button></div>
+</div>
+</div>
+</div>
+<!-- Log out -->
+<div class="mt-8">
+<button class="w-full bg-[#413E40] text-red-500 font-bold py-4 px-4 rounded-lg hover:bg-red-500 hover:text-white transition-colors duration-300">
+                Log Out
+              </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>
