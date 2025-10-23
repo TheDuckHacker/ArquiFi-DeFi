@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArquiFi Gamification Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0099FF",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1a23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Poppins", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+</head>
+<body class="bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-dark dark group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-7xl w-full flex-1">
+<div class="flex flex-wrap justify-between gap-3 p-4">
+<p class="text-white text-4xl font-black leading-tight tracking-[-0.033em] min-w-72">Gamification Hub: Play &amp; Earn</p>
+<div class="flex items-center gap-4 bg-[#1b2227] p-4 rounded-lg">
+<div>
+<p class="text-white text-lg font-bold">Koquipuntos disponibles</p>
+<p class="text-primary text-2xl font-bold">1,250 KP</p>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/80 transition-colors">
+<span class="truncate">Usar KP</span>
+</button>
+</div>
+</div>
+<div class="bg-primary rounded-xl mt-8 p-6">
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Mini-juegos tipo trivia</h2>
+<div class="flex overflow-x-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
+<div class="flex items-stretch p-4 gap-6">
+<div class="flex h-full flex-1 flex-col gap-4 rounded-lg bg-white shadow-lg min-w-72">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-lg flex flex-col" data-alt="A stylized image of a brain with interconnected nodes representing knowledge." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDI13D1PdJnTJwkt9sg5M4w7oJNC0wQGC0ImjcZ1DwnQCkykbC6A6oIZ7DjBbGqexZLpQlG5P886kvsmrYdYtqmiYVHBbSe9a1GWq2uZUbx2-rjh08x0daKe2bSRD_Sz207oYY0xdjlPu5Pq3scse1PJOZnFltsb-zIJ-Q3qlV5rqbOFQd5qoOGzXgQYkCXvmWQo6nJrSpPJeMZA9qo18FZCBD0yyOjv-abT4S8l9--5suIJTmUxXXYvGCzkjuNqHVIqKYeh4f2rG0");'></div>
+<div class="flex flex-col flex-1 justify-between p-4 pt-0 gap-4">
+<div>
+<p class="text-[#121012] text-lg font-bold leading-normal">Trivia de Arquitectura</p>
+<p class="text-gray-600 text-sm font-normal leading-normal mt-1">¿Qué arquitecto diseñó la Casa de la Cascada?</p>
+<div class="mt-4">
+<p class="text-[#121012] font-semibold text-sm">Recompensas:</p>
+<p class="text-gray-600 text-sm font-normal leading-normal">100 KP, Logro "Maestro Arquitecto", 5 ARQ</p>
+</div>
+</div>
+<button class="flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#1b2227] text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-black transition-colors">
+<span class="truncate">Jugar ahora</span>
+</button>
+</div>
+</div>
+<div class="flex h-full flex-1 flex-col gap-4 rounded-lg bg-white shadow-lg min-w-72">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-lg flex flex-col" data-alt="An abstract representation of a complex puzzle." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAJfMzMjGuzKsSrXu75qDyns6bKeB95lBq6LEQ8PVC8Np8j15zwA-CauI4H7jWyP4SdpL1e_ufd95xHFWUPjKSTlfIFZ-KwWmjrgUjdcKCWzAa38fXIjEbuLiGN_yZDQNE8K7ifyYMvWY-jYfLa1EQbPuju0WbxvhHEtx2Fq9_UB-tttczblWeisu6wf5dRrBa7bSlMqCt5MPcRqgtIAYvuiHmqC76kAG9-L0vGIWY2W-EvpYMqxTi8q0jPpUrj4p6aR-bmd62DZtA");'></div>
+<div class="flex flex-col flex-1 justify-between p-4 pt-0 gap-4">
+<div>
+<p class="text-[#121012] text-lg font-bold leading-normal">Reto de Estilos</p>
+<p class="text-gray-600 text-sm font-normal leading-normal mt-1">Identifica el período arquitectónico de esta fachada.</p>
+<div class="mt-4">
+<p class="text-[#121012] font-semibold text-sm">Recompensas:</p>
+<p class="text-gray-600 text-sm font-normal leading-normal">120 KP, Logro "Historiador Urbano", 7 ARQ</p>
+</div>
+</div>
+<button class="flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#1b2227] text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-black transition-colors">
+<span class="truncate">Jugar ahora</span>
+</button>
+</div>
+</div>
+<div class="flex h-full flex-1 flex-col gap-4 rounded-lg bg-white shadow-lg min-w-72">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-lg flex flex-col" data-alt="A blueprint of a futuristic building." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBvzSC7AFsz4KwUZjz7oYeZP-YCDEkcqjToWkzqQvuvM3wlgIoKI1y978yTPfNV76EdiGaY5cjEBy9SojCvBCwXJGquE0qql7G8doIGrSpvEmJCspA5orYp9q6aTPdg683taif-FVak0RTglC_tyuVD9YG_n29qX-5S2UCM1w-wwAAb6i-BOA4l3gWpeZriVlFRYgMii3q71pNBitQsy1E0tkjtbWcN1np02pkFLGGQNp5Wzy-dRx5oUUg2ELg_xys5orl2zPaIDZ0");'></div>
+<div class="flex flex-col flex-1 justify-between p-4 pt-0 gap-4">
+<div>
+<p class="text-[#121012] text-lg font-bold leading-normal">Desafío de Materiales</p>
+<p class="text-gray-600 text-sm font-normal leading-normal mt-1">¿Qué material es conocido por su alta resistencia a la compresión?</p>
+<div class="mt-4">
+<p class="text-[#121012] font-semibold text-sm">Recompensas:</p>
+<p class="text-gray-600 text-sm font-normal leading-normal">150 KP, Logro "Ingeniero de Materiales", 10 ARQ</p>
+</div>
+</div>
+<button class="flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#1b2227] text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-black transition-colors">
+<span class="truncate">Jugar ahora</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="flex flex-col">
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Sistema de entrada</h2>
+<div class="flex flex-col gap-4 p-4">
+<div class="flex items-center gap-4 bg-[#1b2227] p-4 rounded-lg justify-between">
+<div class="flex items-center gap-4">
+<div class="text-white flex items-center justify-center rounded-full bg-[#27313a] shrink-0 size-16">
+<span class="material-symbols-outlined text-4xl">timer</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-base font-medium leading-normal">Entrada gratuita</p>
+<p class="text-[#9bacbb] text-sm font-normal leading-normal">Disponible en</p>
+</div>
+</div>
+<div class="shrink-0">
+<p class="text-white text-xl font-bold leading-normal">23:59:59</p>
+</div>
+</div>
+<button class="flex w-full min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/80 transition-colors">
+<span class="truncate">Entrada paga con ARQ</span>
+</button>
+<button class="flex w-full min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/80 transition-colors">
+<span class="truncate">Entrada paga con Koquipuntos (KP)</span>
+</button>
+<div class="text-center mt-2">
+<a class="text-primary text-sm font-medium hover:underline" href="#">Opción para pagar entrada con BTC ganados por stacking</a>
+</div>
+</div>
+</div>
+<div class="flex flex-col">
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Ranking semanal con premios en tokens</h2>
+<div class="bg-[#1b2227] rounded-lg p-4 flex flex-col gap-3">
+<div class="flex items-center justify-between p-3 rounded-lg bg-[#27313a]">
+<div class="flex items-center gap-4">
+<span class="text-yellow-400 text-2xl font-bold">1</span>
+<img alt="User Avatar" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAonquaOqdDHkESBItagTjMs-3k0DofHgSS15fSJPsz0iUPa0301pkAs2Bd6wM8SXJDF8aLHR5qJM5S7KTTW198zcdlW_r2kx96IfoltOLYQ91kNeNbI3w056oyta_We00EqCkBNZWEc_BQ_tEj-2fwU3TkGrSKAYHQA257tlYSevJLfuvRxfPZN_QVg1uEPIkUziHindSH1LstHkT8oZSSbBSAybx6e3t1R1UDjquRLsMICbIRE9NyXLn9mmSiEIYu0uYUBSNCzFs"/>
+<p class="text-white font-medium">PlayerOne</p>
+</div>
+<p class="text-primary font-bold">5,430 KP</p>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg hover:bg-[#27313a]/50 transition-colors">
+<div class="flex items-center gap-4">
+<span class="text-gray-400 text-2xl font-bold">2</span>
+<img alt="User Avatar" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmaIzLw0ePPeQJKaOcnqMkw_yAowOZAAvaGClZw3wMYceWsi3Q61zIISuOlwozHEHuzS3L3qJo1NMqBq7i12KALtoMGJdJFA91r9WnEHpCPzLZi4_gSg4WrtF7XXMHiva4mXrHgWapfv1yNpu_LjZBd1dgSbwwv03B5X-GzaXxPDUgDll3BVZMtvI784aL5h36OREz-B9dfCT-it1IQ7J1WDkq3l7Yu3EqlyAJd8HCMTk58cfgZ-DJo4blQUsJnOVErUeAACUVrSo"/>
+<p class="text-white font-medium">ArchiFan</p>
+</div>
+<p class="text-white font-bold">4,980 KP</p>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg hover:bg-[#27313a]/50 transition-colors">
+<div class="flex items-center gap-4">
+<span class="text-orange-400 text-2xl font-bold">3</span>
+<img alt="User Avatar" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAioKq3RuhI-5KIPpb3HY7xmeuy7txCv7cqoyq2fWaLniAOaPezJ3kIZS9y4uMLeeaxvnvN8wHZjtD-6ja7Xm3PS3jZyHDJDDMI8C8l6iNbYvMnGuiRbEpwrUmjpen4BiWXlJu-YcPqMiskQ4kBwn-FKa_l5f-DjxAa88tOwhOkdtU2cccW4_rnxXfHeHALiCM5N7areblEa5Ao1y0BlbDce7tGuvrpxi-2HFVaVTfomnWgUMoMaqt0Nt9Eag_tdN3-2WBJ4ccvew4"/>
+<p class="text-white font-medium">DeFiQueen</p>
+</div>
+<p class="text-white font-bold">4,550 KP</p>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg hover:bg-[#27313a]/50 transition-colors">
+<div class="flex items-center gap-4">
+<span class="text-gray-500 text-2xl font-bold">4</span>
+<img alt="User Avatar" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACEze9f3FoewsycAm3FhNvK7_G0D8y9_XtIBlHXeOjhG0hM9cVSecaTZaHectIPs_I28RFtFBqBaDA6gqmfupyJQiRWYdboK35AIGMhM874K7clC-Vp1GSAtS7xQua54-TK0OzK-6TJ5VvFUSxVMgxJ5Pwp5nYJKLpgA80u4TYlhpl15JtT39ym8rZFxEi42QqAy0jWYqGQvIXp7c2wH7ujJgUwgJUMDAO6iEjTtxAzAhdYuN8hG6HSNqhlzs4KxDZlwsJe7EXYHY"/>
+<p class="text-white font-medium">TokenMaster</p>
+</div>
+<p class="text-white font-bold">4,210 KP</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

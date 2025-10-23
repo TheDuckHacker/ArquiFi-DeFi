@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArquiFi - DAO Voting Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#0099FF",
+                "background-light": "#f5f7f8",
+                "background-dark": "#121012",
+              },
+              fontFamily: {
+                "display": ["Inter", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+</head>
+<body class="bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+<div class="flex flex-wrap justify-between gap-3 p-4">
+<div class="flex min-w-72 flex-col gap-3">
+<p class="text-white text-4xl font-black leading-tight tracking-[-0.033em]">Pantalla de votaciones DAO</p>
+<p class="text-[#9bacbb] text-base font-normal leading-normal">Participate in the governance of ArquiFi</p>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#27313a] text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Learn More</span>
+</button>
+</div>
+<div class="p-4">
+<div class="flex flex-col gap-3">
+<div class="flex gap-6 justify-between">
+<p class="text-white text-base font-medium leading-normal">Reputación DAO acumulada</p>
+<p class="text-white text-sm font-normal leading-normal">600/1000</p>
+</div>
+<div class="rounded-lg bg-[#413E40]"><div class="h-2 rounded-lg bg-primary" style="width: 60%;"></div></div>
+<p class="text-primary text-sm font-normal leading-normal">+100 for stacking</p>
+</div>
+</div>
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Active Proposals</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="p-4 @container bg-[#413E40] rounded-xl">
+<div class="flex flex-col items-stretch justify-start">
+<div class="flex w-full grow flex-col items-stretch justify-center gap-4">
+<p class="text-[#9bacbb] text-sm font-normal leading-normal">Ends in 3 days</p>
+<p class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Proposal: New Feature Integration</p>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between text-sm">
+<span class="text-white">Yes</span>
+<span class="text-white">72%</span>
+</div>
+<div class="rounded-full bg-[#3a4955] h-2.5">
+<div class="bg-primary h-2.5 rounded-full" style="width: 72%"></div>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-white">No</span>
+<span class="text-white">28%</span>
+</div>
+<div class="rounded-full bg-[#3a4955] h-2.5">
+<div class="bg-red-500 h-2.5 rounded-full" style="width: 28%"></div>
+</div>
+</div>
+<div class="flex items-end gap-3 justify-between">
+<div class="flex flex-col gap-1">
+<p class="text-[#9bacbb] text-base font-normal leading-normal">
+                                                Integrate a new cross-chain bridge for expanded asset support. This will enhance the platform's interoperability and user experience.
+                                            </p>
+</div>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-medium leading-normal">
+<span class="truncate">Vote with Koquipoints</span>
+</button>
+</div>
+</div>
+</div>
+<div class="p-4 @container bg-[#413E40] rounded-xl">
+<div class="flex flex-col items-stretch justify-start">
+<div class="flex w-full grow flex-col items-stretch justify-center gap-4">
+<p class="text-[#9bacbb] text-sm font-normal leading-normal">Ends in 5 days</p>
+<p class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Proposal: Adjust Staking Rewards</p>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between text-sm">
+<span class="text-white">Yes</span>
+<span class="text-white">45%</span>
+</div>
+<div class="rounded-full bg-[#3a4955] h-2.5">
+<div class="bg-primary h-2.5 rounded-full" style="width: 45%"></div>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-white">No</span>
+<span class="text-white">55%</span>
+</div>
+<div class="rounded-full bg-[#3a4955] h-2.5">
+<div class="bg-red-500 h-2.5 rounded-full" style="width: 55%"></div>
+</div>
+</div>
+<div class="flex items-end gap-3 justify-between">
+<div class="flex flex-col gap-1">
+<p class="text-[#9bacbb] text-base font-normal leading-normal">
+                                                A proposal to adjust the APY for staking rewards to better reflect market conditions and incentivize long-term holding.
+                                            </p>
+</div>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-medium leading-normal">
+<span class="truncate">Vote with Koquipoints</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-8">Misiones comunitarias</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="p-4 @container bg-[#413E40] rounded-xl">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 bg-primary/20 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-4xl">how_to_vote</span>
+</div>
+<div class="flex-1">
+<p class="text-white font-bold text-lg">Vote on 3 Proposals</p>
+<p class="text-[#9bacbb]">Earn 50 Reputation Points by participating in governance.</p>
+</div>
+</div>
+</div>
+<div class="p-4 @container bg-[#413E40] rounded-xl">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 bg-primary/20 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-4xl">groups</span>
+</div>
+<div class="flex-1">
+<p class="text-white font-bold text-lg">Community Discussion</p>
+<p class="text-[#9bacbb]">Join a proposal discussion and earn 25 Reputation Points.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

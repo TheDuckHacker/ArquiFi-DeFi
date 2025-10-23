@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArquiFi - DeFi Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0099FF",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#121012",
+                        "component-dark": "#413E40",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-7xl flex-1">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-component-dark px-4 sm:px-10 py-3">
+<div class="flex items-center gap-4 text-white">
+<div class="size-6">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">ArquiFi</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-center gap-8">
+<a class="text-white text-sm font-medium leading-normal" href="#">Dashboard</a>
+<a class="text-white/70 hover:text-white text-sm font-medium leading-normal" href="#">Stacking</a>
+<a class="text-white/70 hover:text-white text-sm font-medium leading-normal" href="#">Lending</a>
+<a class="text-white/70 hover:text-white text-sm font-medium leading-normal" href="#">History</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-component-dark text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-3">
+<span class="material-symbols-outlined text-white text-xl">wallet</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile picture, abstract gradient" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAQQd_DkjI4KL8OR8cOcLfbkymr8QVjz-ZPrJEUPCbam4gKTf-RdcOdC-DaQJyYdWg6Hte_LH01kwsEueTo9dq8IIeGxWK0rdEOtFqTpcAYGwvf8wtrMxG3sZnu_USiebzDl9cnMmjgV6eMeLOxhMeQaOB0jGQ7YVvZy9ynLVvl55zYRBNfzlZQGQY3R6krymz_pF04iVdlbQ_Zo-sxhJixoic_B7J558uIrngOCyzPLE0GjTMaOF_Wp5uYTSMh02wW_pOi28eM3dA");'></div>
+</div>
+</header>
+<main class="flex-1 p-4 md:p-6 lg:p-8">
+<h1 class="text-white tracking-light text-[32px] font-bold leading-tight px-4 text-left pb-3 pt-6">Visualización de activos</h1>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 py-6">
+<div class="flex flex-col gap-2 p-6 bg-component-dark rounded-xl">
+<p class="text-white/80 text-base font-medium leading-normal">STX Balance</p>
+<p class="text-white tracking-light text-4xl font-bold leading-tight truncate">1,250 STX</p>
+<div class="flex gap-1 items-center mt-2">
+<p class="text-white/60 text-sm font-normal leading-normal">30d</p>
+<p class="text-green-400 text-sm font-medium leading-normal">+5.2%</p>
+</div>
+<div class="h-2 mt-4 bg-white/10 rounded-full">
+<div class="h-2 bg-primary rounded-full" style="width: 60%;"></div>
+</div>
+</div>
+<div class="flex flex-col gap-2 p-6 bg-component-dark rounded-xl">
+<p class="text-white/80 text-base font-medium leading-normal">sBTC Balance</p>
+<p class="text-white tracking-light text-4xl font-bold leading-tight truncate">0.5 sBTC</p>
+<div class="flex gap-1 items-center mt-2">
+<p class="text-white/60 text-sm font-normal leading-normal">30d</p>
+<p class="text-green-400 text-sm font-medium leading-normal">+2.1%</p>
+</div>
+<div class="h-2 mt-4 bg-white/10 rounded-full">
+<div class="h-2 bg-primary rounded-full" style="width: 30%;"></div>
+</div>
+</div>
+<div class="flex flex-col gap-2 p-6 bg-component-dark rounded-xl">
+<p class="text-white/80 text-base font-medium leading-normal">BTC Earned</p>
+<p class="text-white tracking-light text-4xl font-bold leading-tight truncate">0.02 BTC</p>
+<div class="flex gap-1 items-center mt-2">
+<p class="text-white/60 text-sm font-normal leading-normal">30d</p>
+<p class="text-green-400 text-sm font-medium leading-normal">+8.7%</p>
+</div>
+<div class="h-2 mt-4 bg-white/10 rounded-full">
+<div class="h-2 bg-primary rounded-full" style="width: 10%;"></div>
+</div>
+</div>
+</div>
+<div class="p-4">
+<div class="flex flex-col lg:flex-row items-stretch justify-start rounded-xl bg-component-dark overflow-hidden">
+<div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-4 p-6">
+<p class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">Resumen de la Billetera</p>
+<div class="flex flex-col gap-1">
+<p class="text-white/60 text-base font-normal leading-normal">Total Portfolio Value</p>
+<p class="text-white text-3xl font-bold leading-tight">$15,432.87</p>
+</div>
+<div class="h-40 mt-4">
+<div class="grid h-full grid-flow-col gap-4 items-end justify-items-center">
+<div class="w-full bg-primary/50 hover:bg-primary transition-colors rounded-t-md" style="height: 40%;"></div>
+<div class="w-full bg-primary/50 hover:bg-primary transition-colors rounded-t-md" style="height: 60%;"></div>
+<div class="w-full bg-primary/50 hover:bg-primary transition-colors rounded-t-md" style="height: 30%;"></div>
+<div class="w-full bg-primary/50 hover:bg-primary transition-colors rounded-t-md" style="height: 80%;"></div>
+<div class="w-full bg-primary/50 hover:bg-primary transition-colors rounded-t-md" style="height: 50%;"></div>
+<div class="w-full bg-primary/50 hover:bg-primary transition-colors rounded-t-md" style="height: 70%;"></div>
+<div class="w-full bg-primary/50 hover:bg-primary transition-colors rounded-t-md" style="height: 90%;"></div>
+</div>
+</div>
+</div>
+<div class="w-full lg:w-1/3 bg-center bg-no-repeat bg-cover min-h-[250px] lg:min-h-full" data-alt="A futuristic, abstract representation of financial data network" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC89YyRQzcXzdJgeGlsRlybmdwSqpso4WUcIQcKyy10_6v3FYFFpeURZqwOAqEfRkveMs4g9i44TLB72HRBUDfqqIpCJf7hMleU2EQ7kWNbKtVEYkKJi6Mn4Nl2kh_rhRq41pIE4FfuHZgPNgFyQztq5uad7av7XL_wc0j3aseTP-bEKz34134Y8n412FCZ3X2X_AJXq734kQKA9rKw8ka-UINuD_STAyn8pdcACdyDAVQFmAccGqUfZaoGgGLgLscZDrLGBUOIWSo");'></div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 p-4">
+<div class="bg-component-dark p-6 rounded-xl flex flex-col gap-4">
+<h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">Función de Stacking</h2>
+<div>
+<label class="block text-sm font-medium text-white/80 mb-2" for="stx-amount">Cantidad de STX a bloquear</label>
+<input class="w-full bg-background-dark border border-white/20 rounded-lg p-3 text-white focus:ring-primary focus:border-primary" id="stx-amount" placeholder="1000 STX" type="text"/>
+</div>
+<div>
+<p class="text-sm text-white/60">Recompensas estimadas en BTC</p>
+<p class="text-lg font-bold text-white">0.005 BTC / ciclo</p>
+</div>
+<button class="w-full bg-primary text-white font-bold py-3 px-4 rounded-lg hover:bg-primary/90 transition-colors">Bloquear STX</button>
+</div>
+<div class="bg-component-dark p-6 rounded-xl flex flex-col gap-4">
+<h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">Sección de préstamos con garantía</h2>
+<div>
+<div class="flex border-b border-white/20">
+<button class="flex-1 py-2 text-center font-medium text-white border-b-2 border-primary">STX</button>
+<button class="flex-1 py-2 text-center font-medium text-white/60 hover:text-white">sBTC</button>
+</div>
+<div class="mt-4">
+<p class="text-sm text-white/60">Monto disponible</p>
+<p class="text-lg font-bold text-white">$5,000.00</p>
+</div>
+<div class="mt-4">
+<label class="block text-sm font-medium text-white/80 mb-2" for="loan-amount">Monto del Préstamo</label>
+<input class="w-full h-2 bg-background-dark rounded-lg appearance-none cursor-pointer accent-primary" id="loan-amount" max="5000" min="0" type="range"/>
+</div>
+<div class="mt-4">
+<p class="text-sm text-white/60">Salud del Préstamo</p>
+<div class="w-full bg-background-dark rounded-full h-2.5 mt-1">
+<div class="bg-green-500 h-2.5 rounded-full" style="width: 85%"></div>
+</div>
+</div>
+</div>
+<div class="flex gap-4 mt-auto">
+<button class="w-full bg-primary/20 text-primary font-bold py-3 px-4 rounded-lg hover:bg-primary/30 transition-colors">Liquidar Préstamo</button>
+<button class="w-full bg-primary text-white font-bold py-3 px-4 rounded-lg hover:bg-primary/90 transition-colors">Solicitar Préstamo</button>
+</div>
+</div>
+</div>
+<div class="p-4">
+<div class="bg-component-dark p-6 rounded-xl">
+<div class="flex justify-between items-center mb-4">
+<h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">Historial financiero</h2>
+<div class="flex items-center gap-2">
+<p class="text-sm text-white/80">Reputación crediticia</p>
+<div class="w-24 bg-background-dark rounded-full h-2.5">
+<div class="bg-primary h-2.5 rounded-full" style="width: 90%"></div>
+</div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-sm text-left text-white/80">
+<thead class="text-xs text-white/60 uppercase bg-background-dark">
+<tr>
+<th class="px-6 py-3" scope="col">Tipo</th>
+<th class="px-6 py-3" scope="col">Fecha</th>
+<th class="px-6 py-3" scope="col">Monto</th>
+<th class="px-6 py-3" scope="col">Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-background-dark hover:bg-background-dark/50">
+<td class="px-6 py-4 font-medium text-white">Stacking Reward</td>
+<td class="px-6 py-4">2023-10-27</td>
+<td class="px-6 py-4 text-green-400">+0.001 BTC</td>
+<td class="px-6 py-4">Completado</td>
+</tr>
+<tr class="border-b border-background-dark hover:bg-background-dark/50">
+<td class="px-6 py-4 font-medium text-white">Préstamo Solicitado</td>
+<td class="px-6 py-4">2023-10-25</td>
+<td class="px-6 py-4 text-white">-$1,000.00</td>
+<td class="px-6 py-4 text-yellow-400">Activo</td>
+</tr>
+<tr class="border-b border-background-dark hover:bg-background-dark/50">
+<td class="px-6 py-4 font-medium text-white">Depósito STX</td>
+<td class="px-6 py-4">2023-10-22</td>
+<td class="px-6 py-4 text-green-400">+500 STX</td>
+<td class="px-6 py-4">Completado</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</div>
+</div>
+</body></html>

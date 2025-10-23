@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArquiFi Settings Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#0099FF",
+            "background-dark": "#121012",
+            "card-dark": "#413E40",
+            "text-light": "#FFFFFF",
+            "text-muted": "#A0A0A0",
+          },
+          fontFamily: {
+            "display": ["Space Grotesk", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style type="text/tailwindcss">
+    .progress-bar {
+      @apply w-full bg-gray-600 rounded-full h-2.5;
+    }
+    .progress-bar-inner {
+      @apply bg-primary h-2.5 rounded-full;
+    }
+  </style>
+</head>
+<body class="bg-background-dark font-display text-text-light">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-dark overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+<div class="flex flex-wrap justify-between gap-3 p-4">
+<h1 class="text-white text-4xl font-black leading-tight tracking-[-0.033em] min-w-72">Settings Hub (Enhanced)</h1>
+</div>
+<div class="flex flex-col gap-8 mt-6">
+<div>
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Estado de cuenta</h2>
+<div class="bg-card-dark rounded-lg p-6 flex flex-col gap-6">
+<div>
+<div class="flex justify-between items-center mb-2">
+<p class="text-base font-normal">Koquipuntos ganados, gastados</p>
+<p class="text-primary font-bold text-lg">1,250 / 500</p>
+</div>
+<div class="progress-bar">
+<div class="progress-bar-inner" style="width: 75%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<p class="text-base font-normal">BTC acumulado por stacking</p>
+<p class="text-primary font-bold text-lg">0.005 BTC</p>
+</div>
+<div class="progress-bar">
+<div class="progress-bar-inner" style="width: 45%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<p class="text-base font-normal">Reputación DAO y social</p>
+<p class="text-primary font-bold text-lg">85%</p>
+</div>
+<div class="progress-bar">
+<div class="progress-bar-inner" style="width: 85%"></div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Preferencias</h2>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-4 bg-card-dark px-4 min-h-[72px] justify-between rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-white text-2xl">language</span>
+<p class="text-white text-base font-normal leading-normal flex-1 truncate">Idioma</p>
+</div>
+<div class="shrink-0"><button class="text-white/80 text-base font-medium leading-normal hover:text-white transition-colors">Español</button></div>
+</div>
+<div class="flex items-center gap-4 bg-card-dark px-4 min-h-[72px] justify-between rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-white text-2xl">notifications</span>
+<div class="flex flex-col">
+<p class="text-white text-base font-normal leading-normal">Notificaciones</p>
+</div>
+</div>
+<div class="shrink-0">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-600 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-card-dark px-4 min-h-[72px] justify-between rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-white text-2xl">dark_mode</span>
+<p class="text-white text-base font-normal leading-normal flex-1 truncate">Dark Mode</p>
+</div>
+<div class="shrink-0">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-600 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Gestión de claves y seguridad</h2>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-4 bg-card-dark px-4 min-h-[72px] justify-between rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-white text-2xl">key</span>
+<p class="text-white text-base font-normal leading-normal flex-1 truncate">Exportar Clave Privada</p>
+</div>
+<div class="shrink-0"><button class="text-primary text-base font-medium leading-normal hover:text-white transition-colors">Exportar</button></div>
+</div>
+<div class="flex items-center gap-4 bg-card-dark px-4 min-h-[72px] justify-between rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-white text-2xl">lock_reset</span>
+<p class="text-white text-base font-normal leading-normal flex-1 truncate">Cambiar Contraseña</p>
+</div>
+<div class="shrink-0"><button class="text-primary text-base font-medium leading-normal hover:text-white transition-colors">Cambiar</button></div>
+</div>
+<div class="flex items-center gap-4 bg-card-dark px-4 min-h-[72px] justify-between rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-white text-2xl">verified_user</span>
+<div class="flex flex-col">
+<p class="text-white text-base font-normal leading-normal">Autenticación de dos factores</p>
+</div>
+</div>
+<div class="shrink-0">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-600 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-card-dark px-4 min-h-[72px] justify-between rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-white text-2xl">devices</span>
+<p class="text-white text-base font-normal leading-normal flex-1 truncate">Gestionar Dispositivos Conectados</p>
+</div>
+<div class="shrink-0"><button class="text-primary text-base font-medium leading-normal hover:text-white transition-colors">Ver</button></div>
+</div>
+</div>
+</div>
+<div class="mt-8 mb-8">
+<button class="w-full bg-card-dark text-red-500 font-bold py-4 px-4 rounded-lg hover:bg-red-500 hover:text-white transition-colors duration-300">
+                Cerrar Sesión
+              </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>
