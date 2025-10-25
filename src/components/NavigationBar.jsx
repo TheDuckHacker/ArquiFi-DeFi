@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import WalletConnect from './WalletConnect';
+import StacksAuth from './StacksAuth';
 import ArquiFiLogo from './ArquiFiLogo';
 
 const NavigationBar = () => {
@@ -12,8 +12,8 @@ const NavigationBar = () => {
   // Verificar estado de wallet
   useEffect(() => {
     const checkWalletStatus = () => {
-      const existingSession = localStorage.getItem('arquiFi_session');
-      setIsWalletConnected(!!existingSession);
+      const savedSession = localStorage.getItem('arquiFi_stacks_session');
+      setIsWalletConnected(!!savedSession);
     };
 
     checkWalletStatus();
@@ -105,8 +105,8 @@ const NavigationBar = () => {
             <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-red-500 to-pink-500 rounded-full animate-pulse shadow-lg"></div>
           </button>
 
-                  {/* Wallet Connect */}
-                  <WalletConnect />
+                  {/* Stacks Authentication */}
+                  <StacksAuth />
 
           {/* Perfil - Solo visible si hay wallet conectada */}
           {isWalletConnected && (

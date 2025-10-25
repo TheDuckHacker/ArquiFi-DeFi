@@ -1,69 +1,95 @@
-import { StacksTestnet, StacksMainnet } from '@stacks/network';
+import { 
+  AccountsApi, 
+  TransactionsApi, 
+  SmartContractsApi,
+  Configuration 
+} from '@stacks/blockchain-api-client';
+import { StacksTestnet } from '@stacks/network';
 
-const API_URL = 'https://stacks-node-api.testnet.stacks.co'; // Testnet
-// const API_URL = 'https://stacks-node-api.stacks.co'; // Mainnet
+// Configuración de red directa
+const network = new StacksTestnet();
 
-export class StacksAPI {
-  static async getAccountInfo(address) {
+// Configuración de la API
+const apiConfig = new Configuration({
+  baseUrl: network.coreApiUrl,
+});
+
+// APIs disponibles
+export const accountsApi = new AccountsApi(apiConfig);
+export const transactionsApi = new TransactionsApi(apiConfig);
+export const smartContractsApi = new SmartContractsApi(apiConfig);
+
+// Funciones de utilidad
+export const StacksAPI = {
+  // Obtener información de cuenta
+  async getAccountInfo(stxAddress) {
     try {
-      const response = await fetch(`${API_URL}/extended/v1/address/${address}`);
-      const data = await response.json();
-      return data;
+      const account = await accountsApi.getAccountInfo({ principal: stxAddress });
+      return account;
     } catch (error) {
       console.error('Error fetching account info:', error);
       return null;
     }
-  }
+  },
 
-  static async getAccountBalance(address) {
+  // Obtener balance de cuenta
+  async getAccountBalance(stxAddress) {
     try {
-      const response = await fetch(`${API_URL}/extended/v1/address/${address}/stx`);
-      const data = await response.json();
-      return data;
+      const balance = await accountsApi.getAccountBalance({ principal: stxAddress });
+      return balance;
     } catch (error) {
-      console.error('Error fetching balance:', error);
+      console.error('Error fetching account balance:', error);
       return null;
     }
-  }
+  },
 
-  static async getTransactions(address, limit = 10) {
+  // Obtener transacciones de cuenta
+  async getAccountTransactions(stxAddress, limit = 10) {
     try {
-      const response = await fetch(`${API_URL}/extended/v1/address/${address}/transactions?limit=${limit}`);
-      const data = await response.json();
-      return data.results || [];
+      const transactions = await accountsApi.getAccountTransactions({
+        principal: stxAddress,
+        limit: limit,
+      });
+      return transactions.results || [];
     } catch (error) {
-      console.error('Error fetching transactions:', error);
+      console.error('Error fetching account transactions:', error);
       return [];
     }
-  }
+  },
 
-  static async getNFTs(address) {
-    try {
-      const response = await fetch(`${API_URL}/extended/v1/tokens/nft/holdings?principal=${address}`);
-      const data = await response.json();
-      return data.results || [];
-    } catch (error) {
-      console.error('Error fetching NFTs:', error);
-      return [];
-    }
-  }
+  // Formatear cantidad STX
+  formatSTXAmount(amountInUStx) {
+    if (!amountInUStx) return '0.000000';
+    const stx = Number(amountInUStx) / 1000000;
+    return stx.toFixed(6);
+  },
 
-  static async getTokenHoldings(address) {
-    try {
-      const response = await fetch(`${API_URL}/extended/v1/address/${address}/balances`);
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error('Error fetching token holdings:', error);
-      return null;
-    }
-  }
+  // Formatear dirección
+  formatAddress(address) {
+    if (!address) return '';
+    return `${address.slice(0, 6)}...${address.slice(-6)}`;
+  },
 
-  static formatSTXAmount(microStacks) {
-    return (microStacks / 1000000).toFixed(6);
+  // Obtener NFTs (simulado por ahora)
+  async getNFTs(stxAddress) {
+    // Simulación de NFTs - en producción usarías la API real
+    return [
+      { 
+        id: 1, 
+        name: 'ArquiFi DeFi NFT #1', 
+        imageUrl: 'https://via.placeholder.com/150/0099ff/FFFFFF?text=DeFi+NFT+1',
+        contract: 'SP000000000000000000002Q6VF78.arquifi-nft',
+        tokenId: '1'
+      },
+      { 
+        id: 2, 
+        name: 'ArquiFi Governance NFT #2', 
+        imageUrl: 'https://via.placeholder.com/150/0066cc/FFFFFF?text=Gov+NFT+2',
+        contract: 'SP000000000000000000002Q6VF78.arquifi-nft',
+        tokenId: '2'
+      },
+    ];
   }
+};
 
-  static formatAddress(address) {
-    return `${address.slice(0, 4)}...${address.slice(-4)}`;
-  }
-}
+export default StacksAPI;

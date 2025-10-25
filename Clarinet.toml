@@ -1,0 +1,94 @@
+{
+  "requirements": {
+    "clarinet": ">=1.0.0"
+  },
+  "project": {
+    "name": "arquifi-defi",
+    "authors": ["ArquiFi Team"],
+    "description": "ArquiFi DeFi Platform Smart Contracts",
+    "license": "MIT",
+    "readme": "README.md"
+  },
+  "contracts": {
+    "arquifi-defi": {
+      "path": "./contracts/arquifi-defi.clar",
+      "depends_on": []
+    }
+  },
+  "networks": {
+    "simnet": {
+      "name": "Simnet",
+      "stacks_node_rpc_address": "http://localhost:20443",
+      "stacks_node_p2p_address": "localhost:20444",
+      "bitcoin_node_p2p_address": "localhost:18444",
+      "bitcoin_node_rpc_address": "http://localhost:18443",
+      "bitcoin_node_rpc_username": "devnet",
+      "bitcoin_node_rpc_password": "devnet",
+      "mnemonic": "twice kind fence tip hidden tilt action fragile skin nothing glory cousin green tomorrow spring wrist shed math olympic multiply hip blue scout claw",
+      "accounts": {
+        "wallet_1": {
+          "mnemonic": "twice kind fence tip hidden tilt action fragile skin nothing glory cousin green tomorrow spring wrist shed math olympic multiply hip blue scout claw",
+          "balance": 10000000000000
+        },
+        "wallet_2": {
+          "mnemonic": "sell invite acquire kitten cable drastic sergeant vivid section wasp fiber utility man ability twist cannot afford any other issue kangaroo velvet",
+          "balance": 10000000000000
+        },
+        "wallet_3": {
+          "mnemonic": "sell invite acquire kitten cable drastic sergeant vivid section wasp fiber utility man ability twist cannot afford any other issue kangaroo velvet",
+          "balance": 10000000000000
+        },
+        "wallet_4": {
+          "mnemonic": "sell invite acquire kitten cable drastic sergeant vivid section wasp fiber utility man ability twist cannot afford any other issue kangaroo velvet",
+          "balance": 10000000000000
+        },
+        "wallet_5": {
+          "mnemonic": "sell invite acquire kitten cable drastic sergeant vivid section wasp fiber utility man ability twist cannot afford any other issue kangaroo velvet",
+          "balance": 10000000000000
+        },
+        "wallet_6": {
+          "mnemonic": "sell invite acquire kitten cable drastic sergeant vivid section wasp fiber utility man ability twist cannot afford any other issue kangaroo velvet",
+          "balance": 10000000000000
+        },
+        "wallet_7": {
+          "mnemonic": "sell invite acquire kitten cable drastic sergeant vivid section wasp fiber utility man ability twist cannot afford any other issue kangaroo velvet",
+          "balance": 10000000000000
+        },
+        "wallet_8": {
+          "mnemonic": "sell invite acquire kitten cable drastic sergeant vivid section wasp fiber utility man ability twist cannot afford any other issue kangaroo velvet",
+          "balance": 10000000000000
+        },
+        "wallet_9": {
+          "mnemonic": "sell invite acquire kitten cable drastic sergeant vivid section wasp fiber utility man ability twist cannot afford any other issue kangaroo velvet",
+          "balance": 10000000000000
+        },
+        "wallet_10": {
+          "mnemonic": "sell invite acquire kitten cable drastic sergeant vivid section wasp fiber utility man ability twist cannot afford any other issue kangaroo velvet",
+          "balance": 10000000000000
+        }
+      }
+    },
+    "testnet": {
+      "name": "Testnet",
+      "stacks_node_rpc_address": "https://stacks-node-api.testnet.stacks.co",
+      "bitcoin_node_rpc_address": "https://mempool.space/testnet/api",
+      "accounts": {
+        "deployer": {
+          "mnemonic": "twice kind fence tip hidden tilt action fragile skin nothing glory cousin green tomorrow spring wrist shed math olympic multiply hip blue scout claw",
+          "balance": 10000000000000
+        }
+      }
+    }
+  },
+  "migrations": {
+    "20240101000000-00": {
+      "name": "Deploy ArquiFi DeFi Contract",
+      "contracts": [
+        {
+          "contract": "arquifi-defi",
+          "deployer": "deployer"
+        }
+      ]
+    }
+  }
+}

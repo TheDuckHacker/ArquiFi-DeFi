@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavigationBar from './components/NavigationBar';
+import StacksDashboard from './pages/StacksDashboard';
 import Dashboard from './pages/Dashboard';
 import Social from './pages/Social';
 import Chat from './pages/Chat';
@@ -18,7 +19,7 @@ function App() {
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
         <NavigationBar />
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<StacksDashboard />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/social" element={<Social />} />
           <Route path="/chat" element={<Chat />} />
