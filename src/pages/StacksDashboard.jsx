@@ -26,24 +26,28 @@ const StacksDashboard = () => {
           
           // Obtener datos reales de Stacks
           if (sessionData.userData?.profile?.stxAddress) {
-            const stxAddress = sessionData.userData.profile.stxAddress;
+            const stxAddressObj = sessionData.userData.profile.stxAddress;
+            // Extraer la dirección correcta del objeto
+            const stxAddress = typeof stxAddressObj === 'object' ? 
+              (stxAddressObj.testnet || stxAddressObj.mainnet || Object.values(stxAddressObj)[0]) : 
+              stxAddressObj;
             console.log('✅ Usuario conectado:', stxAddress);
             
             try {
               // Obtener balance real de STX
-              const balanceResponse = await fetch(`https://stacks-node-api.testnet.stacks.co/extended/v1/address/${stxAddress}/stx`);
+              const balanceResponse = await fetch(`/api/stacks/extended/v1/address/${stxAddress}/stx`);
               const balanceData = await balanceResponse.json();
               const realBalance = parseFloat(balanceData.balance) / 1000000;
               setStxBalance(realBalance);
               setPortfolioValue(realBalance);
               
               // Obtener transacciones reales
-              const txResponse = await fetch(`https://stacks-node-api.testnet.stacks.co/extended/v1/address/${stxAddress}/transactions?limit=10`);
+              const txResponse = await fetch(`/api/stacks/extended/v1/address/${stxAddress}/transactions?limit=10`);
               const txData = await txResponse.json();
               setTransactions(txData.results || []);
               
               // Obtener NFTs reales
-              const nftResponse = await fetch(`https://stacks-node-api.testnet.stacks.co/extended/v1/tokens/nft/holdings?principal=${stxAddress}&limit=10`);
+              const nftResponse = await fetch(`/api/stacks/extended/v1/tokens/nft/holdings?principal=${stxAddress}&limit=10`);
               const nftData = await nftResponse.json();
               setNfts(nftData.results || []);
               
@@ -142,7 +146,11 @@ const StacksDashboard = () => {
               <div>
                 <p className="text-white font-semibold">Dirección Real de tu Wallet</p>
                 <p className="text-gray-400 text-sm font-mono">
-                  {userData.userData.profile.stxAddress}
+                  {typeof userData.userData.profile.stxAddress === 'object' ? 
+                    (userData.userData.profile.stxAddress.testnet || 
+                     userData.userData.profile.stxAddress.mainnet || 
+                     Object.values(userData.userData.profile.stxAddress)[0]) : 
+                    userData.userData.profile.stxAddress}
                 </p>
                 <p className="text-green-400 text-xs mt-1">
                   ✅ Conectada a Stacks Testnet
