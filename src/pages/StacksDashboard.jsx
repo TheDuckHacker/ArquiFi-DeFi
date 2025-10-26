@@ -16,6 +16,37 @@ const StacksDashboard = () => {
   const [showNotification, setShowNotification] = useState(false);
   const [notificationMessage, setNotificationMessage] = useState('');
 
+  // Función auxiliar para extraer la dirección de la wallet
+  const extractWalletAddress = (sessionData) => {
+    if (!sessionData) return null;
+    
+    // Buscar en múltiples ubicaciones posibles
+    const addressSources = [
+      sessionData.userData?.profile?.stxAddress,
+      sessionData.address,
+      sessionData.userData?.identity?.address,
+      sessionData.userData?.profile?.address
+    ];
+    
+    for (const source of addressSources) {
+      if (typeof source === 'string') {
+        return source;
+      } else if (typeof source === 'object' && source) {
+        // Buscar en propiedades del objeto
+        const objAddress = source.testnet || 
+                          source.mainnet || 
+                          source.address ||
+                          source.stxAddress ||
+                          Object.values(source)[0];
+        if (objAddress && typeof objAddress === 'string') {
+          return objAddress;
+        }
+      }
+    }
+    
+    return null;
+  };
+
   useEffect(() => {
     const loadUserData = async () => {
       try {
@@ -25,13 +56,10 @@ const StacksDashboard = () => {
           setUserData(sessionData);
           
           // Obtener datos reales de Stacks
-          if (sessionData.userData?.profile?.stxAddress) {
-            const stxAddressObj = sessionData.userData.profile.stxAddress;
-            // Extraer la dirección correcta del objeto
-            const stxAddress = typeof stxAddressObj === 'object' ? 
-              (stxAddressObj.testnet || stxAddressObj.mainnet || Object.values(stxAddressObj)[0]) : 
-              stxAddressObj;
+          const stxAddress = extractWalletAddress(sessionData);
+          if (stxAddress) {
             console.log('✅ Usuario conectado:', stxAddress);
+            console.log('🔍 Datos completos de sesión:', sessionData);
             
             try {
               // Obtener balance real de STX
@@ -134,7 +162,7 @@ const StacksDashboard = () => {
     <div className="min-h-screen bg-[#121012] text-white pt-20 p-6">
       <div className="max-w-7xl mx-auto">
         {/* Wallet Info - Real Address */}
-        {userData?.userData?.profile?.stxAddress && (
+        {extractWalletAddress(userData) && (
           <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#27323a] mb-6">
             <h2 className="text-xl font-bold text-white mb-4">Wallet Conectada</h2>
             <div className="flex items-center space-x-4">
@@ -146,11 +174,7 @@ const StacksDashboard = () => {
               <div>
                 <p className="text-white font-semibold">Dirección Real de tu Wallet</p>
                 <p className="text-gray-400 text-sm font-mono">
-                  {typeof userData.userData.profile.stxAddress === 'object' ? 
-                    (userData.userData.profile.stxAddress.testnet || 
-                     userData.userData.profile.stxAddress.mainnet || 
-                     Object.values(userData.userData.profile.stxAddress)[0]) : 
-                    userData.userData.profile.stxAddress}
+                  {extractWalletAddress(userData) || 'Dirección no disponible'}
                 </p>
                 <p className="text-green-400 text-xs mt-1">
                   ✅ Conectada a Stacks Testnet
