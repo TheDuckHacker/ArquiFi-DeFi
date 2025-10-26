@@ -3,8 +3,16 @@ export const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY || 'gsk_PcaZjRpDvM
 export const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions'
 
 // Debug: verificar si la API key se está cargando
-console.log('🔑 GROQ_API_KEY cargada:', GROQ_API_KEY !== 'demo-key' ? '✅ SÍ' : '❌ NO')
-console.log('🔑 API Key:', GROQ_API_KEY.substring(0, 10) + '...')
+console.log('🤖 ArquiBot - Configuración:')
+console.log('🔑 GROQ_API_KEY cargada:', GROQ_API_KEY ? '✅ SÍ' : '❌ NO')
+console.log('🔑 Variable de entorno VITE_GROQ_API_KEY:', import.meta.env.VITE_GROQ_API_KEY ? '✅ SÍ' : '❌ NO')
+if (GROQ_API_KEY) {
+  console.log('🔑 API Key:', GROQ_API_KEY.substring(0, 10) + '...')
+  console.log('🚀 ArquiBot funcionará con IA real (Groq)')
+} else {
+  console.log('⚠️ ArquiBot funcionará con respuestas predefinidas')
+  console.log('🔍 Debug - import.meta.env:', import.meta.env)
+}
 
 // Configuración del ArquiBot
 export const ARQUIBOT_CONFIG = {
@@ -113,7 +121,8 @@ CONTEXTO DEL USUARIO:
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('Error en Groq API:', response.status, errorText);
+      console.error('❌ Error en Groq API:', response.status, errorText);
+      console.error('🔑 API Key usada:', GROQ_API_KEY ? GROQ_API_KEY.substring(0, 10) + '...' : 'NO HAY API KEY');
       throw new Error(`Error en Groq API: ${response.status} - ${errorText}`)
     }
 

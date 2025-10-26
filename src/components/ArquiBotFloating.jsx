@@ -55,11 +55,14 @@ const ArquiBotFloating = () => {
     
     try {
       console.log('🤖 Intentando usar API de Groq...');
+      console.log('📝 Mensaje:', inputMessage);
+      console.log('👤 Contexto:', userContext);
       const botResponse = await sendMessageToArquiBot(inputMessage, userContext, messages);
-      console.log('✅ Respuesta de Groq recibida');
+      console.log('✅ Respuesta de Groq recibida:', botResponse);
       setMessages(prev => [...prev, { role: 'bot', content: botResponse }]);
     } catch (error) {
       console.error('❌ Error con ArquiBot:', error);
+      console.error('❌ Error completo:', error.message);
       console.log('🔄 Usando fallback...');
       const fallbackResponse = getBotResponse(inputMessage);
       setMessages(prev => [...prev, { role: 'bot', content: fallbackResponse }]);
