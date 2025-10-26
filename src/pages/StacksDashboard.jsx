@@ -47,6 +47,27 @@ const StacksDashboard = () => {
     return null;
   };
 
+  // Función auxiliar para extraer la dirección Bitcoin
+  const extractBitcoinAddress = (sessionData) => {
+    if (!sessionData) return null;
+    
+    // Buscar dirección Bitcoin en diferentes ubicaciones
+    const btcSources = [
+      sessionData.userData?.profile?.btcAddress,
+      sessionData.userData?.identity?.btcAddress,
+      sessionData.btcAddress,
+      sessionData.userData?.profile?.bitcoinAddress
+    ];
+    
+    for (const source of btcSources) {
+      if (typeof source === 'string' && source.startsWith('bc1')) {
+        return source;
+      }
+    }
+    
+    return null;
+  };
+
   useEffect(() => {
     const loadUserData = async () => {
       try {
@@ -165,20 +186,100 @@ const StacksDashboard = () => {
         {extractWalletAddress(userData) && (
           <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#27323a] mb-6">
             <h2 className="text-xl font-bold text-white mb-4">Wallet Conectada</h2>
-            <div className="flex items-center space-x-4">
+            <div className="flex items-start space-x-4">
               <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center">
                 <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M21 7h-3V6a3 3 0 0 0-3-3H5a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-1h3a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1zM5 4h10a1 1 0 0 1 1 1v1H5V5a1 1 0 0 1 1-1zm11 14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V8h12v10z"/>
                 </svg>
               </div>
-              <div>
-                <p className="text-white font-semibold">Dirección Real de tu Wallet</p>
-                <p className="text-gray-400 text-sm font-mono">
-                  {extractWalletAddress(userData) || 'Dirección no disponible'}
-                </p>
-                <p className="text-green-400 text-xs mt-1">
-                  ✅ Conectada a Stacks Testnet
-                </p>
+              <div className="flex-1">
+                <div className="flex items-center justify-between mb-2">
+                  <p className="text-white font-semibold">Leather Wallet</p>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                    <span className="text-green-400 text-xs">Conectada</span>
+                  </div>
+                </div>
+                
+                {/* Dirección Stacks */}
+                <div className="mb-3">
+                  <div className="flex items-center justify-between mb-1">
+                    <p className="text-gray-300 text-sm">Dirección Stacks:</p>
+                    <button
+                      onClick={() => {
+                        navigator.clipboard.writeText(extractWalletAddress(userData));
+                        setShowNotification(true);
+                        setNotificationMessage('📋 Dirección Stacks copiada al portapapeles');
+                        setTimeout(() => setShowNotification(false), 3000);
+                      }}
+                      className="text-[#0099ff] hover:text-[#00ff88] text-xs transition-colors"
+                    >
+                      📋 Copiar
+                    </button>
+                  </div>
+                  <p className="text-gray-400 text-sm font-mono bg-[#27323a] px-3 py-2 rounded-lg">
+                    {extractWalletAddress(userData) || 'Dirección no disponible'}
+                  </p>
+                </div>
+
+                {/* Dirección Bitcoin (si está disponible) */}
+                {extractBitcoinAddress(userData) && (
+                  <div className="mb-3">
+                    <div className="flex items-center justify-between mb-1">
+                      <p className="text-gray-300 text-sm">Dirección Bitcoin:</p>
+                      <button
+                        onClick={() => {
+                          navigator.clipboard.writeText(extractBitcoinAddress(userData));
+                          setShowNotification(true);
+                          setNotificationMessage('📋 Dirección Bitcoin copiada al portapapeles');
+                          setTimeout(() => setShowNotification(false), 3000);
+                        }}
+                        className="text-[#0099ff] hover:text-[#00ff88] text-xs transition-colors"
+                      >
+                        📋 Copiar
+                      </button>
+                    </div>
+                    <p className="text-gray-400 text-sm font-mono bg-[#27323a] px-3 py-2 rounded-lg">
+                      {extractBitcoinAddress(userData)}
+                    </p>
+                  </div>
+                )}
+
+                {/* Balance STX */}
+                <div className="mb-3">
+                  <p className="text-gray-300 text-sm mb-1">Balance STX:</p>
+                  <p className="text-white text-lg font-bold">
+                    {stxBalance.toFixed(6)} STX
+                  </p>
+                </div>
+
+                {/* Información adicional */}
+                <div className="grid grid-cols-2 gap-4 text-xs">
+                  <div>
+                    <p className="text-gray-400">Red:</p>
+                    <p className="text-green-400">Stacks Testnet</p>
+                  </div>
+                  <div>
+                    <p className="text-gray-400">Estado:</p>
+                    <p className="text-green-400">Activa</p>
+                  </div>
+                </div>
+
+                {/* Permisos otorgados */}
+                <div className="mt-4 pt-3 border-t border-[#27323a]">
+                  <p className="text-gray-300 text-sm mb-2">Permisos otorgados:</p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="bg-green-500/20 text-green-400 px-2 py-1 rounded text-xs">
+                      ✅ Ver balances
+                    </span>
+                    <span className="bg-green-500/20 text-green-400 px-2 py-1 rounded text-xs">
+                      ✅ Aprobar transacciones
+                    </span>
+                    <span className="bg-green-500/20 text-green-400 px-2 py-1 rounded text-xs">
+                      ✅ Firmar mensajes
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
