@@ -23,9 +23,13 @@ function App() {
   useEffect(() => {
     // Verificar si hay sesión guardada
     const checkWalletConnection = () => {
-      const savedSession = localStorage.getItem('arquiFi_stacks_session');
-      if (savedSession) {
-        setIsWalletConnected(true);
+      try {
+        const savedSession = localStorage.getItem('arquiFi_stacks_session');
+        if (savedSession) {
+          setIsWalletConnected(true);
+        }
+      } catch (error) {
+        console.log('localStorage not available');
       }
       setIsLoading(false);
     };
@@ -91,6 +95,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/bot" element={<ArquiBot />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="*" element={<StacksDashboard />} />
         </Routes>
         {/* ArquiBot flotante en todas las páginas excepto configuraciones */}
         <ArquiBotFloating />
