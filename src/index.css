@@ -6,17 +6,80 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Animaciones personalizadas */
-@keyframes slide-in {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
+/* Scrollbar invisible solo para ArquiBot */
+.arquibot-chat {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.arquibot-chat::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
+/* Animaciones del Logo ArquiFi - Estilo Elegante */
+.logo-animated {
+  animation: logoPulse 2s ease-in-out infinite;
+}
+
+.logo-svg {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 0 8px rgba(0, 153, 255, 0.3));
+}
+
+.logo-svg:hover {
+  transform: scale(1.15) rotate(5deg);
+  filter: drop-shadow(0 0 15px rgba(0, 153, 255, 0.6));
+}
+
+.logo-waves {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(0, 153, 255, 0.4);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: logoRipple 3s ease-out infinite;
+}
+
+@keyframes logoPulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 8px rgba(0, 153, 255, 0.3));
   }
-  to {
-    transform: translateX(0);
-    opacity: 1;
+  50% {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 12px rgba(0, 153, 255, 0.5));
   }
 }
+
+    @keyframes logoRipple {
+      0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1.8);
+        opacity: 0;
+      }
+    }
+
+    /* Animación para notificaciones */
+    @keyframes slide-in {
+      0% {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .animate-slide-in {
+      animation: slide-in 0.3s ease-out;
+    }
+
 
 @keyframes pulse-glow {
   0%, 100% {

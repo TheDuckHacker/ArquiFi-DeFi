@@ -2,11 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import StacksAuth from './StacksAuth';
 import ArquiFiLogo from './ArquiFiLogo';
+import { useNotifications } from '../hooks/useNotifications';
 
 const NavigationBar = ({ onLogout }) => {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isWalletConnected, setIsWalletConnected] = useState(false);
+  const { notifications } = useNotifications();
   const menuRef = useRef(null);
 
   // Verificar estado de wallet
@@ -60,7 +62,7 @@ const NavigationBar = ({ onLogout }) => {
   }, [isMenuOpen]);
   
   return (
-    <nav className="bg-[#121012] border-b border-[#27323a] sticky top-0 z-10">
+    <nav className="bg-[#121012] border-b border-[#27323a] fixed top-0 left-0 right-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           
@@ -68,7 +70,7 @@ const NavigationBar = ({ onLogout }) => {
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-3 group cursor-pointer">
               <div className="w-8 h-8 text-[#0099ff] group-hover:text-white transition-colors duration-300">
-                <ArquiFiLogo size={32} color="currentColor" />
+                <ArquiFiLogo size={32} color="currentColor" animated={true} />
               </div>
               <h1 className="text-xl font-bold text-white leading-tight tracking-[-0.015em]">
                 ArquiFi
@@ -192,6 +194,15 @@ const NavigationBar = ({ onLogout }) => {
             <MobileNavLink icon="gavel" text="Gobernanza" to="/governance" active={location.pathname === '/governance'} />
             <MobileNavLink icon="swap_horiz" text="P2P" to="/p2p" active={location.pathname === '/p2p'} />
             <MobileNavLink icon="chat" text="Chat" to="/chat" active={location.pathname === '/chat'} />
+            <div className="relative">
+              <MobileNavLink icon="person_add" text="Solicitudes de Amistad" to="/friend-requests" active={location.pathname === '/friend-requests'} />
+              {/* Contador de solicitudes pendientes */}
+              {notifications.friendRequests > 0 && (
+                <div className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold animate-pulse">
+                  {notifications.friendRequests}
+                </div>
+              )}
+            </div>
             <MobileNavLink icon="settings" text="Configuración" to="/settings" active={location.pathname === '/settings'} />
           </div>
         </div>
@@ -283,9 +294,14 @@ const Icon = ({ name, active = false }) => {
     settings: (
       <svg className={iconClass} fill="currentColor" viewBox="0 0 24 24">
         <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
-      </svg>
-    )
-  };
+        </svg>
+      ),
+      person_add: (
+        <svg className={iconClass} fill="currentColor" viewBox="0 0 24 24">
+          <path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+        </svg>
+      )
+    };
 
   return icons[name] || null;
 };

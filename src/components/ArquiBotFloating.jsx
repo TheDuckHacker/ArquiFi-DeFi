@@ -1,18 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { sendMessageToArquiBot } from '../config/groq';
+import { sendMessageToArquiBot, getPageHelp, getAPStrategies, explainConcept } from '../config/groq';
 
 const ArquiBotFloating = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     {
       role: 'bot',
-      content: '¡Hola! Soy ArquiBot, tu asistente IA de ArquiFi creado por ArquiSoft. Te ayudo con las páginas, juegos, transferencias y todo lo relacionado con ArquiFi. ¿En qué puedo ayudarte hoy?'
+      content: '¡Hola! Soy ArquiBot 🤖 ¿En qué puedo ayudarte?'
     }
   ]);
   const [inputMessage, setInputMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const location = useLocation();
+  const messagesEndRef = useRef(null);
+
+  // Auto-scroll al final cuando hay nuevos mensajes
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, isTyping]);
 
   // No mostrar en la página de configuraciones
   if (location.pathname === '/settings') {
@@ -35,28 +45,27 @@ const ArquiBotFloating = () => {
       ap: 1000,
       rp: 850,
       level: 'Intermedio',
-      currentPage: location.pathname
+      currentPage: location.pathname,
+      walletConnected: true,
+      stxBalance: '1.5'
     };
 
     // Simular escritura del bot
     setIsTyping(true);
     
-    // Por ahora usar solo respuestas predefinidas para evitar problemas con la API
-    setTimeout(() => {
-      const botResponse = getBotResponse(inputMessage);
+    try {
+      console.log('🤖 Intentando usar API de Groq...');
+      const botResponse = await sendMessageToArquiBot(inputMessage, userContext, messages);
+      console.log('✅ Respuesta de Groq recibida');
       setMessages(prev => [...prev, { role: 'bot', content: botResponse }]);
+    } catch (error) {
+      console.error('❌ Error con ArquiBot:', error);
+      console.log('🔄 Usando fallback...');
+      const fallbackResponse = getBotResponse(inputMessage);
+      setMessages(prev => [...prev, { role: 'bot', content: fallbackResponse }]);
+    } finally {
       setIsTyping(false);
-    }, 1000 + Math.random() * 1000); // Simular tiempo de respuesta variable
-    
-    // TODO: Re-activar API de Groq cuando esté funcionando
-    // try {
-    //   const botResponse = await sendMessageToArquiBot(inputMessage, userContext);
-    //   setMessages(prev => [...prev, { role: 'bot', content: botResponse }]);
-    // } catch (error) {
-    //   console.error('Error con ArquiBot:', error);
-    //   const fallbackResponse = getBotResponse(inputMessage);
-    //   setMessages(prev => [...prev, { role: 'bot', content: fallbackResponse }]);
-    // }
+    }
 
     setInputMessage('');
   };
@@ -65,71 +74,61 @@ const ArquiBotFloating = () => {
     setMessages([
       {
         role: 'bot',
-        content: '¡Chat borrado! Soy ArquiBot, tu asistente IA de ArquiFi creado por ArquiSoft. ¿En qué puedo ayudarte ahora?'
+        content: '¡Chat borrado! 🤖 ¿En qué más puedo ayudarte?'
       }
     ]);
+  };
+
+  const handleQuickAction = async (message) => {
+    setInputMessage(message);
+    const fakeEvent = { preventDefault: () => {} };
+    await handleSendMessage(fakeEvent);
   };
 
   const getBotResponse = (message) => {
     const lowerMessage = message.toLowerCase();
     
     if (lowerMessage.includes('hola') || lowerMessage.includes('hi')) {
-      return '¡Hola! Soy ArquiBot, tu asistente IA de ArquiFi creado por ArquiSoft. Te ayudo con las páginas, juegos, transferencias y todo lo relacionado con ArquiFi. ¿En qué puedo ayudarte?';
-    }
-    
-    if (lowerMessage.includes('como estas') || lowerMessage.includes('cómo estás')) {
-      return '¡Muy bien, gracias! Estoy aquí para ayudarte con todo lo relacionado con ArquiFi. ¿Hay algo específico en lo que pueda asistirte?';
-    }
-    
-    if (lowerMessage.includes('quien te creo') || lowerMessage.includes('quien te creó')) {
-      return 'Fui creado por ArquiSoft, el grupo desarrollador de ArquiFi. ArquiSoft es responsable de toda la plataforma ArquiFi.';
-    }
-    
-    if (lowerMessage.includes('arquifi') && (lowerMessage.includes('creado') || lowerMessage.includes('creó'))) {
-      return 'ArquiFi fue creado por el grupo ArquiSoft. Es una plataforma DeFi completa con Arquipuntos, juegos, educación y más.';
+      return '¡Hola! Soy ArquiBot 🤖 Puedo ayudarte con ArquiFi, juegos, transferencias y más. ¿Qué necesitas?';
     }
     
     if (lowerMessage.includes('arquipuntos') || lowerMessage.includes('ap')) {
-      return 'Los Arquipuntos (AP) son la moneda interna de ArquiFi. Se ganan jugando, completando misiones y participando. Se queman al usarse para votaciones o acceder a contenido premium.';
+      return 'Los AP son la moneda de ArquiFi. Los ganas jugando, completando misiones y participando. Se queman al votar en el DAO.';
     }
     
     if (lowerMessage.includes('stacking') || lowerMessage.includes('stx')) {
-      return 'El stacking es el proceso de bloquear STX para ganar recompensas. En ArquiFi puedes hacer stacking directamente desde la billetera. ¡Es una excelente forma de ganar AP!';
+      return 'El staking te permite bloquear STX para ganar recompensas. Hazlo desde la billetera y gana AP. 🎁';
     }
     
     if (lowerMessage.includes('dao') || lowerMessage.includes('votar')) {
-      return 'El DAO de ArquiFi permite votar en propuestas importantes. Cada voto quema AP, validando tu compromiso. Las propuestas pueden cambiar el futuro de la plataforma.';
-    }
-    
-    if (lowerMessage.includes('misiones') || lowerMessage.includes('mision')) {
-      return 'Las misiones son actividades que te permiten ganar AP y RP. Hay misiones gratuitas, de pago y premium. ¡Completa misiones para subir de nivel!';
-    }
-    
-    if (lowerMessage.includes('transferencia') || lowerMessage.includes('transferir')) {
-      return 'Para hacer transferencias en ArquiFi:\n1. Ve a la sección Wallet\n2. Selecciona el activo que quieres enviar\n3. Ingresa la dirección de destino\n4. Confirma la transacción\nSi tienes problemas, verifica que tengas suficiente balance y que la dirección sea correcta.';
+      return 'El DAO permite votar en propuestas importantes. Cada voto quema AP. ¡Tu voz cuenta! 🗳️';
     }
     
     if (lowerMessage.includes('juegos')) {
-      return 'En la sección Juegos puedes:\n• Jugar minijuegos para ganar AP\n• Competir en leaderboards\n• Completar desafíos\n• Ganar reputación\n¡Los juegos son una forma divertida de ganar Arquipuntos!';
+      return 'En Juegos puedes: jugar minijuegos, competir en rankings y ganar AP. ¡Diviértete ganando! 🎮';
     }
     
     if (lowerMessage.includes('educacion') || lowerMessage.includes('educación')) {
-      return 'La Educación Layer de ArquiFi incluye:\n• Misiones de aprendizaje que otorgan AP\n• Tutoriales sobre DeFi y Web3\n• Cursos interactivos\n• Certificaciones\n¡Puedes participar y ganar reputación sin invertir un solo dólar!';
+      return 'La Educación Layer tiene misiones de aprendizaje, tutoriales y cursos. ¡Aprende y gana AP sin invertir! 📚';
     }
     
     if (lowerMessage.includes('ayuda') || lowerMessage.includes('help')) {
-      return 'Puedo ayudarte con:\n• Explicar las páginas de ArquiFi\n• Guiarte en juegos y misiones\n• Ayudar con transferencias\n• Información sobre Arquipuntos\n• Conceptos de DeFi y Web3\n• Resolver problemas técnicos\n\n¿Sobre qué tema específico necesitas ayuda?';
+      return 'Puedo ayudarte con: páginas, juegos, transferencias, AP, DeFi y Web3. ¿Qué tema te interesa?';
     }
     
-    if (lowerMessage.includes('que haces') || lowerMessage.includes('qué haces')) {
-      return 'Soy ArquiBot, tu asistente IA en ArquiFi. Mi función es ayudarte a:\n• Navegar por la plataforma\n• Entender los juegos y misiones\n• Realizar transferencias\n• Aprender sobre DeFi y Web3\n• Resolver dudas sobre ArquiFi\n\n¿En qué puedo ayudarte específicamente?';
+    if (lowerMessage.includes('transferencia') || lowerMessage.includes('transferir')) {
+      return 'Ve a Wallet → Selecciona activo → Ingresa dirección → Confirma. Verifica tu balance antes de enviar. 💸';
+    }
+    
+    if (lowerMessage.includes('quien te creo') || lowerMessage.includes('quien te creó')) {
+      return 'Fui creado por ArquiSoft, el equipo detrás de ArquiFi. 🚀';
     }
     
     if (lowerMessage.includes('gracias') || lowerMessage.includes('thanks')) {
-      return '¡De nada! Es un placer ayudarte. Si tienes más preguntas sobre ArquiFi, no dudes en preguntarme.';
+      return '¡De nada! 😊 ¿Hay algo más en lo que pueda ayudarte?';
     }
     
-    return 'Interesante pregunta. En ArquiFi, puedes ganar AP completando misiones, participar en el DAO para votar propuestas, y hacer stacking de STX. ¿Hay algo específico sobre las páginas, juegos o transferencias que te gustaría saber?';
+    return 'Puedes ganar AP con misiones, votar en el DAO y hacer staking. ¿Necesitas ayuda con algo específico?';
   };
 
   return (
@@ -140,23 +139,28 @@ const ArquiBotFloating = () => {
         className="fixed bottom-6 right-6 w-16 h-16 bg-[#0099ff] rounded-full shadow-lg hover:scale-110 transition-transform duration-300 flex items-center justify-center z-40"
         title="ArquiBot - Asistente IA"
       >
+        {/* Icono del robot */}
         <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+          <path d="M12,2C13.1,2 14,2.9 14,4C14,5.1 13.1,6 12,6C10.9,6 10,5.1 10,4C10,2.9 10.9,2 12,2M21,9V7L15,1H5C3.9,1 3,1.9 3,3V21C3,22.1 3.9,23 5,23H19C20.1,23 21,22.1 21,21V9M19,9H14V4H5V21H19V9Z"/>
         </svg>
       </button>
 
       {/* Ventana de chat */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 w-96 h-96 bg-[#1a1a1a] rounded-lg shadow-xl border border-[#27323a] z-50 flex flex-col">
+        <div className="fixed bottom-6 right-6 w-96 bg-[#1a1a1a] rounded-lg shadow-xl border border-[#27323a] z-50 flex flex-col" style={{height: '500px', maxHeight: '500px'}}>
           {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b border-[#27323a]">
+          <div className="flex items-center justify-between p-4 border-b border-[#27323a] flex-shrink-0">
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-[#0099ff] rounded-full flex items-center justify-center">
                 <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                  <path d="M12,2C13.1,2 14,2.9 14,4C14,5.1 13.1,6 12,6C10.9,6 10,5.1 10,4C10,2.9 10.9,2 12,2M21,9V7L15,1H5C3.9,1 3,1.9 3,3V21C3,22.1 3.9,23 5,23H19C20.1,23 21,22.1 21,21V9M19,9H14V4H5V21H19V9Z"/>
                 </svg>
               </div>
               <h3 className="text-white font-semibold">ArquiBot</h3>
+              <div className="flex items-center space-x-1">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span className="text-xs text-green-400">IA Activa</span>
+              </div>
             </div>
             <div className="flex items-center space-x-2">
               {/* Botón de borrar chat */}
@@ -184,7 +188,7 @@ const ArquiBotFloating = () => {
           </div>
 
           {/* Mensajes */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4">
+          <div className="overflow-y-auto p-4 space-y-4 arquibot-chat" style={{height: 'calc(500px - 200px)', minHeight: '300px'}}>
             {messages.map((message, index) => (
               <div
                 key={index}
@@ -212,15 +216,48 @@ const ArquiBotFloating = () => {
                       <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
                       <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
                     </div>
-                    <span className="text-sm text-gray-400">ArquiBot está escribiendo...</span>
+                    <span className="text-sm text-gray-400">Escribiendo...</span>
                   </div>
                 </div>
               </div>
             )}
+            
+            {/* Referencia para auto-scroll */}
+            <div ref={messagesEndRef} />
+          </div>
+
+          {/* Botones de acción rápida */}
+          <div className="px-4 py-2 border-t border-[#27323a] flex-shrink-0">
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => handleQuickAction('¿Qué puedo hacer aquí?')}
+                className="text-xs bg-[#27323a] text-gray-300 px-2 py-1 rounded hover:bg-[#0099ff] hover:text-white transition-colors"
+              >
+                Ayuda
+              </button>
+              <button
+                onClick={() => handleQuickAction('¿Cómo ganar más AP?')}
+                className="text-xs bg-[#27323a] text-gray-300 px-2 py-1 rounded hover:bg-[#0099ff] hover:text-white transition-colors"
+              >
+                Ganar AP
+              </button>
+              <button
+                onClick={() => handleQuickAction('¿Qué es el staking?')}
+                className="text-xs bg-[#27323a] text-gray-300 px-2 py-1 rounded hover:bg-[#0099ff] hover:text-white transition-colors"
+              >
+                Staking
+              </button>
+              <button
+                onClick={() => handleQuickAction('¿Cómo funciona el DAO?')}
+                className="text-xs bg-[#27323a] text-gray-300 px-2 py-1 rounded hover:bg-[#0099ff] hover:text-white transition-colors"
+              >
+                DAO
+              </button>
+            </div>
           </div>
 
           {/* Input */}
-          <form onSubmit={handleSendMessage} className="p-4 border-t border-[#27323a]">
+          <form onSubmit={handleSendMessage} className="p-4 border-t border-[#27323a] flex-shrink-0">
             <div className="flex space-x-2">
               <input
                 type="text"

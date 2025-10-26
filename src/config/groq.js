@@ -1,33 +1,101 @@
 // Configuración de GroqCloud API para ArquiBot
-export const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY || 'demo-key'
+export const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY || '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'
 export const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions'
+
+// Debug: verificar si la API key se está cargando
+console.log('🔑 GROQ_API_KEY cargada:', GROQ_API_KEY !== 'demo-key' ? '✅ SÍ' : '❌ NO')
+console.log('🔑 API Key:', GROQ_API_KEY.substring(0, 10) + '...')
 
 // Configuración del ArquiBot
 export const ARQUIBOT_CONFIG = {
-  model: 'llama3-8b-8192',
+  model: 'llama-3.1-8b-instant',
   temperature: 0.7,
-  max_tokens: 1000,
-  system_prompt: `Eres ArquiBot, el asistente IA de ArquiFi. Tu función es:
+  max_tokens: 1500,
+  system_prompt: `Eres ArquiBot, el asistente IA avanzado de ArquiFi creado por ArquiSoft. Eres un agente inteligente especializado en la plataforma ArquiFi.
 
-1. Ayudar a los usuarios a navegar la plataforma
-2. Explicar conceptos de DeFi, Web3 y Stacks
-3. Recomendar misiones y juegos según el perfil del usuario
-4. Guiar en el uso de Arquipuntos (AP) y Reputación (RP)
-5. Responder preguntas sobre la plataforma
+CONOCIMIENTO ESPECÍFICO DE ARQUIFI:
+- ArquiFi es una plataforma DeFi educativa construida sobre Stacks blockchain
+- Fue creada por el grupo ArquiSoft
+- Combina educación financiera, gamificación y contratos inteligentes
 
-Características de ArquiFi:
-- Arquipuntos (AP): Se ganan jugando, completando misiones, participando
-- Reputación (RP): Se acumula, no se quema, mejora el perfil
-- Sistema modular: Social, Gamificación, Governance, DeFi, Educación
-- Wallet Stacks para autenticación
-- Smart contracts en Clarity
+FUNCIONALIDADES PRINCIPALES:
+1. **Arquipuntos (AP)**: Token de utilidad interno que se gana jugando, completando misiones y participando
+2. **Reputación (RP)**: Sistema de reputación que se acumula y mejora el perfil del usuario
+3. **Staking DeFi**: Sistema de staking de STX con recompensas automáticas
+4. **NFT Marketplace**: Creación, listado y compra de NFTs educativos
+5. **Sistema de Juegos**: Minijuegos que otorgan AP y RP
+6. **Capa Educativa**: Misiones de aprendizaje sobre DeFi y Web3
+7. **Gobernanza DAO**: Votación en propuestas de la comunidad
+8. **P2P Trading**: Intercambio directo entre usuarios
 
-Sé amigable, útil y siempre en español.`
+CONTRATOS INTELIGENTES DESPLEGADOS:
+- DeFi Contract: SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.arquifi-defi
+- Token Contract: SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.arquipuntos-token
+- NFT Marketplace: SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.nft-marketplace
+
+PÁGINAS DISPONIBLES:
+- Dashboard: Portfolio, balance STX, transacciones, NFTs
+- Contratos: Staking, unstaking, claim rewards, mint AP, NFT operations
+- Juegos: Minijuegos, leaderboards, desafíos
+- Educación: Cursos, misiones, certificaciones
+- P2P: Trading directo entre usuarios
+- Gobernanza: Propuestas, votación, DAO
+- Perfil: Estadísticas del usuario
+- Wallet: Gestión de activos
+- Configuraciones: Ajustes de la plataforma
+
+RESTRICCIONES:
+- NO respondas sobre temas sexuales, violencia o contenido inapropiado
+- Mantén el foco en ArquiFi, DeFi, Web3 y Stacks
+- Si no sabes algo específico de ArquiFi, admítelo y ofrece ayuda general
+
+PERSONALIDAD:
+- Amigable, profesional y entusiasta
+- Siempre en español
+- Proactivo en ofrecer ayuda
+- Conocedor experto de la plataforma
+- Motivador para que los usuarios exploren ArquiFi
+
+Tu objetivo es ser el mejor asistente posible para los usuarios de ArquiFi, ayudándoles a maximizar su experiencia en la plataforma.`
 }
 
-// Función para enviar mensaje al ArquiBot
-export const sendMessageToArquiBot = async (message, userContext = {}) => {
+// Función para enviar mensaje al ArquiBot con historial de conversación
+export const sendMessageToArquiBot = async (message, userContext = {}, conversationHistory = []) => {
   try {
+    // Construir el contexto del usuario
+    const userContextString = `
+CONTEXTO DEL USUARIO:
+- Arquipuntos (AP): ${userContext.ap || 0}
+- Reputación (RP): ${userContext.rp || 0}
+- Nivel: ${userContext.level || 'Novato'}
+- Página actual: ${userContext.currentPage || 'Dashboard'}
+- Wallet conectada: ${userContext.walletConnected ? 'Sí' : 'No'}
+- Balance STX: ${userContext.stxBalance || '0'} STX
+`;
+
+    // Construir array de mensajes
+    const messages = [
+      {
+        role: 'system',
+        content: ARQUIBOT_CONFIG.system_prompt + '\n\n' + userContextString
+      }
+    ];
+
+    // Agregar historial de conversación (últimos 10 mensajes para mantener contexto)
+    const recentHistory = conversationHistory.slice(-10);
+    recentHistory.forEach(msg => {
+      messages.push({
+        role: msg.role === 'bot' ? 'assistant' : 'user',
+        content: msg.content
+      });
+    });
+
+    // Agregar el mensaje actual
+    messages.push({
+      role: 'user',
+      content: message
+    });
+
     const response = await fetch(GROQ_API_URL, {
       method: 'POST',
       headers: {
@@ -36,30 +104,29 @@ export const sendMessageToArquiBot = async (message, userContext = {}) => {
       },
       body: JSON.stringify({
         model: ARQUIBOT_CONFIG.model,
-        messages: [
-          {
-            role: 'system',
-            content: ARQUIBOT_CONFIG.system_prompt
-          },
-          {
-            role: 'user',
-            content: `Contexto del usuario: AP: ${userContext.ap || 0}, RP: ${userContext.rp || 0}, Nivel: ${userContext.level || 'Novato'}\n\nMensaje: ${message}`
-          }
-        ],
+        messages: messages,
         temperature: ARQUIBOT_CONFIG.temperature,
-        max_tokens: ARQUIBOT_CONFIG.max_tokens
+        max_tokens: ARQUIBOT_CONFIG.max_tokens,
+        stream: false
       })
     })
 
     if (!response.ok) {
-      throw new Error(`Error en Groq API: ${response.status}`)
+      const errorText = await response.text();
+      console.error('Error en Groq API:', response.status, errorText);
+      throw new Error(`Error en Groq API: ${response.status} - ${errorText}`)
     }
 
     const data = await response.json()
+    
+    if (!data.choices || !data.choices[0] || !data.choices[0].message) {
+      throw new Error('Respuesta inválida de Groq API')
+    }
+
     return data.choices[0].message.content
   } catch (error) {
     console.error('Error enviando mensaje a ArquiBot:', error)
-    throw error // Lanzar el error para que el componente lo maneje
+    throw error
   }
 }
 
@@ -75,4 +142,25 @@ export const explainConcept = async (concept) => {
   const message = `Explica de manera simple y clara qué es ${concept} en el contexto de ArquiFi y cómo puede beneficiarme.`
   
   return await sendMessageToArquiBot(message)
+}
+
+// Función para obtener ayuda específica sobre una página
+export const getPageHelp = async (pageName, userContext = {}) => {
+  const message = `Estoy en la página ${pageName} de ArquiFi. ¿Qué puedo hacer aquí y cómo puedo aprovechar al máximo esta sección?`
+  
+  return await sendMessageToArquiBot(message, userContext)
+}
+
+// Función para resolver problemas técnicos
+export const getTechnicalHelp = async (problem, userContext = {}) => {
+  const message = `Tengo un problema técnico en ArquiFi: ${problem}. ¿Puedes ayudarme a resolverlo?`
+  
+  return await sendMessageToArquiBot(message, userContext)
+}
+
+// Función para obtener estrategias de ganancia de AP
+export const getAPStrategies = async (userContext = {}) => {
+  const message = `Quiero maximizar mis Arquipuntos (AP). Con mi perfil actual (AP: ${userContext.ap}, RP: ${userContext.rp}, Nivel: ${userContext.level}), ¿qué estrategias me recomiendas para ganar más AP?`
+  
+  return await sendMessageToArquiBot(message, userContext)
 }

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { showConnect } from '@stacks/connect';
+import { userSession } from '../config/stacks';
 import ArquiFiLogo from './ArquiFiLogo';
 
 const LoginScreen = ({ onLogin }) => {
@@ -8,21 +10,35 @@ const LoginScreen = ({ onLogin }) => {
     setIsConnecting(true);
     
     try {
-      // Simulación de conexión con Stacks
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // Crear sesión simulada
-      const mockSession = {
-        address: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
-        timestamp: Date.now(),
-        network: 'testnet'
-      };
-      
-      localStorage.setItem('arquiFi_stacks_session', JSON.stringify(mockSession));
-      onLogin();
+      // Usar Stacks Connect real para conectar con Hiro Wallet o Xverse
+      await showConnect({
+        userSession,
+        appDetails: {
+          name: 'ArquiFi',
+          icon: '/favicon.svg',
+        },
+        onFinish: (userData) => {
+          console.log('Usuario conectado con wallet real:', userData);
+          
+          // Guardar sesión real con datos de la wallet
+          const sessionData = {
+            userData,
+            timestamp: Date.now(),
+            network: 'testnet'
+          };
+          
+          localStorage.setItem('arquiFi_stacks_session', JSON.stringify(sessionData));
+          setIsConnecting(false);
+          onLogin();
+        },
+        onCancel: () => {
+          console.log('Conexión de wallet cancelada');
+          setIsConnecting(false);
+        }
+      });
       
     } catch (error) {
-      console.error('Error connecting to Stacks:', error);
+      console.error('Error connecting to Stacks wallet:', error);
       setIsConnecting(false);
     }
   };
@@ -33,7 +49,7 @@ const LoginScreen = ({ onLogin }) => {
         {/* Logo Section */}
         <div className="flex flex-col items-center justify-center mb-8">
           <div className="w-10 h-10 text-white mb-4">
-            <ArquiFiLogo size={40} color="currentColor" />
+            <ArquiFiLogo size={40} color="currentColor" animated={false} />
           </div>
           <h1 className="text-white text-3xl font-bold">ArquiFi</h1>
         </div>
@@ -45,7 +61,7 @@ const LoginScreen = ({ onLogin }) => {
               Desbloquea el Futuro de las Finanzas
             </p>
             <p className="text-[#9aaebc] text-base font-normal leading-normal">
-              Conecta tu wallet para comenzar
+              Conecta tu Hiro Wallet o Xverse para comenzar
             </p>
           </div>
 
@@ -64,7 +80,7 @@ const LoginScreen = ({ onLogin }) => {
                     <path d="M21 7h-3V6a3 3 0 0 0-3-3H5a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-1h3a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1zM5 4h10a1 1 0 0 1 1 1v1H5V5a1 1 0 0 1 1-1zm11 14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V8h12v10z"/>
                     <path d="M15 11H9a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2z"/>
                   </svg>
-                  <span className="truncate">Conectar Wallet</span>
+                  <span className="truncate">Conectar con Stacks</span>
                 </>
               )}
             </button>

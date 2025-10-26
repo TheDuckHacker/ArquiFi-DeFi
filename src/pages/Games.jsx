@@ -77,7 +77,7 @@ const Games = () => {
         {/* User Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <div className="bg-gray-800 rounded-lg p-6">
-            <h3 className="text-white text-lg font-semibold mb-2">Koquipuntos</h3>
+            <h3 className="text-white text-lg font-semibold mb-2">ArquiPuntos</h3>
             <p className="text-blue-400 text-2xl font-bold">2,450 AP</p>
             <p className="text-gray-400 text-sm">Nivel: Visionario</p>
           </div>

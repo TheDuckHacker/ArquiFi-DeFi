@@ -89,6 +89,36 @@ export const StacksAPI = {
         tokenId: '2'
       },
     ];
+  },
+
+  // Obtener datos del contrato
+  async getContractData(contractAddress) {
+    try {
+      // En producción, usarías la API de Stacks para obtener datos del contrato
+      // Por ahora, simulamos datos
+      return {
+        totalStaked: '1000000', // 1 STX en microSTX
+        rewardRate: '100' // 1% anual
+      };
+    } catch (error) {
+      console.error('Error fetching contract data:', error);
+      return null;
+    }
+  },
+
+  // Obtener datos del usuario del contrato
+  async getUserContractData(contractAddress, userAddress) {
+    try {
+      // En producción, usarías la API de Stacks para obtener datos del usuario
+      // Por ahora, simulamos datos
+      return {
+        stake: '500000', // 0.5 STX en microSTX
+        rewards: '1000' // 0.001 STX en microSTX
+      };
+    } catch (error) {
+      console.error('Error fetching user contract data:', error);
+      return null;
+    }
   }
 };
 

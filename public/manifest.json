@@ -1,0 +1,16 @@
+{
+  "name": "ArquiFi",
+  "short_name": "ArquiFi",
+  "description": "Plataforma DeFi descentralizada en Stacks",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121012",
+  "theme_color": "#0099ff",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

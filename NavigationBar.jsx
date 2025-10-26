@@ -15,8 +15,12 @@ const NavigationBar = () => {
       <div className="flex items-center space-x-8">
         <NavLink icon="🏠" text="Inicio" />
         <NavLink icon="👥" text="Social" />
+
+        <NavLink icon="⚖️" text="Gobernanza" />
+        <NavLink icon="🎮" text="Juegos" />
         <NavLink icon="💼" text="Billetera" />
-        <NavLink icon="🎓" text="Aprender" active={true} />
+        <NavLink icon="🎓" text="Aprender" />
+        
         
       </div>
 

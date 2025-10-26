@@ -5,8 +5,11 @@ import ArquiFiContract from '../components/ArquiFiContract';
 const StacksDashboard = () => {
   const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [portfolioValue, setPortfolioValue] = useState(12345.67);
+  const [portfolioValue, setPortfolioValue] = useState(0);
+  const [stxBalance, setStxBalance] = useState(0);
   const [apy, setApy] = useState(8.5);
+  const [transactions, setTransactions] = useState([]);
+  const [nfts, setNfts] = useState([]);
   const [isDepositing, setIsDepositing] = useState(false);
   const [isWithdrawing, setIsWithdrawing] = useState(false);
   const [isStaking, setIsStaking] = useState(false);
@@ -14,12 +17,57 @@ const StacksDashboard = () => {
   const [notificationMessage, setNotificationMessage] = useState('');
 
   useEffect(() => {
-    const loadUserData = () => {
-      const savedSession = localStorage.getItem('arquiFi_stacks_session');
-      if (savedSession) {
-        setUserData(JSON.parse(savedSession));
+    const loadUserData = async () => {
+      try {
+        const savedSession = localStorage.getItem('arquiFi_stacks_session');
+        if (savedSession) {
+          const sessionData = JSON.parse(savedSession);
+          setUserData(sessionData);
+          
+          // Obtener datos reales de Stacks
+          if (sessionData.userData?.profile?.stxAddress) {
+            const stxAddress = sessionData.userData.profile.stxAddress;
+            console.log('✅ Usuario conectado:', stxAddress);
+            
+            try {
+              // Obtener balance real de STX
+              const balanceResponse = await fetch(`https://stacks-node-api.testnet.stacks.co/extended/v1/address/${stxAddress}/stx`);
+              const balanceData = await balanceResponse.json();
+              const realBalance = parseFloat(balanceData.balance) / 1000000;
+              setStxBalance(realBalance);
+              setPortfolioValue(realBalance);
+              
+              // Obtener transacciones reales
+              const txResponse = await fetch(`https://stacks-node-api.testnet.stacks.co/extended/v1/address/${stxAddress}/transactions?limit=10`);
+              const txData = await txResponse.json();
+              setTransactions(txData.results || []);
+              
+              // Obtener NFTs reales
+              const nftResponse = await fetch(`https://stacks-node-api.testnet.stacks.co/extended/v1/tokens/nft/holdings?principal=${stxAddress}&limit=10`);
+              const nftData = await nftResponse.json();
+              setNfts(nftData.results || []);
+              
+              console.log('✅ Datos reales cargados:', { realBalance, txCount: txData.results?.length, nftCount: nftData.results?.length });
+              
+              // Si no hay balance, mostrar mensaje informativo
+              if (realBalance === 0) {
+                console.log('ℹ️ Wallet sin STX - Datos reales pero vacíos');
+              }
+            } catch (error) {
+              console.error('❌ Error obteniendo datos reales:', error);
+              // Fallback a datos simulados si hay error
+              setStxBalance(0);
+              setPortfolioValue(0);
+              setTransactions([]);
+              setNfts([]);
+            }
+          }
+        }
+      } catch (error) {
+        console.error('Error cargando datos de usuario:', error);
+      } finally {
+        setIsLoading(false);
       }
-      setIsLoading(false);
     };
 
     loadUserData();
@@ -79,8 +127,31 @@ const StacksDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#121012] text-white p-6">
+    <div className="min-h-screen bg-[#121012] text-white pt-20 p-6">
       <div className="max-w-7xl mx-auto">
+        {/* Wallet Info - Real Address */}
+        {userData?.userData?.profile?.stxAddress && (
+          <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#27323a] mb-6">
+            <h2 className="text-xl font-bold text-white mb-4">Wallet Conectada</h2>
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M21 7h-3V6a3 3 0 0 0-3-3H5a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-1h3a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1zM5 4h10a1 1 0 0 1 1 1v1H5V5a1 1 0 0 1 1-1zm11 14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V8h12v10z"/>
+                </svg>
+              </div>
+              <div>
+                <p className="text-white font-semibold">Dirección Real de tu Wallet</p>
+                <p className="text-gray-400 text-sm font-mono">
+                  {userData.userData.profile.stxAddress}
+                </p>
+                <p className="text-green-400 text-xs mt-1">
+                  ✅ Conectada a Stacks Testnet
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Portfolio Overview - Elegant Style */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           {/* Valor Total del Portfolio */}
@@ -97,7 +168,7 @@ const StacksDashboard = () => {
                 </div>
               </div>
               <div className="w-12 h-12 bg-[#0099ff] rounded-lg flex items-center justify-center">
-                <ArquiFiLogo size={24} color="white" />
+                <ArquiFiLogo size={24} color="white" animated={false} />
               </div>
             </div>
           </div>
@@ -231,7 +302,7 @@ const StacksDashboard = () => {
                   <td className="py-4 px-2">
                     <div className="flex items-center space-x-3">
                       <div className="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center">
-                        <ArquiFiLogo size={16} color="white" />
+                        <ArquiFiLogo size={16} color="white" animated={false} />
                       </div>
                       <div>
                         <p className="text-white font-semibold">Stacks</p>
@@ -239,14 +310,89 @@ const StacksDashboard = () => {
                       </div>
                     </div>
                   </td>
-                  <td className="py-4 px-2 text-white font-semibold">1,250</td>
+                  <td className="py-4 px-2 text-white font-semibold">{stxBalance.toFixed(6)}</td>
                   <td className="py-4 px-2 text-white font-semibold">$2.50</td>
-                  <td className="py-4 px-2 text-white font-semibold">$3,125</td>
+                  <td className="py-4 px-2 text-white font-semibold">${(stxBalance * 2.50).toFixed(2)}</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
+
+        {/* Transacciones Reales - Elegant Style */}
+        <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#27323a] mb-8">
+          <h2 className="text-xl font-bold text-white mb-6">Transacciones Recientes</h2>
+          <div className="space-y-4">
+            {transactions.length > 0 ? (
+              transactions.slice(0, 5).map((tx, index) => (
+                <div key={index} className="flex items-center justify-between p-4 bg-[#1f1f1f] rounded-lg border border-[#27323a] hover:border-[#0099ff]/30 transition-all duration-200">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-10 h-10 bg-[#0099ff] rounded-lg flex items-center justify-center">
+                      <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-white font-semibold">
+                        {tx.tx_type === 'token_transfer' ? 'Transferencia' : 
+                         tx.tx_type === 'contract_call' ? 'Llamada de Contrato' : 
+                         tx.tx_type === 'smart_contract' ? 'Contrato Inteligente' : 
+                         'Transacción'}
+                      </p>
+                      <p className="text-gray-400 text-sm">
+                        {new Date(tx.burn_block_time * 1000).toLocaleDateString()}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-white font-semibold">
+                      {tx.tx_type === 'token_transfer' && tx.token_transfer ? 
+                        `${StacksAPI.formatSTXAmount(tx.token_transfer.amount)} STX` : 
+                        'Ver detalles'
+                      }
+                    </p>
+                    <p className="text-gray-400 text-sm">
+                      {tx.tx_status === 'success' ? '✅ Exitoso' : 
+                       tx.tx_status === 'pending' ? '⏳ Pendiente' : 
+                       '❌ Fallido'}
+                    </p>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="text-center py-8">
+                <div className="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                  </svg>
+                </div>
+                <p className="text-gray-400">No hay transacciones recientes</p>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* NFTs Reales - Elegant Style */}
+        {nfts.length > 0 && (
+          <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#27323a] mb-8">
+            <h2 className="text-xl font-bold text-white mb-6">Tus NFTs</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {nfts.map((nft, index) => (
+                <div key={index} className="bg-[#1f1f1f] rounded-lg border border-[#27323a] hover:border-[#0099ff]/30 transition-all duration-200 overflow-hidden">
+                  <img 
+                    src={nft.imageUrl} 
+                    alt={nft.name}
+                    className="w-full h-32 object-cover"
+                  />
+                  <div className="p-4">
+                    <h3 className="text-white font-semibold mb-2">{nft.name}</h3>
+                    <p className="text-gray-400 text-sm">Token ID: {nft.tokenId}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Sección de Contrato Inteligente */}
         <div className="mb-8">

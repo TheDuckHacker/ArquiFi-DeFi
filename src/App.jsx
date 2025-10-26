@@ -15,6 +15,8 @@ import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import ArquiBot from './components/ArquiBot';
 import ArquiBotFloating from './components/ArquiBotFloating';
+import FriendRequests from './pages/FriendRequests';
+import { NotificationProvider } from './components/NotificationProvider';
 
 function App() {
   const [isWalletConnected, setIsWalletConnected] = useState(false);
@@ -79,28 +81,31 @@ function App() {
 
   // Si está conectado, mostrar la aplicación completa
   return (
-    <Router>
-      <div className="min-h-screen bg-[#121012]">
-        <NavigationBar onLogout={handleLogout} />
-        <Routes>
-          <Route path="/" element={<StacksDashboard />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/social" element={<Social />} />
-          <Route path="/chat" element={<Chat />} />
-          <Route path="/wallet" element={<Wallet />} />
-          <Route path="/governance" element={<Governance />} />
-          <Route path="/games" element={<Games />} />
-          <Route path="/education" element={<Education />} />
-          <Route path="/p2p" element={<P2P />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/bot" element={<ArquiBot />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="*" element={<StacksDashboard />} />
-        </Routes>
-        {/* ArquiBot flotante en todas las páginas excepto configuraciones */}
-        <ArquiBotFloating />
-      </div>
-    </Router>
+    <NotificationProvider>
+      <Router>
+        <div className="min-h-screen bg-[#121012]">
+          <NavigationBar onLogout={handleLogout} />
+          <Routes>
+            <Route path="/" element={<StacksDashboard />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/social" element={<Social />} />
+            <Route path="/chat" element={<Chat />} />
+            <Route path="/wallet" element={<Wallet />} />
+            <Route path="/governance" element={<Governance />} />
+            <Route path="/games" element={<Games />} />
+            <Route path="/education" element={<Education />} />
+            <Route path="/p2p" element={<P2P />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/bot" element={<ArquiBot />} />
+            <Route path="/friend-requests" element={<FriendRequests />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="*" element={<StacksDashboard />} />
+          </Routes>
+          {/* ArquiBot flotante en todas las páginas excepto configuraciones */}
+          <ArquiBotFloating />
+        </div>
+      </Router>
+    </NotificationProvider>
   );
 }
 

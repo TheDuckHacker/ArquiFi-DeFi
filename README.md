@@ -1,220 +1,325 @@
-# 🚀 ArquiFi - Plataforma DeFi con Stacks Blockchain
+# 🚀 ArquiFi - Plataforma DeFi Educativa con Stacks
 
-¡Bienvenido a ArquiFi! Esta es una plataforma de finanzas descentralizadas (DeFi) construida con React, Vite, Tailwind CSS y **Stacks Blockchain**, diseñada para ofrecer una experiencia de usuario moderna y fluida con funcionalidades blockchain reales.
+## 📋 Descripción del Proyecto
 
-## ✨ Características Principales
+**ArquiFi** es una plataforma DeFi (Finanzas Descentralizadas) educativa construida sobre la blockchain de Stacks que combina educación financiera, gamificación y contratos inteligentes para crear una experiencia de aprendizaje interactiva y rentable.
+
+## 🎯 Características Principales
 
 ### 🔗 **Integración con Stacks Blockchain**
-- **Autenticación Real**: Conexión con wallets de Stacks (Hiro Wallet, Xverse)
-- **Datos en Tiempo Real**: Balance STX, transacciones y NFTs desde la blockchain
-- **Contratos Inteligentes**: Interacción con smart contracts desplegados en Stacks
-- **Red Testnet**: Configurado para desarrollo y pruebas
-
-### 🎨 **Interfaz Moderna**
-- **Diseño Glassmorphism**: Efectos de vidrio y gradientes elegantes
-- **Responsive Design**: Adaptado para dispositivos móviles y de escritorio
-- **Navegación Intuitiva**: Barra de navegación completa con estado de wallet
-- **Logo Personalizado**: Logo de ArquiFi integrado consistentemente
+- **Autenticación** con Stacks Wallet (Hiro Wallet, Xverse)
+- **Datos en tiempo real** de la blockchain de Stacks
+- **Transacciones** simuladas con contratos inteligentes
+- **NFTs** educativos y de logros
 
 ### 💰 **Funcionalidades DeFi**
-- **Staking de STX**: Stake y unstake de tokens STX
-- **Sistema de Recompensas**: Recompensas automáticas por staking
-- **Gestión de NFTs**: Visualización de colección de NFTs
-- **Historial de Transacciones**: Transacciones en tiempo real desde la blockchain
+- **Staking** de STX con recompensas automáticas
+- **Unstaking** flexible de tokens
+- **Claim** de recompensas acumuladas
+- **APY** calculado en tiempo real
+
+### 🎮 **Sistema de Gamificación**
+- **ArquiPuntos (AP)** - Token de utilidad interno
+- **Misiones educativas** que otorgan recompensas
+- **Rankings** de usuarios
+- **Logros** y certificaciones NFT
+
+### 🎨 **NFT Marketplace**
+- **Creación** de NFTs educativos
+- **Listado** para venta en el marketplace
+- **Compra/venta** de NFTs
+- **Comisión** del 5% por transacción
+
+## 🏗️ Arquitectura Técnica
+
+### **Frontend**
+- **React.js** con Vite para desarrollo rápido
+- **Tailwind CSS** para diseño responsive
+- **React Router DOM** para navegación
+- **Stacks.js** para integración blockchain
+
+### **Contratos Inteligentes (Clarity) - DESPLEGADOS**
+
+#### 1. **ArquiFi DeFi Contract** 
+**Dirección:** `SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.arquifi-defi`
+```clarity
+;; Funcionalidades principales:
+- stake-stx: Staking de tokens STX
+- unstake-stx: Retiro de tokens staked
+- claim-rewards: Reclamar recompensas acumuladas
+- get-user-stake: Consultar stake del usuario
+- get-user-rewards: Consultar recompensas pendientes
+```
+
+#### 2. **ArquiPuntos Token Contract**
+**Dirección:** `SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.arquipuntos-token`
+```clarity
+;; Funcionalidades principales:
+- mint: Crear nuevos tokens AP (solo owner)
+- transfer: Transferir tokens entre usuarios
+- burn: Quemar tokens para reducir supply
+- approve: Aprobar gastos de terceros
+- get-balance: Consultar balance de usuario
+```
+
+#### 3. **NFT Marketplace Contract**
+**Dirección:** `SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7.nft-marketplace`
+```clarity
+;; Funcionalidades principales:
+- mint-nft: Crear NFTs educativos
+- list-nft: Listar NFT para venta
+- buy-nft: Comprar NFT del marketplace
+- delist-nft: Quitar NFT de venta
+- transfer-nft: Transferir NFT entre usuarios
+```
+
+## 🚀 Instalación y Configuración
+
+### **Prerrequisitos**
+- Node.js 16+ 
+- npm o yarn
+- Stacks Wallet (Hiro Wallet o Xverse)
+
+### **Instalación**
+```bash
+# Clonar el repositorio
+git clone https://github.com/tu-usuario/ArquiFi.git
+cd ArquiFi
+
+# Instalar dependencias
+npm install
+
+# Iniciar servidor de desarrollo
+npm run dev
+```
+
+### **Configuración de Variables de Entorno**
+```bash
+# Crear archivo .env en la raíz del proyecto
+VITE_GROQ_API_KEY=tu_api_key_aqui
+```
+
+**Para activar ArquiBot (Asistente IA):**
+1. Ve a [Groq Console](https://console.groq.com/keys)
+2. Crea una cuenta gratuita
+3. Genera una API key
+4. Crea un archivo `.env` en la raíz del proyecto
+5. Agrega tu API key: `VITE_GROQ_API_KEY=tu_api_key_aqui`
+6. Reinicia el servidor de desarrollo
+
+**Sin API key:** ArquiBot funcionará con respuestas predefinidas.
+
+## 📱 Páginas y Funcionalidades
+
+### **1. Dashboard Principal**
+- **Portfolio** con balance STX en tiempo real
+- **Transacciones** recientes de la blockchain
+- **NFTs** del usuario
+- **Estadísticas** de ArquiPuntos
+
+### **2. Contratos Inteligentes**
+- **Staking/Unstaking** de STX
+- **Claim** de recompensas
+- **Mint/Transfer** de ArquiPuntos
+- **Crear/Comprar** NFTs
+
+### **3. Sistema de Juegos**
+- **Juegos educativos** con recompensas AP
+- **Rankings** de usuarios
+- **Misiones** diarias y semanales
+- **Logros** desbloqueables
+
+### **4. Capa Educativa**
+- **Cursos** de finanzas descentralizadas
+- **Tutoriales** de Stacks blockchain
+- **Certificaciones** NFT
+- **Progreso** de aprendizaje
+
+### **5. P2P Trading**
+- **Intercambio** directo entre usuarios
+- **Ofertas** de compra/venta
+- **Historial** de transacciones
+- **Reputación** de usuarios
+
+### **6. Gobernanza DAO**
+- **Propuestas** de la comunidad
+- **Votación** con tokens AP
+- **Implementación** de cambios
+- **Transparencia** total
+
+### **7. ArquiBot - Asistente IA**
+- **Agente inteligente** especializado en ArquiFi
+- **Conocimiento completo** de la plataforma
+- **Ayuda contextual** según la página actual
+- **Recomendaciones personalizadas** basadas en el perfil
+- **Resolución de problemas** técnicos
+- **Botones de acción rápida** para consultas comunes
+- **Historial de conversación** para contexto continuo
+
+## 🔧 Configuración de Stacks
+
+### **Red de Prueba (Testnet)**
+```javascript
+const network = {
+  url: 'https://stacks-node-api.testnet.stacks.co',
+  chainId: 2147483648
+};
+```
+
+### **Autenticación**
+```javascript
+import { AppConfig, UserSession } from '@stacks/connect';
+
+const appConfig = new AppConfig(['store_write', 'publish_data']);
+const userSession = new UserSession({ appConfig });
+```
+
+## 🎮 Cómo Usar ArquiFi
+
+### **1. Conectar Wallet**
+1. Abrir ArquiFi en el navegador
+2. Hacer clic en "Conectar Wallet"
+3. Seleccionar Hiro Wallet o Xverse
+4. Autorizar la conexión
+
+### **2. Hacer Staking**
+1. Ir a la sección "Contratos"
+2. Ingresar cantidad de STX a stakear
+3. Hacer clic en "Stake"
+4. Confirmar transacción en wallet
+
+### **3. Ganar ArquiPuntos**
+1. Completar misiones educativas
+2. Participar en juegos
+3. Hacer staking de STX
+4. Contribuir a la gobernanza
+
+### **4. Crear NFTs**
+1. Ir a "NFT Marketplace"
+2. Ingresar metadata del NFT
+3. Hacer clic en "Crear NFT"
+4. Confirmar transacción
+
+### **5. Usar ArquiBot**
+1. Hacer clic en el icono flotante del robot
+2. Escribir tu pregunta o usar botones de acción rápida
+3. Recibir respuestas inteligentes y contextuales
+4. Usar "Ayuda página" para información específica
+5. Preguntar sobre estrategias de ganancia de AP
+
+## 📊 Modelo de Negocio
+
+### **Flujos de Ingresos**
+- **Comisiones** del marketplace (5%)
+- **Servicios premium** de educación
+- **Certificaciones** NFT pagadas
+- **Publicidad** de proyectos DeFi
+
+### **Tokenomics**
+- **Supply inicial**: 1,000,000 ArquiPuntos
+- **Distribución**: 60% usuarios, 30% desarrollo, 10% reserva
+- **Utilidad**: Acceso premium, gobernanza, recompensas
 
 ## 🛠️ Tecnologías Utilizadas
 
 ### **Frontend**
-- **React 18**: Biblioteca de JavaScript para interfaces de usuario
-- **Vite**: Herramienta de construcción rápida para proyectos web modernos
-- **Tailwind CSS**: Framework CSS para diseño rápido y personalizable
-- **React Router DOM**: Para la gestión de rutas y navegación
+- React.js 18+
+- Vite (Build tool)
+- Tailwind CSS
+- React Router DOM
+- Stacks.js
 
-### **Blockchain & Smart Contracts**
-- **Stacks Blockchain**: Plataforma blockchain para contratos inteligentes
-- **Clarity**: Lenguaje de programación para smart contracts
-- **Clarinet**: Herramienta de desarrollo para contratos Clarity
-- **Stacks.js**: SDK de JavaScript para interactuar con Stacks
+### **Blockchain**
+- Stacks Blockchain
+- Clarity (Smart contracts)
+- Stacks Connect (Wallet integration)
 
-### **APIs y Servicios**
-- **Stacks API**: API oficial de Hiro para datos de blockchain
-- **@stacks/connect**: Biblioteca para autenticación con wallets
-- **@stacks/transactions**: Para transacciones blockchain
+### **APIs**
+- Stacks API (Blockchain data)
+- Groq API (ArquiBot - Asistente IA)
 
-## 🚀 Cómo Empezar
+### **Deployment**
+- Vercel (Frontend)
+- Netlify (Alternative)
 
-### 1. Clonar el Repositorio
+## 🚀 Deployment
 
+### **Vercel**
 ```bash
-git clone https://github.com/TheDuckHacker/ArquiFi.git
-cd ArquiFi
+# Instalar Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel --prod
 ```
 
-### 2. Instalar Dependencias
-
+### **Netlify**
 ```bash
-npm install
-```
-
-### 3. Configurar Variables de Entorno
-
-Crea un archivo `.env.local` en la raíz del proyecto:
-
-```env
-VITE_STACKS_NETWORK=testnet
-VITE_CONTRACT_ADDRESS=ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM
-VITE_CONTRACT_NAME=arquifi-defi
-```
-
-### 4. Ejecutar la Aplicación
-
-```bash
-npm run dev
-```
-
-La aplicación se abrirá automáticamente en tu navegador en `http://localhost:5173`.
-
-## 📱 Uso de la Aplicación
-
-### **Conectar Wallet**
-1. Haz clic en el botón de conexión en la barra de navegación
-2. Selecciona tu wallet preferida (Hiro Wallet, Xverse, etc.)
-3. Autoriza la conexión con ArquiFi
-4. ¡Tu dashboard se actualizará automáticamente!
-
-### **Interactuar con el Contrato**
-1. Ve a la sección "ArquiFi DeFi Contract" en el dashboard
-2. Ingresa la cantidad de STX que deseas stake
-3. Haz clic en "Stake" para enviar la transacción
-4. Reclama tus recompensas cuando estén disponibles
-
-## 🔧 Desarrollo de Smart Contracts
-
-### **Instalar Clarinet**
-
-```bash
-# macOS
-brew install clarinet
-
-# Linux/Windows
-curl -L https://github.com/hirosystems/clarinet/releases/latest/download/clarinet-installer.sh | bash
-```
-
-### **Ejecutar Contratos Localmente**
-
-```bash
-# Iniciar simulación local
-clarinet simulate
-
-# Desplegar en testnet
-clarinet deploy --testnet
-```
-
-### **Estructura de Contratos**
-
-```
-contracts/
-├── arquifi-defi.clar    # Contrato principal de DeFi
-└── README.md           # Documentación de contratos
-```
-
-## 🌐 Despliegue
-
-### **Desplegar en Testnet**
-
-1. **Configurar Clarinet**:
-```bash
-clarinet deploy --testnet
-```
-
-2. **Actualizar Configuración**:
-   - Actualiza `VITE_CONTRACT_ADDRESS` con la dirección del contrato desplegado
-   - Cambia `VITE_STACKS_NETWORK` a `testnet`
-
-3. **Desplegar Frontend**:
-```bash
+# Build
 npm run build
-# Subir archivos de build/ a tu servicio de hosting
+
+# Deploy a Netlify
+# Subir carpeta dist/ a Netlify
 ```
 
-### **Desplegar en Mainnet**
+## 📈 Roadmap
 
-1. **Cambiar a Mainnet**:
-```bash
-clarinet deploy --mainnet
-```
+### **Fase 1** ✅
+- [x] Frontend básico
+- [x] Integración con Stacks
+- [x] Contratos desplegados
+- [x] Autenticación de wallet
 
-2. **Actualizar Configuración**:
-   - Cambia `VITE_STACKS_NETWORK` a `mainnet`
-   - Actualiza la dirección del contrato
+### **Fase 2** ✅
+- [x] Despliegue de contratos reales
+- [x] Integración completa con blockchain
+- [x] Sistema de recompensas real
+- [x] Marketplace funcional
 
-## 📊 Casos de Uso Implementados
+### **Fase 3** 📋
+- [ ] Mobile app
+- [ ] Integración con más blockchains
+- [ ] Programa de afiliados
+- [ ] Certificaciones oficiales
 
-### **Stacks API**
-- ✅ Recuperar información de wallet (balance, transacciones)
-- ✅ Obtener transacciones recientes
-- ✅ Visualizar NFTs del usuario
+## 🤝 Contribución
 
-### **Stacks.js**
-- ✅ Autenticación de usuarios con wallet
-- ✅ Interacción con smart contracts (lectura)
-- ✅ Gestión de sesión de usuario
+### **Cómo Contribuir**
+1. Fork el repositorio
+2. Crear rama feature (`git checkout -b feature/nueva-funcionalidad`)
+3. Commit cambios (`git commit -m 'Agregar nueva funcionalidad'`)
+4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
+5. Crear Pull Request
 
-### **Clarity**
-- ✅ Contrato inteligente de staking
-- ✅ Sistema de recompensas
-- ✅ Funciones de lectura y escritura
-
-## 🔒 Seguridad
-
-- **Validación de Entrada**: Todas las entradas del usuario son validadas
-- **Manejo de Errores**: Sistema robusto de manejo de errores
-- **Transacciones Seguras**: Verificación de transacciones antes de enviar
-- **Red Testnet**: Desarrollo seguro en red de pruebas
-
-## 🤝 Contribuciones
-
-¡Las contribuciones son bienvenidas! Si tienes alguna sugerencia, mejora o encuentras un error:
-
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
-
-## 🤖 Configuración de ArquiBot (Opcional)
-
-Para habilitar las respuestas de IA de ArquiBot:
-
-1. Obtén una API key gratuita en [Groq Console](https://console.groq.com/keys)
-2. Crea un archivo `.env` en la raíz del proyecto
-3. Agrega tu API key:
-```bash
-VITE_GROQ_API_KEY=tu_api_key_aqui
-```
-
-Sin la API key, ArquiBot funcionará con respuestas predefinidas inteligentes.
+### **Reportar Bugs**
+- Usar GitHub Issues
+- Incluir pasos para reproducir
+- Especificar versión y navegador
 
 ## 📄 Licencia
 
-Este proyecto está bajo la licencia MIT. Consulta el archivo `LICENSE` para más detalles.
+Este proyecto está bajo la Licencia MIT. Ver `LICENSE` para más detalles.
 
-## 🔗 Enlaces Útiles
+## 👥 Equipo
 
-- [Documentación de Stacks](https://docs.hiro.so/stacks)
-- [Clarity Book](https://book.clarity-lang.org/)
-- [Stacks Explorer](https://explorer.stacks.co/)
-- [Hiro Platform](https://www.hiro.so/platform)
-- [Clarity Tools](https://clarity.tools/)
+**ArquiSoft** - Equipo de desarrollo
+- Desarrolladores full-stack
+- Especialistas en blockchain
+- Diseñadores UX/UI
 
-## 📞 Soporte
+## 📞 Contacto
 
-Si tienes preguntas o necesitas ayuda:
+- **Website**: [ArquiFi.com](https://arquifi.com)
+- **Email**: info@arquifi.com
+- **Twitter**: [@ArquiFi](https://twitter.com/arquifi)
+- **Discord**: [ArquiFi Community](https://discord.gg/arquifi)
 
-- **GitHub Issues**: [Crear un issue](https://github.com/TheDuckHacker/ArquiFi/issues)
-- **Discord**: [Stacks Discord](https://discord.gg/stacks)
-- **Twitter**: [@Stacks](https://twitter.com/stacks)
+## 🙏 Agradecimientos
+
+- **Stacks Foundation** por el ecosistema blockchain
+- **Hiro Systems** por las herramientas de desarrollo
+- **Comunidad Stacks** por el apoyo y feedback
 
 ---
 
-**¡Gracias por explorar ArquiFi con Stacks Blockchain! 🚀**
+**¡ArquiFi - Aprende, Gana y Construye el Futuro DeFi!** 🚀

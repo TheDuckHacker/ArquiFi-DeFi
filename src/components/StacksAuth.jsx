@@ -1,9 +1,31 @@
 import React, { useState, useEffect } from 'react';
+import { showConnect } from '@stacks/connect';
+import { userSession } from '../config/stacks';
 import ArquiFiLogo from './ArquiFiLogo';
 
 const StacksAuth = ({ onLogout }) => {
   const [isConnected, setIsConnected] = useState(false);
   const [isConnecting, setIsConnecting] = useState(false);
+
+  // Función auxiliar para extraer dirección
+  const extractAddress = (data) => {
+    if (!data) return null;
+    
+    // Si es string, devolverlo
+    if (typeof data === 'string') return data;
+    
+    // Si es objeto, buscar la dirección
+    if (typeof data === 'object') {
+      return data.address || 
+             data.stxAddress || 
+             data.identity?.address ||
+             data.profile?.stxAddress ||
+             data.identity?.address ||
+             null;
+    }
+    
+    return null;
+  };
 
   useEffect(() => {
     // Verificar si hay sesión guardada
@@ -17,24 +39,38 @@ const StacksAuth = ({ onLogout }) => {
     setIsConnecting(true);
     
     try {
-      // Simulación de conexión con Stacks
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // Crear sesión simulada
-      const mockSession = {
-        address: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
-        timestamp: Date.now(),
-        network: 'testnet'
-      };
-      
-      localStorage.setItem('arquiFi_stacks_session', JSON.stringify(mockSession));
-      setIsConnected(true);
-      setIsConnecting(false);
-      
-      // Recargar para actualizar el dashboard
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
+      // Usar Stacks Connect real
+      await showConnect({
+        userSession,
+        appDetails: {
+          name: 'ArquiFi',
+          icon: '/favicon.svg',
+        },
+        onFinish: (userData) => {
+          console.log('Usuario conectado:', userData);
+          
+          // Guardar sesión real con múltiples formatos de dirección
+          const sessionData = {
+            userData,
+            address: userData.profile?.stxAddress || userData.identity?.address,
+            timestamp: Date.now(),
+            network: 'testnet'
+          };
+          
+          localStorage.setItem('arquiFi_stacks_session', JSON.stringify(sessionData));
+          setIsConnected(true);
+          setIsConnecting(false);
+          
+          // Recargar para actualizar el dashboard
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
+        },
+        onCancel: () => {
+          console.log('Conexión cancelada');
+          setIsConnecting(false);
+        }
+      });
       
     } catch (error) {
       console.error('Error connecting to Stacks:', error);
@@ -43,6 +79,9 @@ const StacksAuth = ({ onLogout }) => {
   };
 
   const disconnect = () => {
+    // Cerrar sesión real de Stacks
+    userSession.signUserOut();
+    
     localStorage.removeItem('arquiFi_stacks_session');
     setIsConnected(false);
     
@@ -53,8 +92,18 @@ const StacksAuth = ({ onLogout }) => {
   };
 
   if (isConnected) {
-    const savedSession = JSON.parse(localStorage.getItem('arquiFi_stacks_session') || '{}');
-    const address = savedSession.address || 'ST1...';
+    // Verificar que hay una sesión guardada
+    const savedSession = localStorage.getItem('arquiFi_stacks_session');
+    if (!savedSession) {
+      return (
+        <button
+          onClick={disconnect}
+          className="bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600 transition-colors"
+        >
+          Error de Sesión
+        </button>
+      );
+    }
     
     return (
       <div className="relative group">
@@ -65,9 +114,9 @@ const StacksAuth = ({ onLogout }) => {
           </svg>
         </button>
         
-        {/* Burbuja con dirección */}
+        {/* Burbuja con texto simple */}
         <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-2 bg-green-500 text-white rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 whitespace-nowrap">
-          <span className="text-sm font-bold">{address.slice(0, 4)}...{address.slice(-4)}</span>
+          <span className="text-sm font-bold">Desconectar Wallet</span>
         </div>
         
         {/* Botón de desconectar oculto */}
