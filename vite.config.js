@@ -30,5 +30,10 @@ export default defineConfig({
         manualChunks: undefined
       }
     }
+  },
+  base: '/',
+  preview: {
+    port: 3000,
+    host: true
   }
 })
