@@ -1,5 +1,5 @@
 // Configuración de GroqCloud API para ArquiBot
-export const GROQ_API_KEY = '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'
+export const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY || 'demo-key'
 export const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions'
 
 // Configuración del ArquiBot
@@ -59,7 +59,7 @@ export const sendMessageToArquiBot = async (message, userContext = {}) => {
     return data.choices[0].message.content
   } catch (error) {
     console.error('Error enviando mensaje a ArquiBot:', error)
-    return 'Lo siento, ArquiBot no está disponible en este momento. Inténtalo más tarde.'
+    throw error // Lanzar el error para que el componente lo maneje
   }
 }
 

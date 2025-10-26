@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import StacksAuth from './StacksAuth';
 import ArquiFiLogo from './ArquiFiLogo';
 
-const NavigationBar = () => {
+const NavigationBar = ({ onLogout }) => {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isWalletConnected, setIsWalletConnected] = useState(false);
@@ -42,115 +42,157 @@ const NavigationBar = () => {
       }
     };
 
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') {
+        setIsMenuOpen(false);
+      }
+    };
+
     if (isMenuOpen) {
       document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleEscape);
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscape);
     };
   }, [isMenuOpen]);
   
   return (
-    <nav className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 px-4 py-4 relative backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        
-        {/* Logo */}
-        <div className="flex items-center space-x-3 group">
-          <div className="w-10 h-10 bg-gradient-to-br from-primary to-blue-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
-            <ArquiFiLogo size={24} color="white" />
-          </div>
-          <h1 className="text-white text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-            ArquiFi
-          </h1>
-        </div>
-
-        {/* Navegación Principal */}
-        <div className="hidden md:flex items-center space-x-2">
-          <NavLink icon="home" text="Inicio" to="/" active={location.pathname === '/'} />
-          <NavLink icon="group" text="Social" to="/social" active={location.pathname === '/social'} />
-          <NavLink icon="account_balance_wallet" text="Wallet" to="/wallet" active={location.pathname === '/wallet'} />
-          <NavLink icon="sports_esports" text="Juegos" to="/games" active={location.pathname === '/games'} />
-          <NavLink icon="school" text="Aprender" to="/education" active={location.pathname === '/education'} />
-        </div>
-
-        {/* Sección Derecha */}
-        <div className="flex items-center space-x-3">
-          {/* Indicadores de Estado */}
-          <div className="hidden lg:flex items-center space-x-2">
-            <div className="bg-gradient-to-r from-primary/20 to-blue-600/20 backdrop-blur-sm rounded-xl px-4 py-2 border border-primary/30 flex items-center space-x-2 hover:scale-105 transition-all duration-300">
-              <div className="w-5 h-5 bg-gradient-to-br from-primary to-blue-500 rounded-full flex items-center justify-center shadow-lg">
-                <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
+    <nav className="bg-[#121012] border-b border-[#27323a] sticky top-0 z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          
+          {/* Logo Section - Elegant Style */}
+          <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-3 group cursor-pointer">
+              <div className="w-8 h-8 text-[#0099ff] group-hover:text-white transition-colors duration-300">
+                <ArquiFiLogo size={32} color="currentColor" />
               </div>
-              <span className="text-white text-sm font-semibold">2.4K AP</span>
-            </div>
-            
-            <div className="bg-gradient-to-r from-green-500/20 to-emerald-600/20 backdrop-blur-sm rounded-xl px-4 py-2 border border-green-500/30 flex items-center space-x-2 hover:scale-105 transition-all duration-300">
-              <div className="w-5 h-5 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center shadow-lg">
-                <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                </svg>
-              </div>
-              <span className="text-white text-sm font-semibold">850 RP</span>
+              <h1 className="text-xl font-bold text-white leading-tight tracking-[-0.015em]">
+                ArquiFi
+              </h1>
             </div>
           </div>
 
-          {/* Notificaciones */}
-          <button className="relative p-3 text-gray-400 hover:text-white transition-all duration-300 hover:bg-gray-800/50 rounded-xl group">
-            <svg className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
-            </svg>
-            <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-red-500 to-pink-500 rounded-full animate-pulse shadow-lg"></div>
-          </button>
+          {/* Navigation Links - Los 4 más importantes */}
+          <div className="hidden md:flex items-center space-x-1">
+            <NavLink icon="home" text="Inicio" to="/" active={location.pathname === '/'} />
+            <NavLink icon="group" text="Social" to="/social" active={location.pathname === '/social'} />
+            <NavLink icon="sports_esports" text="Juegos" to="/games" active={location.pathname === '/games'} />
+            <NavLink icon="school" text="Aprender" to="/education" active={location.pathname === '/education'} />
+          </div>
 
-                  {/* Stacks Authentication */}
-                  <StacksAuth />
+          {/* Right Section - Elegant Style */}
+          <div className="flex items-center space-x-4">
+            {/* Status Indicators - Iconos con tooltip */}
+            <div className="hidden lg:flex items-center space-x-2">
+              {/* AP Icon */}
+              <div className="relative group">
+                <Link 
+                  to="/profile" 
+                  className="p-2 text-[#0099ff] hover:text-white transition-colors duration-200 hover:bg-[#1a1a1a] rounded-lg"
+                  title="Ver ArquiPuntos en Perfil"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                  </svg>
+                </Link>
+                {/* Burbuja AP */}
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-2 bg-[#0099ff] text-white rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 whitespace-nowrap">
+                  <span className="text-sm font-bold">1,000 AP</span>
+                </div>
+              </div>
 
-          {/* Perfil - Solo visible si hay wallet conectada */}
-          {isWalletConnected && (
-            <Link 
-              to="/profile" 
-              className="w-10 h-10 bg-gradient-to-br from-primary to-blue-600 rounded-xl flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-primary/25"
+              {/* RP Icon */}
+              <div className="relative group">
+                <Link 
+                  to="/profile" 
+                  className="p-2 text-green-500 hover:text-white transition-colors duration-200 hover:bg-[#1a1a1a] rounded-lg"
+                  title="Ver Reputación en Perfil"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2L12 17.6l-6 4.8 2.4-7.2L2 9.2h7.6L12 2z"/>
+                  </svg>
+                </Link>
+                {/* Burbuja RP */}
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-2 bg-green-500 text-white rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 whitespace-nowrap">
+                  <span className="text-sm font-bold">850 RP</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Notifications */}
+            <button className="relative p-2 text-gray-400 hover:text-white transition-colors duration-200 hover:bg-[#1a1a1a] rounded-lg">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+              </svg>
+              <div className="absolute -top-1 -right-1 w-4 h-4 bg-[#0099ff] rounded-full flex items-center justify-center">
+                <span className="text-white text-xs font-bold">3</span>
+              </div>
+            </button>
+
+            {/* Stacks Authentication */}
+            <StacksAuth onLogout={onLogout} />
+
+
+            {/* Profile - Only visible when wallet connected */}
+            {isWalletConnected && (
+              <Link 
+                to="/profile" 
+                className="w-8 h-8 bg-[#0099ff] rounded-lg flex items-center justify-center hover:bg-[#0088ee] transition-colors duration-200"
+                title="Perfil"
+              >
+                <span className="text-white font-bold text-sm">U</span>
+              </Link>
+            )}
+
+            {/* Desktop Menu Button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="hidden md:flex p-2 text-gray-400 hover:text-white transition-colors duration-200 hover:bg-[#1a1a1a] rounded-lg"
+              title="Menú"
             >
-              <span className="text-white font-bold text-sm">U</span>
-            </Link>
-          )}
+              <svg className={`w-5 h-5 transition-transform duration-200 ${isMenuOpen ? 'rotate-90' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
 
-          {/* Menú Hamburguesa */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="p-3 text-gray-400 hover:text-white transition-all duration-300 hover:bg-gray-800/50 rounded-xl group"
-          >
-            <svg className={`w-6 h-6 transition-transform duration-300 ${isMenuOpen ? 'rotate-90' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden p-2 text-gray-400 hover:text-white transition-colors duration-200 hover:bg-[#1a1a1a] rounded-lg"
+            >
+              <svg className={`w-5 h-5 transition-transform duration-200 ${isMenuOpen ? 'rotate-90' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Menú Desplegable */}
+      {/* Desktop & Mobile Dropdown Menu - Enlaces secundarios */}
       {isMenuOpen && (
-        <div ref={menuRef} className="absolute top-full right-0 mt-3 bg-gray-800/95 backdrop-blur-xl border border-gray-600/50 rounded-2xl shadow-2xl z-50 min-w-[240px] animate-in slide-in-from-top-2 duration-300">
-          <div className="py-3">
-            {/* En pantallas pequeñas: todas las páginas */}
+        <div ref={menuRef} className="absolute top-full right-0 mt-2 bg-[#121012] border border-[#27323a] rounded-lg shadow-lg z-50 w-[220px] transform -translate-x-8">
+          <div className="py-2">
+            {/* Enlaces principales para móvil */}
             <div className="md:hidden">
               <MobileNavLink icon="home" text="Inicio" to="/" active={location.pathname === '/'} />
               <MobileNavLink icon="group" text="Social" to="/social" active={location.pathname === '/social'} />
-              <MobileNavLink icon="account_balance_wallet" text="Wallet" to="/wallet" active={location.pathname === '/wallet'} />
               <MobileNavLink icon="sports_esports" text="Juegos" to="/games" active={location.pathname === '/games'} />
               <MobileNavLink icon="school" text="Aprender" to="/education" active={location.pathname === '/education'} />
-              
-              {/* Separador */}
-              <div className="border-t border-gray-600/50 my-2 mx-3"></div>
+              <div className="border-t border-[#27323a] my-2"></div>
             </div>
             
-            {/* Páginas adicionales - siempre visibles */}
-            <MobileNavLink icon="chat" text="Chat" to="/chat" active={location.pathname === '/chat'} />
+            {/* Enlaces secundarios */}
+            {!isWalletConnected && (
+              <MobileNavLink icon="account_balance_wallet" text="Wallet" to="/wallet" active={location.pathname === '/wallet'} />
+            )}
             <MobileNavLink icon="gavel" text="Gobernanza" to="/governance" active={location.pathname === '/governance'} />
             <MobileNavLink icon="swap_horiz" text="P2P" to="/p2p" active={location.pathname === '/p2p'} />
-            <MobileNavLink icon="settings" text="Ajustes" to="/settings" active={location.pathname === '/settings'} />
+            <MobileNavLink icon="chat" text="Chat" to="/chat" active={location.pathname === '/chat'} />
+            <MobileNavLink icon="settings" text="Configuración" to="/settings" active={location.pathname === '/settings'} />
           </div>
         </div>
       )}
@@ -158,33 +200,15 @@ const NavigationBar = () => {
   );
 };
 
-// Componente para enlaces de navegación
+// Componente para enlaces de navegación - Elegant Style
 const NavLink = ({ icon, text, to, active = false }) => {
   return (
     <Link
       to={to}
-      className={`flex items-center space-x-2 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 group ${
+      className={`relative px-3 py-2 text-sm font-medium transition-all duration-200 flex items-center space-x-2 rounded-lg ${
         active
-          ? 'text-white bg-gradient-to-r from-primary/20 to-blue-600/20 border border-primary/30 shadow-lg'
-          : 'text-gray-400 hover:text-white hover:bg-gray-800/50 hover:scale-105'
-      }`}
-    >
-      <Icon name={icon} active={active} />
-      <span className="hidden lg:block">{text}</span>
-    </Link>
-  );
-};
-
-// Componente para enlaces móviles
-const MobileNavLink = ({ icon, text, to, active = false }) => {
-  return (
-    <Link
-      to={to}
-      onClick={() => setIsMenuOpen(false)}
-      className={`flex items-center space-x-3 px-4 py-3 text-sm font-medium transition-all duration-300 group ${
-        active
-          ? 'text-primary bg-primary/10 border-l-4 border-primary'
-          : 'text-gray-300 hover:text-white hover:bg-gray-700/50'
+          ? 'text-[#0099ff] bg-[#1a1a1a] border border-[#27323a]'
+          : 'text-gray-300 hover:text-white hover:bg-[#1a1a1a]'
       }`}
     >
       <Icon name={icon} active={active} />
@@ -193,9 +217,27 @@ const MobileNavLink = ({ icon, text, to, active = false }) => {
   );
 };
 
-// Componente de iconos SVG
+// Componente para enlaces móviles - Elegant Style
+const MobileNavLink = ({ icon, text, to, active = false }) => {
+  return (
+    <Link
+      to={to}
+      onClick={() => setIsMenuOpen(false)}
+      className={`flex items-center space-x-3 px-4 py-3 text-sm font-medium transition-all duration-200 ${
+        active
+          ? 'text-[#0099ff] bg-[#1a1a1a] border-l-2 border-[#0099ff]'
+          : 'text-gray-300 hover:text-white hover:bg-[#1a1a1a]'
+      }`}
+    >
+      <Icon name={icon} active={active} />
+      <span>{text}</span>
+    </Link>
+  );
+};
+
+// Componente de iconos SVG - Elegant Style
 const Icon = ({ name, active = false }) => {
-  const iconClass = `w-5 h-5 transition-all duration-300 ${active ? 'text-primary' : 'text-gray-400 group-hover:text-white group-hover:scale-110'}`;
+  const iconClass = `w-4 h-4 transition-colors duration-200 ${active ? 'text-[#0099ff]' : 'text-gray-400 group-hover:text-white'}`;
   
   const icons = {
     home: (

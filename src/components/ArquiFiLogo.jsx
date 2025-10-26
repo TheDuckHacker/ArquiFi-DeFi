@@ -1,6 +1,7 @@
 import React from 'react';
 
-const ArquiFiLogo = ({ size = 24, className = "", color = "currentColor" }) => {
+const ArquiFiLogo = ({ size = 24, className = "", color = "currentColor", transparent = true, cyberpunk = false }) => {
+  // Usar el nuevo logo de ArquiSoft
   return (
     <svg 
       width={size} 
@@ -13,7 +14,7 @@ const ArquiFiLogo = ({ size = 24, className = "", color = "currentColor" }) => {
       <path 
         clipRule="evenodd" 
         d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" 
-        fill={color} 
+        fill={transparent ? color : "white"} 
         fillRule="evenodd"
       />
     </svg>

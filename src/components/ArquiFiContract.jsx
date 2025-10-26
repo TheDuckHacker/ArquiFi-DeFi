@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const ArquiFiContract = () => {
   const [userStake, setUserStake] = useState('0');
@@ -7,48 +7,100 @@ const ArquiFiContract = () => {
   const [rewardRate, setRewardRate] = useState('100');
   const [stakeAmount, setStakeAmount] = useState('');
   const [unstakeAmount, setUnstakeAmount] = useState('');
+  const [isStaking, setIsStaking] = useState(false);
+  const [isUnstaking, setIsUnstaking] = useState(false);
+  const [isClaiming, setIsClaiming] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
+  const [notificationMessage, setNotificationMessage] = useState('');
+
+  // Generar recompensas automáticamente
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (Number(userStake) > 0) {
+        const stakeAmount = Number(userStake);
+        const dailyReward = (stakeAmount * Number(rewardRate)) / 36500; // 100% anual
+        setUserRewards(prev => (Number(prev) + dailyReward).toFixed(6));
+      }
+    }, 10000); // Cada 10 segundos
+
+    return () => clearInterval(interval);
+  }, [userStake, rewardRate]);
+
+  const showNotificationWithMessage = (message) => {
+    setNotificationMessage(message);
+    setShowNotification(true);
+    setTimeout(() => setShowNotification(false), 3000);
+  };
 
   const handleStake = async () => {
     if (!stakeAmount || stakeAmount <= 0) return;
     
+    setIsStaking(true);
     try {
       console.log(`Staking ${stakeAmount} STX...`);
-      alert(`Staking ${stakeAmount} STX - Esta es una simulación`);
-      setStakeAmount('');
-      // Simular actualización de datos
+      
+      // Simular tiempo de transacción
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // Actualizar datos
       setUserStake((prev) => (Number(prev) + Number(stakeAmount)).toString());
       setTotalStaked((prev) => (Number(prev) + Number(stakeAmount)).toString());
+      
+      showNotificationWithMessage(`¡Stake exitoso! ${stakeAmount} STX staked`);
+      setStakeAmount('');
     } catch (error) {
       console.error('Error staking:', error);
-      alert('Error al hacer stake');
+      showNotificationWithMessage('Error al hacer stake');
+    } finally {
+      setIsStaking(false);
     }
   };
 
   const handleUnstake = async () => {
     if (!unstakeAmount || unstakeAmount <= 0) return;
     
+    setIsUnstaking(true);
     try {
       console.log(`Unstaking ${unstakeAmount} STX...`);
-      alert(`Unstaking ${unstakeAmount} STX - Esta es una simulación`);
-      setUnstakeAmount('');
-      // Simular actualización de datos
+      
+      // Simular tiempo de transacción
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // Actualizar datos
       setUserStake((prev) => Math.max(0, Number(prev) - Number(unstakeAmount)).toString());
       setTotalStaked((prev) => Math.max(0, Number(prev) - Number(unstakeAmount)).toString());
+      
+      showNotificationWithMessage(`¡Unstake exitoso! ${unstakeAmount} STX unstaked`);
+      setUnstakeAmount('');
     } catch (error) {
       console.error('Error unstaking:', error);
-      alert('Error al hacer unstake');
+      showNotificationWithMessage('Error al hacer unstake');
+    } finally {
+      setIsUnstaking(false);
     }
   };
 
   const handleClaimRewards = async () => {
+    setIsClaiming(true);
     try {
       console.log('Claiming rewards...');
-      alert('Claiming rewards - Esta es una simulación');
-      // Simular reclamación de recompensas
-      setUserRewards('0');
+      
+      // Simular tiempo de transacción
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      // Calcular recompensas basadas en el stake
+      const rewards = Number(userRewards);
+      if (rewards > 0) {
+        showNotificationWithMessage(`¡Recompensas reclamadas! ${rewards} STX`);
+        setUserRewards('0');
+      } else {
+        showNotificationWithMessage('No hay recompensas disponibles para reclamar');
+      }
     } catch (error) {
       console.error('Error claiming rewards:', error);
-      alert('Error al reclamar recompensas');
+      showNotificationWithMessage('Error al reclamar recompensas');
+    } finally {
+      setIsClaiming(false);
     }
   };
 
@@ -100,9 +152,17 @@ const ArquiFiContract = () => {
           />
           <button
             onClick={handleStake}
-            className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
+            disabled={isStaking}
+            className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
           >
-            Stake
+            {isStaking ? (
+              <>
+                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                <span>Staking...</span>
+              </>
+            ) : (
+              <span>Stake</span>
+            )}
           </button>
         </div>
 
@@ -117,18 +177,34 @@ const ArquiFiContract = () => {
           />
           <button
             onClick={handleUnstake}
-            className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+            disabled={isUnstaking}
+            className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
           >
-            Unstake
+            {isUnstaking ? (
+              <>
+                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                <span>Unstaking...</span>
+              </>
+            ) : (
+              <span>Unstake</span>
+            )}
           </button>
         </div>
 
         {/* Claim Rewards */}
         <button
           onClick={handleClaimRewards}
-          className="w-full bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition-colors"
+          disabled={isClaiming}
+          className="w-full bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
         >
-          Reclamar Recompensas
+          {isClaiming ? (
+            <>
+              <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+              <span>Reclamando...</span>
+            </>
+          ) : (
+            <span>Reclamar Recompensas</span>
+          )}
         </button>
       </div>
 
@@ -141,6 +217,18 @@ const ArquiFiContract = () => {
           Red: Testnet (Simulación)
         </p>
       </div>
+
+      {/* Notificación flotante */}
+      {showNotification && (
+        <div className="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-slide-in">
+          <div className="flex items-center space-x-2">
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+            <span className="font-medium">{notificationMessage}</span>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

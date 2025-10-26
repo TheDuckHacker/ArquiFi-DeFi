@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ArquiFiLogo from './ArquiFiLogo';
 
-const StacksAuth = () => {
+const StacksAuth = ({ onLogout }) => {
   const [isConnected, setIsConnected] = useState(false);
   const [isConnecting, setIsConnecting] = useState(false);
 
@@ -46,10 +46,10 @@ const StacksAuth = () => {
     localStorage.removeItem('arquiFi_stacks_session');
     setIsConnected(false);
     
-    // Recargar para actualizar el dashboard
-    setTimeout(() => {
-      window.location.reload();
-    }, 500);
+    // Llamar a la función de logout del padre
+    if (onLogout) {
+      onLogout();
+    }
   };
 
   if (isConnected) {
@@ -57,18 +57,27 @@ const StacksAuth = () => {
     const address = savedSession.address || 'ST1...';
     
     return (
-      <div className="flex items-center space-x-2">
-        <div className="bg-green-500 rounded-full w-2 h-2 animate-pulse"></div>
-        <span className="text-white text-xs font-medium">
-          {address.slice(0, 4)}...{address.slice(-4)}
-        </span>
+      <div className="relative group">
+        <button className="p-2 text-green-500 hover:text-white transition-colors duration-200 hover:bg-[#1a1a1a] rounded-lg">
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M21 7h-3V6a3 3 0 0 0-3-3H5a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-1h3a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1zM5 4h10a1 1 0 0 1 1 1v1H5V5a1 1 0 0 1 1-1zm11 14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V8h12v10z"/>
+            <path d="M15 11H9a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2z"/>
+          </svg>
+        </button>
+        
+        {/* Burbuja con dirección */}
+        <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-2 bg-green-500 text-white rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 whitespace-nowrap">
+          <span className="text-sm font-bold">{address.slice(0, 4)}...{address.slice(-4)}</span>
+        </div>
+        
+        {/* Botón de desconectar oculto */}
         <button
           onClick={disconnect}
-          className="text-gray-400 hover:text-white transition-colors p-1"
+          className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 hover:bg-red-600 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200"
           title="Desconectar Wallet"
         >
-          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
+          <svg className="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
           </svg>
         </button>
       </div>
@@ -79,13 +88,19 @@ const StacksAuth = () => {
     <button
       onClick={authenticate}
       disabled={isConnecting}
-      className="bg-primary text-white p-3 rounded-xl hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:scale-105 shadow-lg"
-      title="Conectar con Stacks"
+      className="bg-[#0099ff] text-white px-4 py-2 rounded-lg hover:bg-[#0088ee] disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 flex items-center space-x-2"
+      title="Conectar Wallet"
     >
       {isConnecting ? (
-        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
       ) : (
-        <ArquiFiLogo size={20} color="currentColor" />
+        <>
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M21 7h-3V6a3 3 0 0 0-3-3H5a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-1h3a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1zM5 4h10a1 1 0 0 1 1 1v1H5V5a1 1 0 0 1 1-1zm11 14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V8h12v10z"/>
+            <path d="M15 11H9a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2z"/>
+          </svg>
+          <span className="text-sm font-medium">Conectar</span>
+        </>
       )}
     </button>
   );

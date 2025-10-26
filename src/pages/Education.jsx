@@ -1,6 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Education = () => {
+  const [selectedCourse, setSelectedCourse] = useState(null);
+  const [isStudying, setIsStudying] = useState(false);
+  const [showReward, setShowReward] = useState(false);
+  const [earnedAP, setEarnedAP] = useState(0);
+  const [userAP, setUserAP] = useState(1000);
+  const [courseProgress, setCourseProgress] = useState({});
+
+  const startCourse = async (course) => {
+    setSelectedCourse(course);
+    setIsStudying(true);
+    
+    // Simular estudio
+    await new Promise(resolve => setTimeout(resolve, 4000));
+    
+    // Calcular progreso y recompensa
+    const currentProgress = courseProgress[course.id] || course.progress;
+    const newProgress = Math.min(100, currentProgress + 25);
+    const apEarned = Math.floor(course.reward.match(/\d+/)[0] * 0.25);
+    
+    setCourseProgress(prev => ({
+      ...prev,
+      [course.id]: newProgress
+    }));
+    
+    if (newProgress >= 100) {
+      setEarnedAP(apEarned);
+      setUserAP(prev => prev + apEarned);
+      setShowReward(true);
+      setTimeout(() => setShowReward(false), 5000);
+    }
+    
+    setIsStudying(false);
+  };
+
   const courses = [
     {
       id: 1,
@@ -9,7 +43,7 @@ const Education = () => {
       duration: "2 horas",
       level: "Principiante",
       progress: 75,
-      reward: "100 KP"
+      reward: "100 AP"
     },
     {
       id: 2,
@@ -18,7 +52,7 @@ const Education = () => {
       duration: "3 horas",
       level: "Intermedio",
       progress: 45,
-      reward: "150 KP"
+      reward: "150 AP"
     },
     {
       id: 3,
@@ -27,7 +61,7 @@ const Education = () => {
       duration: "1.5 horas",
       level: "Intermedio",
       progress: 0,
-      reward: "75 KP"
+      reward: "75 AP"
     }
   ];
 
@@ -36,7 +70,7 @@ const Education = () => {
       id: 1,
       title: "Primer Stacking",
       description: "Realiza tu primer stacking de BTC",
-      reward: "50 KP + 0.001 BTC",
+      reward: "50 AP + 0.001 BTC",
       status: "Completada",
       completed: true
     },
@@ -44,7 +78,7 @@ const Education = () => {
       id: 2,
       title: "Conectar Wallet",
       description: "Conecta tu billetera a la plataforma",
-      reward: "25 KP",
+      reward: "25 AP",
       status: "Completada",
       completed: true
     },
@@ -52,7 +86,7 @@ const Education = () => {
       id: 3,
       title: "Votar en DAO",
       description: "Participa en tu primera votación DAO",
-      reward: "100 KP",
+      reward: "100 AP",
       status: "En Progreso",
       completed: false
     }
@@ -80,7 +114,7 @@ const Education = () => {
           </div>
           
           <div className="bg-gray-800 rounded-lg p-6">
-            <h3 className="text-white text-lg font-semibold mb-2">KP Ganados</h3>
+            <h3 className="text-white text-lg font-semibold mb-2">AP Ganados</h3>
             <p className="text-yellow-400 text-2xl font-bold">325</p>
             <p className="text-gray-400 text-sm">Esta semana</p>
           </div>
@@ -126,12 +160,24 @@ const Education = () => {
                     </div>
                   </div>
                   
-                  <button className={`px-6 py-2 rounded-lg transition-colors ${
-                    course.progress > 0 
-                      ? 'bg-blue-500 hover:bg-blue-600 text-white' 
-                      : 'bg-green-500 hover:bg-green-600 text-white'
-                  }`}>
-                    {course.progress > 0 ? 'Continuar' : 'Comenzar'}
+                  <button 
+                    onClick={() => startCourse(course)}
+                    disabled={isStudying}
+                    className={`px-6 py-2 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2 ${
+                      courseProgress[course.id] >= 100
+                        ? 'bg-gray-500 text-white'
+                        : course.progress > 0 
+                          ? 'bg-blue-500 hover:bg-blue-600 text-white' 
+                          : 'bg-green-500 hover:bg-green-600 text-white'
+                    }`}>
+                    {isStudying && selectedCourse?.id === course.id ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        <span>Estudiando...</span>
+                      </>
+                    ) : (
+                      <span>{courseProgress[course.id] >= 100 ? 'Completado' : (courseProgress[course.id] > 0 ? 'Continuar' : 'Comenzar')}</span>
+                    )}
                   </button>
                 </div>
               ))}
@@ -178,6 +224,39 @@ const Education = () => {
           </div>
         </div>
       </div>
+
+      {/* Notificación de recompensa */}
+      {showReward && (
+        <div className="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-slide-in">
+          <div className="flex items-center space-x-2">
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+            <span className="font-medium">¡Curso completado! Ganaste {earnedAP} AP</span>
+          </div>
+        </div>
+      )}
+
+      {/* Modal de estudio en progreso */}
+      {isStudying && selectedCourse && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-[#1a1a1a] rounded-lg p-8 max-w-md w-full mx-4 animate-bounce-in">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-[#0099ff] rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-8 h-8 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Estudiando {selectedCourse.title}</h3>
+              <p className="text-gray-400 mb-4">Progreso: {courseProgress[selectedCourse.id] || selectedCourse.progress}%</p>
+              <div className="w-full bg-gray-700 rounded-full h-2">
+                <div 
+                  className="bg-[#0099ff] h-2 rounded-full transition-all duration-500" 
+                  style={{width: `${courseProgress[selectedCourse.id] || selectedCourse.progress}%`}}
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

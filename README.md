@@ -182,6 +182,19 @@ clarinet deploy --mainnet
 4. Push a la rama (`git push origin feature/AmazingFeature`)
 5. Abre un Pull Request
 
+## 🤖 Configuración de ArquiBot (Opcional)
+
+Para habilitar las respuestas de IA de ArquiBot:
+
+1. Obtén una API key gratuita en [Groq Console](https://console.groq.com/keys)
+2. Crea un archivo `.env` en la raíz del proyecto
+3. Agrega tu API key:
+```bash
+VITE_GROQ_API_KEY=tu_api_key_aqui
+```
+
+Sin la API key, ArquiBot funcionará con respuestas predefinidas inteligentes.
+
 ## 📄 Licencia
 
 Este proyecto está bajo la licencia MIT. Consulta el archivo `LICENSE` para más detalles.

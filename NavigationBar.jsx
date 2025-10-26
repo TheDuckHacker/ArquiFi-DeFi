@@ -16,10 +16,8 @@ const NavigationBar = () => {
         <NavLink icon="🏠" text="Inicio" />
         <NavLink icon="👥" text="Social" />
         <NavLink icon="💼" text="Billetera" />
-        <NavLink icon="⚖️" text="Gobernanza" />
-        <NavLink icon="🎮" text="Juegos" />
         <NavLink icon="🎓" text="Aprender" active={true} />
-        <NavLink icon="🔄" text="P2P" />
+        
       </div>
 
       {/* Right Section - User Status/Notifications */}
