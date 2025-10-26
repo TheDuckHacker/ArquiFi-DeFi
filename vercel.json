@@ -1,5 +1,4 @@
 {
-  "name": "arquifi-defi-social",
   "version": 2,
   "builds": [
     {
@@ -19,10 +18,5 @@
   "env": {
     "VITE_APP_NAME": "ArquiFi DeFi Social",
     "VITE_APP_VERSION": "1.0.0"
-  },
-  "functions": {
-    "app/api/**/*.js": {
-      "runtime": "nodejs18.x"
-    }
   }
 }
