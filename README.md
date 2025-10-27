@@ -83,7 +83,7 @@
 ### **Instalación**
 ```bash
 # Clonar el repositorio
-git clone https://github.com/tu-usuario/ArquiFi.git
+git clone https://github.com/TheDuckHacker/ArquiFi-DeFi
 cd ArquiFi
 
 # Instalar dependencias
@@ -96,7 +96,7 @@ npm run dev
 ### **Configuración de Variables de Entorno**
 ```bash
 # Crear archivo .env en la raíz del proyecto
-VITE_GROQ_API_KEY=tu_api_key_aqui
+VITE_GROQ_API_KEY=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
 ```
 
 **Para activar ArquiBot (Asistente IA):**
@@ -104,57 +104,67 @@ VITE_GROQ_API_KEY=tu_api_key_aqui
 2. Crea una cuenta gratuita
 3. Genera una API key
 4. Crea un archivo `.env` en la raíz del proyecto
-5. Agrega tu API key: `VITE_GROQ_API_KEY=tu_api_key_aqui`
+5. Agrega tu API key: `VITE_GROQ_API_KEY=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`
 6. Reinicia el servidor de desarrollo
 
 **Sin API key:** ArquiBot funcionará con respuestas predefinidas.
 
 ## 📱 Páginas y Funcionalidades
 
-### **1. Dashboard Principal**
+### **1. Dashboard Principal** ✅
 - **Portfolio** con balance STX en tiempo real
 - **Transacciones** recientes de la blockchain
 - **NFTs** del usuario
 - **Estadísticas** de ArquiPuntos
+- **Información de wallet** conectada (Leather)
 
-### **2. Contratos Inteligentes**
+### **2. Contratos Inteligentes** ✅
 - **Staking/Unstaking** de STX
 - **Claim** de recompensas
 - **Mint/Transfer** de ArquiPuntos
 - **Crear/Comprar** NFTs
 
-### **3. Sistema de Juegos**
+### **3. Sistema de Juegos** ✅
 - **Juegos educativos** con recompensas AP
 - **Rankings** de usuarios
 - **Misiones** diarias y semanales
 - **Logros** desbloqueables
 
-### **4. Capa Educativa**
+### **4. Capa Educativa** ✅
 - **Cursos** de finanzas descentralizadas
 - **Tutoriales** de Stacks blockchain
 - **Certificaciones** NFT
 - **Progreso** de aprendizaje
 
-### **5. P2P Trading**
+### **5. P2P Trading** ✅
 - **Intercambio** directo entre usuarios
 - **Ofertas** de compra/venta
 - **Historial** de transacciones
 - **Reputación** de usuarios
 
-### **6. Gobernanza DAO**
+### **6. Gobernanza DAO** ✅
 - **Propuestas** de la comunidad
 - **Votación** con tokens AP
 - **Implementación** de cambios
 - **Transparencia** total
 
-### **7. ArquiBot - Asistente IA**
-- **Agente inteligente** especializado en ArquiFi
+### **7. Feed Social** ✅
+- **Publicaciones** automáticas
+- **Sistema de comentarios** funcional
+- **Sistema de amistades** (como Instagram)
+- **Solicitudes de amistad** con notificaciones
+- **Imágenes** dinámicas con picsum.photos
+- **Interacciones** (like, comentar, compartir)
+
+### **8. ArquiBot - Asistente IA** ✅
+- **Agente inteligente** con Groq API
 - **Conocimiento completo** de la plataforma
 - **Ayuda contextual** según la página actual
 - **Recomendaciones personalizadas** basadas en el perfil
 - **Resolución de problemas** técnicos
 - **Botones de acción rápida** para consultas comunes
 - **Historial de conversación** para contexto continuo
+- **Respuestas inteligentes** en tiempo real
 
 ## 🔧 Configuración de Stacks
 
@@ -244,7 +254,9 @@ const userSession = new UserSession({ appConfig });
 
 ## 🚀 Deployment
 
-### **Vercel**
+### **✅ Vercel (Producción)**
+**URL:** https://arquifi-axxpi8wy2-carla-loayzas-projects.vercel.app
+
 ```bash
 # Instalar Vercel CLI
 npm i -g vercel
@@ -253,7 +265,15 @@ npm i -g vercel
 vercel --prod
 ```
 
-### **Netlify**
+**Configuración de Variables de Entorno en Vercel:**
+- `VITE_GROQ_API_KEY` - API key de Groq para ArquiBot
+- `VITE_APP_NAME` - ArquiFi DeFi Social
+- `VITE_APP_VERSION` - 1.0.0
+- `NODE_ENV` - production
+- `VITE_STACKS_API_URL` - https://api.stacks.co
+- `VITE_STACKS_NETWORK` - testnet
+
+### **Netlify (Alternativo)**
 ```bash
 # Build
 npm run build
@@ -275,12 +295,18 @@ npm run build
 - [x] Integración completa con blockchain
 - [x] Sistema de recompensas real
 - [x] Marketplace funcional
+- [x] ArquiBot con IA (Groq API)
+- [x] Sistema de amistades y notificaciones
+- [x] Feed social con imágenes
+- [x] Despliegue en Vercel
 
 ### **Fase 3** 📋
 - [ ] Mobile app
 - [ ] Integración con más blockchains
 - [ ] Programa de afiliados
 - [ ] Certificaciones oficiales
+- [ ] Despliegue en Mainnet
+- [ ] Auditoría de seguridad completa
 
 ## 🤝 Contribución
 
@@ -309,16 +335,44 @@ Este proyecto está bajo la Licencia MIT. Ver `LICENSE` para más detalles.
 
 ## 📞 Contacto
 
-- **Website**: [ArquiFi.com](https://arquifi.com)
-- **Email**: info@arquifi.com
-- **Twitter**: [@ArquiFi](https://twitter.com/arquifi)
-- **Discord**: [ArquiFi Community](https://discord.gg/arquifi)
+- **Website**: [ArquiFi DeFi Social](https://arquifi-axxpi8wy2-carla-loayzas-projects.vercel.app/)
+- **GitHub**: [ArquiFi-DeFi](https://github.com/TheDuckHacker/ArquiFi-DeFi)
+- **Email**: loayzaleiguezc@gmail.com
+- **Documentación**: [CONTRATOS_INTELIGENTES.md](./CONTRATOS_INTELIGENTES.md)
 
 ## 🙏 Agradecimientos
 
 - **Stacks Foundation** por el ecosistema blockchain
 - **Hiro Systems** por las herramientas de desarrollo
 - **Comunidad Stacks** por el apoyo y feedback
+
+---
+
+## 🎯 Estado Actual del Proyecto
+
+### **✅ FUNCIONANDO EN PRODUCCIÓN**
+- **URL**: https://arquifi-axxpi8wy2-carla-loayzas-projects.vercel.app
+- **Estado**: ✅ Completamente funcional
+- **ArquiBot**: ✅ Con IA real (Groq API)
+- **Wallet**: ✅ Integración con Leather
+- **Contratos**: ✅ Desplegados en Stacks Testnet
+- **Feed Social**: ✅ Sistema de amistades funcional
+- **Notificaciones**: ✅ Sistema completo implementado
+
+### **🔧 Tecnologías Implementadas**
+- **Frontend**: React 18 + Vite + Tailwind CSS
+- **Blockchain**: Stacks (Clarity contracts)
+- **IA**: Groq API para ArquiBot
+- **Wallet**: Leather (Stacks)
+- **Deployment**: Vercel
+- **Imágenes**: picsum.photos
+
+### **📊 Métricas del Proyecto**
+- **Líneas de código**: 5000+
+- **Componentes React**: 25+
+- **Páginas**: 10+
+- **Contratos desplegados**: 3
+- **Funcionalidades**: 50+
 
 ---
 
